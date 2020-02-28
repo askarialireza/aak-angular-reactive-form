@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "aak-reactive-form": {
@@ -24,9 +24,22 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/bootstrap4-toggle/css/bootstrap4-toggle.min.css",
+              "./node_modules/summernote/dist/summernote-bs4.min.css",
+              "./node_modules/ng-drag-drop/style.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/popper.js/dist/umd/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./node_modules/bootstrap4-toggle/js/bootstrap4-toggle.min.js",
+              "./node_modules/summernote/dist/summernote-bs4.min.js",
+              "./node_modules/@fortawesome/fontawesome-free/js/all.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -88,9 +101,22 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/bootstrap4-toggle/css/bootstrap4-toggle.min.css",
+              "./node_modules/summernote/dist/summernote-bs4.min.css",
+              "./node_modules/ng-drag-drop/style.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/popper.js/dist/umd/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./node_modules/bootstrap4-toggle/js/bootstrap4-toggle.min.js",
+              "./node_modules/summernote/dist/summernote-bs4.min.js",
+              "./node_modules/@fortawesome/fontawesome-free/js/all.min.js"
+            ]
           }
         },
         "lint": {
@@ -119,6 +145,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "aak-reactive-form"
+    }
+  },
+  "defaultProject": "aak-reactive-form",
+  "cli": {
+    "analytics": "a6bb1725-9a12-43dd-849a-4a199fbc7bca"
+  }
 }

@@ -1,0 +1,51 @@
+<ng-container *ngIf="!horizontalMode">
+	<div class="form-group" [formGroup]="group">
+		<label class="col-form-label"><strong>{{ field.label }} :</strong></label>
+		<app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
+		<div class="input-group">
+			<input class="form-control" [ngClass]="getValidClass()" placeholder="{{field.placeholder}}"
+				[formControlName]="field.name" ngbDatepicker #d="ngbDatepicker">
+			<div class="input-group-append">
+				<button class="btn btn-secondary" (click)="d.toggle()" type="button">
+					<i class="far fa-calendar-alt"></i>
+				</button>
+			</div>
+			<div *ngIf="group.get(field.name).invalid && ( group.get(field.name).dirty || group.get(field.name).touched)"
+				class="invalid-feedback">
+				<ng-container *ngFor="let item of field.validations;">
+					<div *ngIf="group.get(field.name)?.hasError(item.name)">
+						{{item.message}}
+					</div>
+				</ng-container>
+			</div>
+		</div>
+	</div>
+</ng-container>
+
+<ng-container *ngIf="horizontalMode">
+	<div class="form-group row p-2" [formGroup]="group">
+		<label class="col-md-4 col-form-label">
+			<strong>{{ field.label }} :</strong>
+			<app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
+		</label>
+		<div class="col-md-8">
+			<div class="input-group">
+				<input class="form-control" [ngClass]="getValidClass()" placeholder="{{field.placeholder}}"
+					[formControlName]="field.name" ngbDatepicker #d="ngbDatepicker">
+				<div class="input-group-append">
+					<button class="btn btn-secondary" (click)="d.toggle()" type="button">
+						<i class="far fa-calendar-alt"></i>
+					</button>
+				</div>
+				<div *ngIf="group.get(field.name).invalid && ( group.get(field.name).dirty || group.get(field.name).touched)"
+					class="invalid-feedback">
+					<ng-container *ngFor="let item of field.validations;">
+						<div *ngIf="group.get(field.name)?.hasError(item.name)">
+							{{item.message}}
+						</div>
+					</ng-container>
+				</div>
+			</div>
+		</div>
+	</div>
+</ng-container>

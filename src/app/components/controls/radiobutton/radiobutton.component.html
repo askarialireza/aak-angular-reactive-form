@@ -1,0 +1,12 @@
+<form [formGroup]="group">
+  <label class="w-100">{{field.label}}:</label>
+  <div class="row" ngbRadioGroup [formControlName]="field.name">
+    <ng-container *ngFor="let item of field.options">
+      <div class="col-12 col-sm-3">
+        <label ngbButtonLabel class="btn-block btn-light">
+          <input ngbButton type="radio" class="d-none" [value]="item.id"> {{item.value}}
+        </label>
+      </div>
+    </ng-container>
+  </div>
+</form>

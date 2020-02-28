@@ -1,0 +1,51 @@
+
+
+<ng-container *ngIf="horizontalMode">
+  <div class="form-group row p-2" [formGroup]="group">
+      <label class="col-md-4 col-form-label ">
+        <strong>{{field.label}}:</strong>
+        <app-manage-control *ngIf="editable" [field]="field" [changeViewListEnabled]="true"></app-manage-control>
+      </label>
+      <div class="col-md-8">
+        <ng-container *ngFor="let item of field.options">
+          <label *ngIf="item.isActive" class="custom-control custom-radio py-1"
+            [ngClass]="{'custom-control-inline w-auto' : field.isInlineRadio}">
+            <input class="custom-control-input" type="radio" [value]="item.id" [formControlName]="field.name" />
+            <span class="custom-control-label">{{item.value}}</span>
+          </label>
+        </ng-container>
+        <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
+          class="invalid-feedback">
+          <ng-container *ngFor="let item of field.validations;">
+            <div *ngIf="group.get(field.name)?.hasError(item.name)">
+              {{item.message}}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="!horizontalMode">
+  <div class="form-group" [formGroup]="group">
+    <div class="w-100">
+      <label class="col-form-label "><strong>{{field.label}}:</strong></label>
+      <app-manage-control *ngIf="editable" [field]="field" [changeViewListEnabled]="true"></app-manage-control>
+    </div>
+    <ng-container *ngFor="let item of field.options">
+      <label *ngIf="item.isActive" class="custom-control custom-radio py-1"
+        [ngClass]="{'custom-control-inline w-auto' : field.isInlineRadio}">
+        <input class="custom-control-input" type="radio" [value]="item.id" [formControlName]="field.name" />
+        <span class="custom-control-label">{{item.value}}</span>
+      </label>
+    </ng-container>
+    <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
+      class="invalid-feedback">
+      <ng-container *ngFor="let item of field.validations;">
+        <div *ngIf="group.get(field.name)?.hasError(item.name)">
+          {{item.message}}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

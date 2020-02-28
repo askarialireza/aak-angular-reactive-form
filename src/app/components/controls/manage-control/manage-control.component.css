@@ -1,0 +1,13 @@
+.dropdown-menu {
+    width: max-content !important;
+}
+
+.btn-group {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.dropdown-toggle::after {
+    content: none;
+}

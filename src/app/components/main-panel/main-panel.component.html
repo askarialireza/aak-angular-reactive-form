@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-header text-center">
+    <h5>{{this.formService.getFormItemName()}}</h5>
+  </div>
+  <div class="card-body">
+    <app-main-panel-manage-form></app-main-panel-manage-form>
+    <app-basic-form [items]="this.formService.getFieldItems()"
+    [group]="this.formService.formGroup"
+      [isHorizontalForm]="this.formService.getFormItemHorizontalMode()"
+      [editMode]="this.formService.getFormItemEditMode()"></app-basic-form>
+  </div>
+</div>

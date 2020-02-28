@@ -1,0 +1,64 @@
+
+<div class="btn-group">
+  <a class="btn text-dark btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-cog"></i>
+  </a>
+  <div class="dropdown-menu dropdown-menu-right">
+    <a class="float-right text-danger mx-2 my-1" (click)="DeleteField()">
+      <i class="fas fa-trash-alt"></i>
+    </a>
+    <a type="button" class="float-right text-primary mx-2 my-1" (click)="EditField()">
+      <i class="fas fa-edit"></i>
+    </a>
+    <a *ngIf="changeViewListEnabled" type="button" class="float-right text-dark mx-2 my-1" (click)="ChangeListView()">
+      <i class="fas fa-list-ul"></i>
+    </a>
+    <a *ngIf="!IsFirstItem()" type="button" class="float-right text-secondary mx-2 my-1" (click)="MoveUp()">
+      <i class="fas fa-angle-up"></i>
+    </a>
+    <a *ngIf="!IsLastItem()" type="button" class="float-right text-secondary mx-2 my-1" (click)="MoveDown()">
+      <i class="fas fa-angle-down"></i>
+    </a> 
+    <ng-container *ngIf="!formService.getFormItemHorizontalMode()">
+      <a *ngIf="!IsMaximumWidth()" type="button" class="float-right text-secondary mx-2 my-1" (click)="IncreaseWidth()">
+        <i class="fas fa-plus"></i>
+      </a>
+      <a *ngIf="!IsMinimumWidth()" type="button" class="float-right text-secondary mx-2 my-1" (click)="DecreaseWidth()">
+        <i class="fas fa-minus"></i>
+      </a>
+    </ng-container>
+  </div>
+</div>
+
+
+
+<!-- <div class="btn-group float-right" data-toggle="buttons">
+  <label class="btn btn-sm btn-danger">
+    <a (click)="DeleteField()">
+      <i class="fas fa-trash-alt"></i>
+    </a>
+  </label>
+  <label class="btn btn-sm btn-secondary">
+    <a (click)="EditField()">
+      <i class="fas fa-edit"></i>
+    </a>
+  </label>
+  <label *ngIf="changeViewListEnabled" class="btn btn-sm btn-secondary">
+    <a (click)="ChangeListView()">
+      <i class="fas fa-list-ul"></i>
+    </a>
+  </label>
+  <label *ngIf="!IsFirstItem()" class="btn btn-sm btn-light">
+    <a (click)="MoveUp()">
+      <i class="fas fa-angle-up"></i>
+    </a>
+  </label>
+  <label *ngIf="!IsLastItem()" class="btn btn-sm btn-light">
+    <a (click)="MoveUp()">
+      <i class="fas fa-angle-down"></i>
+    </a>
+  </label>
+  <label class="btn btn-sm btn-light">
+    <strong>{{field.order}}</strong>
+  </label>
+</div> -->
