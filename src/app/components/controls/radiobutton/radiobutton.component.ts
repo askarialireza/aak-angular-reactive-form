@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BaseComponent } from '../base-component';
 import * as fas from '@fortawesome/free-solid-svg-icons';
-import { Option } from 'src/app/models/option';
+import { Option } from '../../../models/option';
 
 @Component({
   selector: 'app-radiobutton',

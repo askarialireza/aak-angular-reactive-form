@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FieldItem } from 'src/app/models/field-item';
-import { FormGroup } from '@angular/forms';
 import { BaseComponent } from '../base-component';
 
 @Component({

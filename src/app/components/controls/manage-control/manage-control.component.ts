@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FieldItem } from 'src/app/models/field-item';
-import { FormService } from 'src/app/services/form.service';
+import { FieldItem } from '../../../models/field-item';
+import { FormService } from '../../../services/form.service';
 import * as fas from '@fortawesome/free-solid-svg-icons';
 
 @Component({

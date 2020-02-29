@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FieldItemService } from 'src/app/services/field-item.service';
-import { FormService } from 'src/app/services/form.service';
-import { FieldItem } from 'src/app/models/field-item';
+import { FormService } from '../../services/form.service';
+import { FieldItem } from '../../models/field-item';
 import { FormGroup } from '@angular/forms';
 
 @Component({
