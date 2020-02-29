@@ -12,7 +12,6 @@ export class SummernoteTextareaComponent extends BaseComponent {
 
   constructor() {
     super()
-    console.log(JSON.stringify(this.field, null, 2));
   }
 
   ngOnInit() {

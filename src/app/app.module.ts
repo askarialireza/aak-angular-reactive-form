@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './components/app/app.component';
 import { BasicFormComponent } from './components/basic-form/basic-form.component';
@@ -29,6 +30,9 @@ import { ReactiveFormComponent } from './components/reactive-form/reactive-form.
 import { FieldCreateComponent } from './components/field-create/field-create.component';
 import { FormCreateComponent } from './components/form-create/form-create.component';
 import { MainPanelManageFormComponent } from './components/main-panel-manage-form/main-panel-manage-form.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FormCreateService } from './services/form-create.service';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +55,7 @@ import { MainPanelManageFormComponent } from './components/main-panel-manage-for
     FieldCreateComponent,
     FormCreateComponent,
     MainPanelManageFormComponent,
+    NavbarComponent,
   ],
 
   imports: [
@@ -63,8 +68,13 @@ import { MainPanelManageFormComponent } from './components/main-panel-manage-for
     BrowserAnimationsModule,
     NgbModule,
     NgxSummernoteModule,
+    FontAwesomeModule,
   ],
-  providers: [FormService],
+  providers: [FormService, FormCreateService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+
+  }
+}

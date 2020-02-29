@@ -2,7 +2,10 @@
   <div class="form-group" [formGroup]="group">
     <label class="col-form-label"><strong>{{ field.label }} :</strong></label>
     <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
-    <input class="custom-range" (input)="field.value" type="range" min="{{field.minValue}}" [ngClass]="getValidClass()" max="{{field.maxValue}}" [formControlName]="field.name" >
+    <div class="w-100">
+      <input class="d-inline  custom-range" type="range" (input)="valueChanged($event)" [ngClass]="getValidClass()" min="{{field.minValue}}" max="{{field.maxValue}}" [formControlName]="field.name" >
+        <span *ngIf="rangevalue" class="d-inline float-right badge mt-1 badge-secondary">{{rangevalue}}</span>
+    </div>
     <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
     class="invalid-feedback">
     {{field.value}}
@@ -22,7 +25,10 @@
       <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
     </label>
     <div class="col-md-8">
-      <input class="custom-range" type="range" (input)="field.value" [ngClass]="getValidClass()" min="{{field.minValue}}" max="{{field.maxValue}}" [formControlName]="field.name" >
+      <div class="w-100">
+        <input class="d-inline custom-range-horizontal custom-range" type="range" (input)="valueChanged($event)" [ngClass]="getValidClass()" min="{{field.minValue}}" max="{{field.maxValue}}" [formControlName]="field.name" >
+          <span *ngIf="rangevalue" class="d-inline float-right badge-horizontal badge badge-secondary">{{rangevalue}}</span>
+      </div>
       <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
       class="invalid-feedback">
       {{field.value}}

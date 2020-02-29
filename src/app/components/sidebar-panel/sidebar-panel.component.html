@@ -1,6 +1,23 @@
+
 <div class="card">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" id="form-tab" data-toggle="tab" href="#form" role="tab" aria-controls="form" aria-selected="true">Create Form</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="field-tab" data-toggle="tab" href="#field" role="tab" aria-controls="field">Create Field</a>
+      </li>
+    </ul>
+  </div>
   <div class="card-body">
-    <app-field-create></app-field-create>
-    <app-form-create></app-form-create>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="form" role="tabpanel" aria-labelledby="form-tab">
+        <app-form-create></app-form-create>
+      </div>
+      <div class="tab-pane fade" id="field" role="tabpanel" aria-labelledby="field-tab">
+        <app-field-create></app-field-create>
+      </div>
+    </div>
   </div>
 </div>

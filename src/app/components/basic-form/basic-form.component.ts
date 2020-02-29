@@ -24,7 +24,7 @@ export class BasicFormComponent implements OnInit {
 
   @Input() items: FieldItem[];
 
-  constructor(public fieldItemService: FieldItemService, public formService: FormService) { }
+  constructor(public formService: FormService) { }
 
   ngOnInit() {
 

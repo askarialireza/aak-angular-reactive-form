@@ -1,0 +1,4 @@
+.input-group>.input-group-append:not(:last-child)>.btn {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}

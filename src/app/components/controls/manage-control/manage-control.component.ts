@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FieldItem } from 'src/app/models/field-item';
 import { FormService } from 'src/app/services/form.service';
+import * as fas from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-manage-control',
@@ -13,11 +14,17 @@ export class ManageControlComponent implements OnInit {
 
   @Input() changeViewListEnabled: boolean;
 
+  public isInline: boolean;
+
+  FaEllipsisVertical = fas.faEllipsisV;
+  faEllipsisHorizontal = fas.faEllipsisH;
+
   constructor(public formService: FormService) {
     this.changeViewListEnabled = false;
   }
 
   ngOnInit() {
+    this.isInline = this.GetListView();
   }
 
   EditField() {
@@ -34,6 +41,11 @@ export class ManageControlComponent implements OnInit {
 
   ChangeListView() {
     this.field.isInlineRadio = !this.field.isInlineRadio;
+    this.isInline = this.field.isInlineRadio;
+  }
+
+  GetListView() {
+    return this.field.isInlineRadio;
   }
 
   IsFirstItem() {

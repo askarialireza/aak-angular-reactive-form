@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FieldItem } from '../models/field-item';
-import { FormItem } from '../mocks/form.mock.ts';
+import { FormItem, FieldItems } from '../mocks/form.mock.ts';
 import { Form } from '../models/form';
 
 @Injectable({
@@ -27,6 +27,10 @@ export class FormService {
 
   getFormItemHorizontalMode() {
     return FormItem.isHorizontal;
+  }
+
+  setFormItenHorizontalMode(value: boolean) {
+    FormItem.isHorizontal = value;
   }
 
   getFormItemEditMode() {
@@ -155,25 +159,30 @@ export class FormService {
   }
 
   getColumnClass(item: FieldItem) {
-    if(this.getFormItemHorizontalMode() !== true)  {
-      if (item) {
-        if (item.width) {
-          return 'col-12 col-md-' + item.width.toString();
+    let result = "col-12";
+    if (item) {
+      if (item.width) {
+        let order = FieldItems.indexOf(item) + 1;
+        FieldItems.find(current => current.id == item.id).order = order;
+        let classOrder = "order-";
+        if (order > 12) {
+          classOrder = "order-12";
         }
         else {
-          if (item.class) {
-            return item.class;
-          } else {
-            return null;
-          }
+          classOrder += order.toString();
         }
+
+        result += ` ${classOrder}`;
+
+        if (this.getFormItemHorizontalMode() == false){
+          result += ` col-md-${item.width.toString()}`;
+        }
+
+        return result;
       }
       else {
         return null;
       }
-    }
-    else {
-      return "";
     }
   }
 

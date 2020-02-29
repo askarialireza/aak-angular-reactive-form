@@ -1,1 +1,34 @@
-<!-- <app-basic-form></app-basic-form> -->
+<pre>{{createForm.value | json}}</pre>
+<form [formGroup]="createForm" (ngSubmit)="OnSubmit($event)">
+    <div class="form-row">
+        <div class="col-12 p-2">
+            <div class="form-group">
+                <label class="col-form-label">Form Name:</label>
+                <input class="form-control" type="text" formControlName="name">
+            </div>
+        </div>
+        <div class="col-12 p-2">
+            <div class="form-group">
+                <label class="col-form-label">Action Name:</label>
+                <input class="form-control" type="text" formControlName="action">
+            </div>
+        </div>
+        <div class="col-12 p-2">
+            <div class="form-group">
+                <label class="custom-control custom-checkbox py-1">
+                    <input class="custom-control-input" type="checkbox" formControlName="horizontal" />
+                    <span class="custom-control-label">Horizontal Mode</span>
+                </label>
+            </div>
+        </div>
+        <div class="col-12 p-2">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" [disabled]="createForm.invalid">Save</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<ngb-alert *ngIf="isSuccess" type="success">
+    Form Created! to Add Fields <a class="text-success" data-toggle="tab" role="tab" aria-controls="field" href="#field"><strong>Click Here</strong></a>
+</ngb-alert>

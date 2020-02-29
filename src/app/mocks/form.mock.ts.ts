@@ -23,6 +23,29 @@ export const FieldItems: FieldItem[] = [
     },
     {
         id: Guid.create().toString(),
+        name: "testradiobutton",
+        required: true,
+        type: "radiobutton",
+        label: "Test Label",
+        isInlineRadio: false,
+        order: 2,
+        width:3,
+        validations: [
+            {
+                name: "required",
+                validator: Validators.required,
+                message: `Label is Required.`,
+            },
+        ],
+        options: [
+            { id: Guid.create().toString(), value: "Option 1", isActive: false },
+            { id: Guid.create().toString(), value: "Option 2", isActive: false },
+            { id: Guid.create().toString(), value: "Option 3", isActive: false },
+            { id: Guid.create().toString(), value: "Option 4", isActive: false },
+        ],
+    },
+    {
+        id: Guid.create().toString(),
         name: "range",
         required: true,
         type: "range",

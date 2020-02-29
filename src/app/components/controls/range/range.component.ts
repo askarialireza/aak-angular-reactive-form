@@ -10,11 +10,18 @@ import { BaseComponent } from '../base-component';
 })
 export class RangeComponent extends BaseComponent {
 
+  public rangevalue:number;
+
   constructor() {
     super();
    }
 
   ngOnInit() {
+    // this.rangevalue = this.field.value;
+  }
+
+  valueChanged(e) {
+    this.rangevalue = e.target.value;
   }
 
 }
