@@ -1,4 +1,4 @@
-<pre>{{createForm.value | json}}</pre>
+<!-- <pre>{{createForm.value | json}}</pre>
 <form [formGroup]="createForm" (ngSubmit)="OnSubmit($event)">
     <div class="form-row">
         <div class="col-12 p-2">
@@ -31,4 +31,8 @@
 
 <ngb-alert *ngIf="isSuccess" type="success">
     Form Created! to Add Fields <a class="text-success" data-toggle="tab" role="tab" aria-controls="field" href="#field"><strong>Click Here</strong></a>
-</ngb-alert>
+</ngb-alert> -->
+
+<app-basic-form [formGroup]="this.formCreateService.getFormGroup()" [formItem]="this.formCreateService.getFormItem()"
+    [editMode]="this.formCreateService.getFormItem().editMode"
+    [isHorizontalForm]="this.formCreateService.getFormItem().isHorizontal"></app-basic-form>

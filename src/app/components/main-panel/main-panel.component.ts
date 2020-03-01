@@ -13,9 +13,9 @@ export class MainPanelComponent implements OnInit {
   ngOnInit() {
     this.formService.formGroup = this.formService.getFormGroup();
 
-    this.formService.sortFieldItemsByOrder();
+    this.formService.sortFieldItemsByOrder(this.formService.getFormItem().fieldItems);
 
-    this.formService.formGroup = this.formService.createControl();
+    this.formService.formGroup = this.formService.createControl(this.formService.getFormItem().fieldItems);
   }
 
 }

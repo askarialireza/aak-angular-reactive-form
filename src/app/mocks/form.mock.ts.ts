@@ -254,6 +254,7 @@ export const FieldItems: FieldItem[] = [
 
 export const FormItem: Form = {
     isHorizontal: false,
+    editMode:true,
     name: 'MY TEST FORM',
     fieldItems: FieldItems,
 }

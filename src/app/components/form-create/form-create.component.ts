@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormService } from '../../services/form.service';
+import { FieldItem } from 'src/app/models/field-item';
+import { FormCreateService } from 'src/app/services/form-create.service';
 
 @Component({
   selector: 'app-form-create',
@@ -9,33 +11,48 @@ import { FormService } from '../../services/form.service';
 })
 export class FormCreateComponent implements OnInit {
 
-  public createForm: FormGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
-    action: new FormControl('', Validators.required),
-    horizontal: new FormControl(''),
-  });
+  // public createForm: FormGroup = new FormGroup({
+  //   name: new FormControl('', Validators.required),
+  //   action: new FormControl('', Validators.required),
+  //   horizontal: new FormControl(''),
+  // });
 
   isSuccess: boolean = false;
 
-  constructor(private formService: FormService) {
+  public namefield: FieldItem;
+
+  public actionField: FieldItem;
+
+  public startDateField: FieldItem;
+
+  public endDateField: FieldItem;
+
+  public isActiveField: FieldItem;
+
+  constructor(public formCreateService: FormCreateService,private formService: FormService) {
   }
 
 
 
   ngOnInit() {
+    //this.formService.formGroup = this.formService.getFormGroup();
+
+    this.formService.sortFieldItemsByOrder(this.formCreateService.getFieldItems());
+
+    this.formCreateService.formGroup = this.formService.createControl(this.formCreateService.getFieldItems());
   }
 
   OnSubmit(event: Event) {
-    if (this.createForm.valid) {
-      let formName = this.createForm.get('name').value;
-      
-      this.formService.setFormItemName(formName);
+    //   if (this.createForm.valid) {
+    //     let formName = this.createForm.get('name').value;
 
-      let horizontal = this.createForm.get('horizontal').value;
+    //     this.formService.setFormItemName(formName);
 
-      this.formService.setFormItenHorizontalMode(horizontal);
-    }
-    this.isSuccess = true;
+    //     let horizontal = this.createForm.get('horizontal').value;
+
+    //     this.formService.setFormItenHorizontalMode(this.formService.getFormItem(),horizontal);
+    //   }
+    //   this.isSuccess = true;
 
   }
 }

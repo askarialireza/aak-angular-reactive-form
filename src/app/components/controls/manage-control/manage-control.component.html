@@ -20,7 +20,7 @@
     <a *ngIf="!IsLastItem()" type="button" data-toggle="tooltip" data-placement="bottom" title="Move Next" class="float-right text-secondary mx-2 my-1" (click)="MoveDown()">
       <i class="fas fa-angle-down"></i>
     </a>
-    <ng-container *ngIf="!formService.getFormItemHorizontalMode()">
+    <ng-container *ngIf="!formService.isHorizontalMode">
       <a *ngIf="!IsMaximumWidth()" type="button" data-toggle="tooltip" data-placement="bottom" title="Increase Width" class="float-right text-secondary mx-2 my-1" (click)="IncreaseWidth()">
         <i class="fas fa-plus"></i>
       </a>

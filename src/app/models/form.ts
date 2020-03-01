@@ -11,14 +11,19 @@ export class Form {
         isHorizontal?: boolean,
         fieldItems?: FieldItem[],
         editMode?: boolean,
+        url?:string,
+        isActive?:boolean,
+        startDate?:string,
+        endDate?:string,
     } = {}) {
         this.id = options.id || Guid.create().toString();
         this.name = options.name || Guid.create().toString();
         this.date = options.date || null;
-        this.date = options.action || null;
+        this.action = options.action || null;
         this.isHorizontal = options.isHorizontal || false;
         this.fieldItems = options.fieldItems || null;
         this.editMode = options.editMode || false;
+
     }
 
     public id?: string;
@@ -28,4 +33,8 @@ export class Form {
     public isHorizontal?: boolean;
     public fieldItems?: FieldItem[];
     public editMode?: boolean;
+    public url?:string;
+    public isActive?:boolean;
+    public startDate?:string;
+    public endDate?:string;
 }

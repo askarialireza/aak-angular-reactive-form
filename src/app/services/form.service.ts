@@ -11,10 +11,15 @@ export class FormService {
 
   public formGroup: FormGroup;
 
+  public isHorizontalMode : boolean;
+
+  public editModeEnabled: boolean;
+
   constructor(private formBuilder: FormBuilder) {
 
     this.formGroup = new FormGroup({});
-
+    this.isHorizontalMode = this.getFormItem().isHorizontal;
+    this.editModeEnabled = this.getFormItem().editMode;
   }
 
   getFormGroup(): FormGroup {
@@ -25,12 +30,12 @@ export class FormService {
     return FormItem.name;
   }
 
-  getFormItemHorizontalMode() {
-    return FormItem.isHorizontal;
+  getFormItemHorizontalMode(form: Form) {
+    return form.isHorizontal;
   }
 
-  setFormItenHorizontalMode(value: boolean) {
-    FormItem.isHorizontal = value;
+  setFormItenHorizontalMode(form: Form,value: boolean) {
+    form.isHorizontal = value;
   }
 
   getFormItemEditMode() {
@@ -59,8 +64,8 @@ export class FormService {
     return FormItem.fieldItems.length;
   }
 
-  sortFieldItemsByOrder() {
-    FormItem.fieldItems.sort((a, b) => (a.order > b.order) ? 1 : -1)
+  sortFieldItemsByOrder(fieldItems: FieldItem[]) {
+    fieldItems.sort((a, b) => (a.order > b.order) ? 1 : -1)
   }
 
   MoveItemNext(fieldItem: FieldItem) {
@@ -105,7 +110,7 @@ export class FormService {
       FormItem.fieldItems.push(field);
     }
 
-    this.sortFieldItemsByOrder();
+    this.sortFieldItemsByOrder(FormItem.fieldItems);
 
     const control = this.formBuilder.control(
       field.value,
@@ -121,10 +126,10 @@ export class FormService {
     this.formGroup.removeControl(field.name);
   }
 
-  createControl() {
+  createControl(fieldItems: FieldItem[]) {
     let group: FormGroup = new FormGroup({});
 
-    FormItem.fieldItems.forEach(field => {
+    fieldItems.forEach(field => {
 
 
       if (field.type === "button") {
@@ -158,12 +163,12 @@ export class FormService {
     return null;
   }
 
-  getColumnClass(item: FieldItem) {
+  getColumnClass(form: Form,item: FieldItem) {
     let result = "col-12";
     if (item) {
       if (item.width) {
-        let order = FieldItems.indexOf(item) + 1;
-        FieldItems.find(current => current.id == item.id).order = order;
+        let order = form.fieldItems.indexOf(item) + 1;
+        form.fieldItems.find(current => current.id == item.id).order = order;
         let classOrder = "order-";
         if (order > 12) {
           classOrder = "order-12";
@@ -174,7 +179,7 @@ export class FormService {
 
         result += ` ${classOrder}`;
 
-        if (this.getFormItemHorizontalMode() == false){
+        if (this.getFormItemHorizontalMode(form) == false) {
           result += ` col-md-${item.width.toString()}`;
         }
 

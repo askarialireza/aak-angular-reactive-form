@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { FormCreateItems } from '../mocks/form-create.mock';
+import { FormCreateItems, FormCreate } from '../mocks/form-create.mock';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,9 @@ export class FormCreateService {
     this.formGroup = new FormGroup({});
   }
 
+  getFormItem() {
+    return FormCreate;
+  }
   getFormGroup() {
     return this.formGroup;
   }

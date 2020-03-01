@@ -28,23 +28,61 @@ export const FormCreateItems: FieldItem[] = [
         placeholder: "Action",
         width: 12,
         order: 2,
-        validations: [
-            {
-                name: "required",
-                validator: Validators.required,
-                message: "Action is Required",
-            },
-        ]
+    },
+    {
+        id: Guid.create().toString(),
+        name: "url",
+        label: "Url",
+        type: "input",
+        placeholder: 'SAMPLE URL',
+        readonly: true,
+        width: 12,
+        order: 3,
+    },
+    {
+        id: Guid.create().toString(),
+        name: "startDate",
+        label: "Start Date",
+        type: "date",
+        width: 6,
+        order: 4,
+    },
+    {
+        id: Guid.create().toString(),
+        name: "endDate",
+        label: "End Date",
+        type: "date",
+        width: 6,
+        order: 5,
+    },
+    {
+        id: Guid.create().toString(),
+        name: "active",
+        type: "checkbox",
+        placeholder: "Active",
+        width: 6,
+        value: false,
+        order: 6,
     },
     {
         id: Guid.create().toString(),
         name: "horizontal",
-        // label: "Horizontal Form",
         type: "checkbox",
         placeholder: "Horiontal Form",
-        width: 12,
+        width: 6,
         value: false,
-        order: 3,
+        order: 7,
     }
 ]
+
+
+export const FormCreate: Form = {
+    id: Guid.create().toString(),
+    name: "createform",
+    isActive: true,
+    isHorizontal: false,
+    editMode: false,
+    fieldItems: FormCreateItems,
+};
+
 
