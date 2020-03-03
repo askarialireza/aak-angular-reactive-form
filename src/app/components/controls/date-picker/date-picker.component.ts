@@ -1,7 +1,8 @@
 import { Component, Injectable } from "@angular/core";
 import { ChangeDetectorRef } from "@angular/core";
-import { NgbCalendar, NgbDateAdapter, NgbDateStruct, NgbDateParserFormatter, NgbDatepickerI18n, NgbCalendarPersian } from "@ng-bootstrap/ng-bootstrap";
+import { NgbCalendar, NgbDatepicker, NgbDateAdapter, NgbDateStruct, NgbDateParserFormatter, NgbDatepickerI18n, NgbCalendarPersian, NgbInputDatepicker } from "@ng-bootstrap/ng-bootstrap";
 import { BaseComponent } from '../base-component';
+import * as fas from '@fortawesome/free-solid-svg-icons';
 
 const WEEKDAYS_SHORT = ['د', 'س', 'چ', 'پ', 'ج', 'ش', 'ی'];
 const MONTHS = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
@@ -26,6 +27,9 @@ export class NgbDatepickerI18nPersian extends NgbDatepickerI18n {
 })
 export class DatePickerComponent extends BaseComponent {
 
+  today = this.calendar.getToday();
+  faCalendarAlt = fas.faCalendarAlt;
+
   constructor(private cdRef: ChangeDetectorRef, private calendar: NgbCalendar) {
     super();
   }
@@ -34,6 +38,10 @@ export class DatePickerComponent extends BaseComponent {
 
     this.cdRef.detectChanges();
 
+  }
+
+  getToday() {
+    this.group.get(this.field.name).setValue(this.today);
   }
 
 }

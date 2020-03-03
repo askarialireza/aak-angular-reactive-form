@@ -38,10 +38,10 @@ export const FieldItems: FieldItem[] = [
             },
         ],
         options: [
-            { id: Guid.create().toString(), value: "Option 1", isActive: false },
-            { id: Guid.create().toString(), value: "Option 2", isActive: false },
-            { id: Guid.create().toString(), value: "Option 3", isActive: false },
-            { id: Guid.create().toString(), value: "Option 4", isActive: false },
+            { id: Guid.create().toString(), value: "Option 1", },
+            { id: Guid.create().toString(), value: "Option 2", },
+            { id: Guid.create().toString(), value: "Option 3", },
+            { id: Guid.create().toString(), value: "Option 4", },
         ],
     },
     {
@@ -172,10 +172,10 @@ export const FieldItems: FieldItem[] = [
         order: 6,
         width:9,
         options: [
-            { id: Guid.create().toString(), value: "Option 1", isActive: true },
-            { id: Guid.create().toString(), value: "Option 2", isActive: true },
-            { id: Guid.create().toString(), value: "Option 3", isActive: true },
-            { id: Guid.create().toString(), value: "Option 4", isActive: false },
+            { id: Guid.create().toString(), value: "Option 1", },
+            { id: Guid.create().toString(), value: "Option 2", },
+            { id: Guid.create().toString(), value: "Option 3", },
+            { id: Guid.create().toString(), value: "Option 4", },
         ],
         validations: [
             {
@@ -187,24 +187,24 @@ export const FieldItems: FieldItem[] = [
     },
     {
         id: Guid.create().toString(),
-        name: "testradio1",
+        name: "testmultiple",
         required: true,
-        type: "radio",
-        placeholder: "Test Select",
-        label: "Test Label Select",
+        type: "multicheckbox",
+        placeholder: "Test",
+        label: "Test Multiple",
         order: 3,
         width:3,
         options: [
-            { id: Guid.create().toString(), value: "Option 1", isActive: true },
-            { id: Guid.create().toString(), value: "Option 2", isActive: true },
-            { id: Guid.create().toString(), value: "Option 3", isActive: true },
-            { id: Guid.create().toString(), value: "Option 4", isActive: false },
+            { id: Guid.create().toString(), value: "Option 1", disabled:false },
+            { id: Guid.create().toString(), value: "Option 2", disabled:false },
+            { id: Guid.create().toString(), value: "Option 3", disabled:false },
+            { id: Guid.create().toString(), value: "Option 4", disabled:false },
         ],
         validations: [
             {
                 name: "required",
                 validator: Validators.required,
-                message: `Test Label Number is Required.`,
+                message: `Choose at least one`,
             },
         ],
     },
@@ -219,10 +219,10 @@ export const FieldItems: FieldItem[] = [
         width:8,
         isInlineRadio: true,
         options: [
-            { id: Guid.create().toString(), value: "Option 1", isActive: true },
-            { id: Guid.create().toString(), value: "Option 2", isActive: true },
-            { id: Guid.create().toString(), value: "Option 3", isActive: true },
-            { id: Guid.create().toString(), value: "Option 4", isActive: false },
+            { id: Guid.create().toString(), value: "Option 1", },
+            { id: Guid.create().toString(), value: "Option 2", },
+            { id: Guid.create().toString(), value: "Option 3", },
+            { id: Guid.create().toString(), value: "Option 4", },
         ],
         validations: [
             {

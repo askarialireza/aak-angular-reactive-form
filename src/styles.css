@@ -12,6 +12,10 @@ body {
     margin-bottom: 0; 
 }
 
+.custom-input {
+    opacity: 0 !important;
+}
+
 @media (max-width: 992px) {
     .btn-block-max-md {
         display: flex;

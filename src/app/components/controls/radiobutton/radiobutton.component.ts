@@ -17,11 +17,11 @@ export class RadiobuttonComponent extends BaseComponent {
 
   toggle(item: Option): boolean {
 
-    return item.isActive = !item.isActive;
+    return item.disabled = !item.disabled;
   }
 
   onClickBtn(item: Option) {
-    this.field.options.map(a=>a.isActive=false);
+    this.field.options.map(a=>a.disabled=false);
     this.toggle(item)
   }
 

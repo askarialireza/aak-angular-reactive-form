@@ -24,7 +24,7 @@ export abstract class BaseComponent implements OnInit {
             if (this.group.get(this.field.name).errors) {
                 return ('is-invalid');
             } else {
-                return ('is-valid');
+                return ('');
             }
         }
     }

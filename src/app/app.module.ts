@@ -32,6 +32,7 @@ import { FormCreateComponent } from './components/form-create/form-create.compon
 import { MainPanelManageFormComponent } from './components/main-panel-manage-form/main-panel-manage-form.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormCreateService } from './services/form-create.service';
+import { MultiCheckboxComponent } from './components/controls/multi-checkbox/multi-checkbox.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { FormCreateService } from './services/form-create.service';
     FormCreateComponent,
     MainPanelManageFormComponent,
     NavbarComponent,
+    MultiCheckboxComponent,
   ],
 
   imports: [

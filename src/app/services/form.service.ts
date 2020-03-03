@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray, AbstractControl, ValidatorFn } from '@angular/forms';
 import { FieldItem } from '../models/field-item';
-import { FormItem, FieldItems } from '../mocks/form.mock.ts';
+import { FormItem, FieldItems } from '../mocks/form.mock';
 import { Form } from '../models/form';
 
 @Injectable({
@@ -11,9 +11,10 @@ export class FormService {
 
   public formGroup: FormGroup;
 
-  public isHorizontalMode : boolean;
+  public isHorizontalMode: boolean;
 
   public editModeEnabled: boolean;
+
 
   constructor(private formBuilder: FormBuilder) {
 
@@ -34,7 +35,7 @@ export class FormService {
     return form.isHorizontal;
   }
 
-  setFormItenHorizontalMode(form: Form,value: boolean) {
+  setFormItenHorizontalMode(form: Form, value: boolean) {
     form.isHorizontal = value;
   }
 
@@ -136,6 +137,19 @@ export class FormService {
         return;
       }
 
+      if (field.type === "multicheckbox") {
+        if (field.validations.find(current => current.validator == Validators.required)) {
+          group.addControl(field.name, new FormArray([], this.minSelectedCheckboxes(1)));
+        } else {
+          group.addControl(field.name, new FormArray([]));
+        }
+        field.options.forEach((o, i) => {
+          const control = new FormControl(null);
+          (group.controls[field.name] as FormArray).push(control);
+        });
+        return;
+      }
+
       const control = this.formBuilder.control(
         field.value,
         this.bindValidations(field.validations || [])
@@ -146,6 +160,20 @@ export class FormService {
     });
 
     return group;
+  }
+
+  minSelectedCheckboxes(min = 1) {
+    let selected = 0;
+    const validator: ValidatorFn = (formArray: FormArray) => {
+      selected = formArray.controls.filter((x,i)=> {
+        if(x.value !=null){
+          return x.value
+        }
+      }).length;
+      return selected >= min ? null : { required: true };
+    };
+
+    return validator;
   }
 
   bindValidations(validations: any) {
@@ -163,7 +191,7 @@ export class FormService {
     return null;
   }
 
-  getColumnClass(form: Form,item: FieldItem) {
+  getColumnClass(form: Form, item: FieldItem) {
     let result = "col-12";
     if (item) {
       if (item.width) {

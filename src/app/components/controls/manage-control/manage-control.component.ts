@@ -16,8 +16,15 @@ export class ManageControlComponent implements OnInit {
 
   public isInline: boolean;
 
-  FaEllipsisVertical = fas.faEllipsisV;
+  faEllipsisVertical = fas.faEllipsisV;
   faEllipsisHorizontal = fas.faEllipsisH;
+  faCog = fas.faCog;
+  faTrashAlt = fas.faTrashAlt;
+  faEdit = fas.faEdit;
+  faAngleUp = fas.faAngleUp;
+  faAngleDown = fas.faAngleDown;
+  faPlus = fas.faPlus;
+  faMinus = fas.faMinus;
 
   constructor(public formService: FormService) {
     this.changeViewListEnabled = false;
@@ -28,9 +35,6 @@ export class ManageControlComponent implements OnInit {
   }
 
   EditField() {
-
-    console.log(JSON.stringify(this.field, null, 1));
-
   }
 
   DeleteField() {
@@ -83,14 +87,14 @@ export class ManageControlComponent implements OnInit {
   }
 
   IncreaseWidth() {
-    console.log(this.field);
+
     this.formService.IncreaseWidth(this.field);
     this.IsMaximumWidth();
   }
 
 
   DecreaseWidth() {
-    console.log(this.field);
+
     this.formService.DecreaseWidth(this.field);
     this.IsMinimumWidth();
   }

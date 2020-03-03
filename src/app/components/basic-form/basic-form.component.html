@@ -1,5 +1,5 @@
-<!-- <pre>{{formGroup.value| json}}</pre> -->
-<form [formGroup]="formGroup">
+<pre>{{formGroup.value| json}}</pre>
+<form [formGroup]="formGroup" (submit)="onSubmit($event)" (modelChange)="formModelChanged($event)">
 
   <div [ngClass]="{'form-row':!isHorizontalForm}">
     <ng-container *ngFor="let item of formItem.fieldItems">
@@ -21,6 +21,10 @@
           <ng-container *ngSwitchCase="'radio'">
             <app-radio [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode" [field]="item">
             </app-radio>
+          </ng-container>
+          <ng-container *ngSwitchCase="'multicheckbox'">
+            <app-multi-checkbox [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode" [field]="item">
+            </app-multi-checkbox>
           </ng-container>
           <ng-container *ngSwitchCase="'date'">
             <app-date-picker [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode" [field]="item">

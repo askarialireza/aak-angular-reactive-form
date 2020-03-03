@@ -1,65 +1,39 @@
 <div class="btn-group">
   <a class="btn text-dark btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
     aria-expanded="false">
-    <i class="fas fa-cog"></i>
+    <fa-icon [icon]="faCog"></fa-icon>
   </a>
   <div class="dropdown-menu dropdown-menu-right">
-    <a data-toggle="tooltip" data-placement="bottom" title="Delete" class="float-right text-danger mx-2 my-1" (click)="DeleteField()">
-      <i class="fas fa-trash-alt"></i>
+    <a data-toggle="tooltip" data-placement="bottom" title="Delete" class="float-right text-danger mx-2 my-1"
+      (click)="DeleteField()">
+      <fa-icon [icon]="faTrashAlt"></fa-icon>
     </a>
-    <a type="button" data-toggle="tooltip" data-placement="bottom" title="Edit" class="float-right text-primary mx-2 my-1" (click)="EditField()">
-      <i class="fas fa-edit"></i>
+    <a type="button" data-toggle="tooltip" data-placement="bottom" title="Edit"
+      class="float-right text-primary mx-2 my-1" (click)="EditField()">
+      <fa-icon [icon]="faEdit"></fa-icon>
     </a>
-    <a *ngIf="changeViewListEnabled" type="button" data-toggle="tooltip" data-placement="bottom" title="Change View" class="float-right text-dark mx-2 my-1" (click)="ChangeListView()">
-      <fa-icon *ngIf="isInline" [icon]="FaEllipsisVertical"></fa-icon>
+    <a *ngIf="changeViewListEnabled" type="button" data-toggle="tooltip" data-placement="bottom" title="Change View"
+      class="float-right text-dark mx-2 my-1" (click)="ChangeListView()">
+      <fa-icon *ngIf="isInline" [icon]="faEllipsisVertical"></fa-icon>
       <fa-icon *ngIf="!isInline" [icon]="faEllipsisHorizontal"></fa-icon>
     </a>
-    <a *ngIf="!IsFirstItem()" type="button" data-toggle="tooltip" data-placement="bottom" title="Move Previous" class="float-right text-secondary mx-2 my-1" (click)="MoveUp()">
-      <i class="fas fa-angle-up"></i>
+    <a *ngIf="!IsFirstItem()" type="button" data-toggle="tooltip" data-placement="bottom" title="Move Previous"
+      class="float-right text-secondary mx-2 my-1" (click)="MoveUp()">
+      <fa-icon [icon]="faAngleUp"></fa-icon>
     </a>
-    <a *ngIf="!IsLastItem()" type="button" data-toggle="tooltip" data-placement="bottom" title="Move Next" class="float-right text-secondary mx-2 my-1" (click)="MoveDown()">
-      <i class="fas fa-angle-down"></i>
+    <a *ngIf="!IsLastItem()" type="button" data-toggle="tooltip" data-placement="bottom" title="Move Next"
+      class="float-right text-secondary mx-2 my-1" (click)="MoveDown()">
+      <fa-icon [icon]="faAngleDown"></fa-icon>
     </a>
     <ng-container *ngIf="!formService.isHorizontalMode">
-      <a *ngIf="!IsMaximumWidth()" type="button" data-toggle="tooltip" data-placement="bottom" title="Increase Width" class="float-right text-secondary mx-2 my-1" (click)="IncreaseWidth()">
-        <i class="fas fa-plus"></i>
+      <a *ngIf="!IsMaximumWidth()" type="button" data-toggle="tooltip" data-placement="bottom" title="Increase Width"
+        class="float-right text-secondary mx-2 my-1" (click)="IncreaseWidth()">
+        <fa-icon [icon]="faPlus"></fa-icon>
       </a>
-      <a *ngIf="!IsMinimumWidth()" type="button" data-toggle="tooltip" data-placement="bottom" title="Decrease Width" class="float-right text-secondary mx-2 my-1" (click)="DecreaseWidth()">
-        <i class="fas fa-minus"></i>
+      <a *ngIf="!IsMinimumWidth()" type="button" data-toggle="tooltip" data-placement="bottom" title="Decrease Width"
+        class="float-right text-secondary mx-2 my-1" (click)="DecreaseWidth()">
+        <fa-icon [icon]="faMinus"></fa-icon>
       </a>
     </ng-container>
   </div>
 </div>
-
-
-
-<!-- <div class="btn-group float-right" data-toggle="buttons">
-  <label class="btn btn-sm btn-danger">
-    <a (click)="DeleteField()">
-      <i class="fas fa-trash-alt"></i>
-    </a>
-  </label>
-  <label class="btn btn-sm btn-secondary">
-    <a (click)="EditField()">
-      <i class="fas fa-edit"></i>
-    </a>
-  </label>
-  <label *ngIf="changeViewListEnabled" class="btn btn-sm btn-secondary">
-    <a (click)="ChangeListView()">
-      <i class="fas fa-list-ul"></i>
-    </a>
-  </label>
-  <label *ngIf="!IsFirstItem()" class="btn btn-sm btn-light">
-    <a (click)="MoveUp()">
-      <i class="fas fa-angle-up"></i>
-    </a>
-  </label>
-  <label *ngIf="!IsLastItem()" class="btn btn-sm btn-light">
-    <a (click)="MoveUp()">
-      <i class="fas fa-angle-down"></i>
-    </a>
-  </label>
-  <label class="btn btn-sm btn-light">
-    <strong>{{field.order}}</strong>
-  </label>
-</div> -->

@@ -9,8 +9,8 @@
         <div class="px-1" [ngClass]="{'d-inline' : field.isInlineRadio}">
           <label ngbButtonLabel class="btn-radio"  (click)="onClickBtn(item)">
             <input ngbButton type="radio" class="d-none" [value]="item.id">
-            <fa-icon *ngIf="item.isActive" [icon]="faCheck"></fa-icon>
-            <fa-icon *ngIf="!item.isActive" [icon]="faMinus"></fa-icon>
+            <fa-icon *ngIf="item.disabled" [icon]="faCheck"></fa-icon>
+            <fa-icon *ngIf="!item.disabled" [icon]="faMinus"></fa-icon>
             {{item.value}}
           </label>
         </div>
@@ -39,8 +39,8 @@
           <div class="px-1" [ngClass]="{'d-inline' : field.isInlineRadio}">
             <label ngbButtonLabel class="btn-radio" (click)="onClickBtn(item)">
               <input ngbButton type="radio" class="d-none" [value]="item.id">
-              <fa-icon *ngIf="item.isActive" [icon]="faCheck"></fa-icon>
-              <fa-icon *ngIf="!item.isActive" [icon]="faMinus"></fa-icon>
+              <fa-icon *ngIf="item.disabled" [icon]="faCheck"></fa-icon>
+              <fa-icon *ngIf="!item.disabled" [icon]="faMinus"></fa-icon>
               {{item.value}}
             </label>
           </div>
