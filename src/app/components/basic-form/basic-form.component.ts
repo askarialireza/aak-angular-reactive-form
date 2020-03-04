@@ -43,6 +43,10 @@ export class BasicFormComponent implements OnInit {
 
   }
 
+  onDateSelected(e) {
+    console.log(e);
+  }
+
   formModelChanged(event: Event) {
 
   }

@@ -150,6 +150,17 @@ export class FormService {
         return;
       }
 
+      if (field.type === "daterange") {
+        group.addControl(field.name, new FormArray([]));
+
+        for (let index = 0; index < 2; index++) {
+          const control = new FormControl(null);
+          (group.controls[field.name] as FormArray).push(control);
+        }
+
+        return;
+      }
+
       const control = this.formBuilder.control(
         field.value,
         this.bindValidations(field.validations || [])
@@ -165,8 +176,8 @@ export class FormService {
   minSelectedCheckboxes(min = 1) {
     let selected = 0;
     const validator: ValidatorFn = (formArray: FormArray) => {
-      selected = formArray.controls.filter((x,i)=> {
-        if(x.value !=null){
+      selected = formArray.controls.filter((x, i) => {
+        if (x.value != null) {
           return x.value
         }
       }).length;

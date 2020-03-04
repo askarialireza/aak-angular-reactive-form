@@ -1,9 +1,7 @@
-/* .is-invalid ~ div {
-    border: 1px solid #dc3545 !important;
-    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
-} */
-
-/* .note-editor {
-    border: 1px solid #dc3545 !important;;
-    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;;
-} */
+.invalid-feedback {
+    display: block !important;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+} 

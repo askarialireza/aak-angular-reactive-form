@@ -1,5 +1,4 @@
 
-
 <ng-container *ngIf="horizontalMode">
   <div class="form-group row p-2" [formGroup]="group">
       <label class="col-md-4 col-form-label ">
@@ -10,7 +9,7 @@
         <ng-container *ngFor="let item of field.options">
           <label class="custom-control custom-radio py-1"
             [ngClass]="{'custom-control-inline w-auto' : field.isInlineRadio}">
-            <input class="custom-control-input" type="radio" [value]="item.id" [formControlName]="field.name" />
+            <input class="custom-control-input" type="radio" [ngClass]="getValidClass()" [value]="item.id" [formControlName]="field.name" />
             <span class="custom-control-label">{{item.value}}</span>
           </label>
         </ng-container>
@@ -35,7 +34,7 @@
     <ng-container *ngFor="let item of field.options">
       <label class="custom-control custom-radio py-1"
         [ngClass]="{'custom-control-inline w-auto' : field.isInlineRadio}">
-        <input class="custom-control-input" type="radio" [value]="item.id" [formControlName]="field.name" />
+        <input class="custom-control-input" type="radio" [ngClass]="getValidClass()" [value]="item.id" [formControlName]="field.name" />
         <span class="custom-control-label">{{item.value}}</span>
       </label>
     </ng-container>

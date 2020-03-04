@@ -1,16 +1,41 @@
-<div class="form-group" [formGroup]="group">
-  <label class="col-form-label w-100"><strong>{{ field.label }} :</strong></label>
-  <app-manage-control *ngIf="editable" [field]="field" [changeViewListEnabled]="true"></app-manage-control>
-  <label [formArrayName]="field.name" *ngFor="let option of fieldOptions; let i = index"
-    class="custom-control custom-checkbox" for="{{option.id}}"
-    [ngClass]="{'custom-control-inline w-auto' : field.isInlineRadio}">
+<ng-container *ngIf="!horizontalMode">
+  <div class="form-group" [formGroup]="group">
+    <label class="col-form-label w-100"><strong>{{ field.label }} :</strong></label>
+    <app-manage-control *ngIf="editable" [field]="field" [changeViewListEnabled]="true"></app-manage-control>
+    <label [formArrayName]="field.name" *ngFor="let option of fieldOptions; let i = index"
+      class="custom-control custom-checkbox" for="{{option.id}}"
+      [ngClass]="{'custom-control-inline w-auto' : field.isInlineRadio}">
 
-    <input class="custom-control-input" id="{{option.id}}" type="checkbox" [ngClass]="getValidClass()"
-      [formControlName]="i" (change)="onCheckChange($event,i)" />
-    <span class="custom-control-label">{{option.value}}</span>
-  </label>
-</div>
-<div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
-  class="invalid-feedback">
-  {{errorMessage}}
-</div>
+      <input class="custom-control-input" id="{{option.id}}" type="checkbox" [ngClass]="getValidClass()"
+        [formControlName]="i" (change)="onCheckChange($event,i)" />
+      <span class="custom-control-label">{{option.value}}</span>
+    </label>
+  </div>
+  <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
+    class="invalid-feedback">
+    {{errorMessage}}
+  </div>
+</ng-container>
+
+<ng-container *ngIf="horizontalMode">
+  <div class="form-group row p-2" [formGroup]="group">
+    <label class="col-form-label col-12 col-md-4">
+      <strong>{{ field.label }} :</strong>
+      <app-manage-control *ngIf="editable" [field]="field" [changeViewListEnabled]="true"></app-manage-control>
+    </label>
+    <div class="col-12 col-md-8">
+      <label [formArrayName]="field.name" *ngFor="let option of fieldOptions; let i = index"
+        class="custom-control custom-checkbox" for="{{option.id}}"
+        [ngClass]="{'custom-control-inline w-auto' : field.isInlineRadio}">
+
+        <input class="custom-control-input" id="{{option.id}}" type="checkbox" [ngClass]="getValidClass()"
+          [formControlName]="i" (change)="onCheckChange($event,i)" />
+        <span class="custom-control-label">{{option.value}}</span>
+      </label>
+      <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
+        class="invalid-feedback">
+        {{errorMessage}}
+      </div>
+    </div>
+  </div>
+</ng-container>

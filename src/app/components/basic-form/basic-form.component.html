@@ -23,12 +23,19 @@
             </app-radio>
           </ng-container>
           <ng-container *ngSwitchCase="'multicheckbox'">
-            <app-multi-checkbox [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode" [field]="item">
+            <app-multi-checkbox [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode"
+              [field]="item">
             </app-multi-checkbox>
           </ng-container>
           <ng-container *ngSwitchCase="'date'">
-            <app-date-picker [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode" [field]="item">
+            <app-date-picker [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode"
+              [field]="item" (dateSelected)="onDateSelected($event)">
             </app-date-picker>
+          </ng-container>
+          <ng-container *ngSwitchCase="'daterange'">
+            <app-date-range [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode"
+              [field]="item">
+            </app-date-range>
           </ng-container>
           <ng-container *ngSwitchCase="'textarea'">
             <app-textarea [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode" [field]="item">
@@ -46,7 +53,8 @@
             <app-submit [group]="formGroup" [field]="item"></app-submit>
           </ng-container>
           <ng-container *ngSwitchCase="'radiobutton'">
-            <app-radiobutton [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode" [field]="item">
+            <app-radiobutton [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode"
+              [field]="item">
             </app-radiobutton>
           </ng-container>
         </ng-container>

@@ -3,10 +3,10 @@
 		<label class="col-form-label"><strong>{{ field.label }} :</strong></label>
 		<app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
 		<div class="input-group">
-			<input class="form-control" [footerTemplate]="footerTemplate"  [ngClass]="getValidClass()" placeholder="{{field.placeholder}}"
+			<input class="form-control" [footerTemplate]="footerTemplate" (dateSelect)="OnDateSelected($event)"  [ngClass]="getValidClass()" placeholder="{{field.placeholder}}"
 				[formControlName]="field.name" ngbDatepicker #d="ngbDatepicker">
 			<div class="input-group-append">
-				<button class="btn btn-secondary" (click)="d.toggle()" type="button">
+				<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
 					<fa-icon [icon]="faCalendarAlt"></fa-icon>
 				</button>
 			</div>
@@ -22,8 +22,14 @@
 	</div>
 	<ng-template #footerTemplate>
 		<hr class="my-0">
-		<button class="btn btn-primary btn-sm m-2 float-left" (click)="getToday();d.close()">Today</button>
-		<button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">Close</button>
+		<button class="btn btn-primary btn-sm m-2 float-left" (click)="getToday();d.close()">
+			<fa-icon [icon]="faCalendarDay"></fa-icon>
+			Today
+		</button>
+		<button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">
+			<fa-icon [icon]="faTimes"></fa-icon>
+			Close
+		</button>
 	  </ng-template>
 </ng-container>
 
@@ -38,7 +44,7 @@
 				<input class="form-control" [ngClass]="getValidClass()" [footerTemplate]="footerTemplate"  placeholder="{{field.placeholder}}"
 					[formControlName]="field.name" ngbDatepicker #d="ngbDatepicker">
 				<div class="input-group-append">
-					<button class="btn btn-secondary" (click)="d.toggle()" type="button">
+					<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
 						<fa-icon [icon]="faCalendarAlt"></fa-icon>
 					</button>
 				</div>
@@ -55,7 +61,13 @@
 	</div>
 	<ng-template #footerTemplate>
 		<hr class="my-0">
-		<button class="btn btn-primary btn-sm m-2 float-left" (click)="getToday();d.close()">Today</button>
-		<button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">Close</button>
+		<button class="btn btn-primary btn-sm m-2 float-left" (click)="getToday();d.close()">
+			<fa-icon [icon]="faCalendarDay"></fa-icon>
+			Today
+		</button>
+		<button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">
+			<fa-icon [icon]="faTimes"></fa-icon>
+			Close
+		</button>
 	  </ng-template>
 </ng-container>

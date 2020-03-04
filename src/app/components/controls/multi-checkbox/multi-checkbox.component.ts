@@ -48,7 +48,7 @@ export class MultiCheckboxComponent extends BaseComponent {
     let item = this.field.options.find(current=>current.id == event.target.id)
     if (event.target.checked) {
       if(item){
-        formArray.controls[index].setValue(item);
+        formArray.controls[index].setValue(item.id);
       }
     } else {
       formArray.controls[index].setValue(null);

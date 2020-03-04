@@ -144,6 +144,15 @@ export const FieldItems: FieldItem[] = [
     },
     {
         id: Guid.create().toString(),
+        name: "daterange",
+        type: "daterange",
+        placeholder: "Test Date",
+        label: "Test Label",
+        order: 2,
+        width:6,
+    },
+    {
+        id: Guid.create().toString(),
         name: "testnumber",
         required: true,
         minValue: 3,

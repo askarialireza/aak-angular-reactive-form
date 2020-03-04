@@ -33,6 +33,7 @@ import { MainPanelManageFormComponent } from './components/main-panel-manage-for
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormCreateService } from './services/form-create.service';
 import { MultiCheckboxComponent } from './components/controls/multi-checkbox/multi-checkbox.component';
+import { DateRangeComponent } from './components/controls/date-range/date-range.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { MultiCheckboxComponent } from './components/controls/multi-checkbox/mul
     MainPanelManageFormComponent,
     NavbarComponent,
     MultiCheckboxComponent,
+    DateRangeComponent,
   ],
 
   imports: [
