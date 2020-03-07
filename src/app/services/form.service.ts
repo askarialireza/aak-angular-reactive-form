@@ -138,11 +138,18 @@ export class FormService {
       }
 
       if (field.type === "multicheckbox") {
-        if (field.validations?.find(current => current.validator == Validators.required)) {
-          group.addControl(field.name, new FormArray([], this.minSelectedCheckboxes(1)));
-        } else {
+        if (field.validations) {
+          if (field.validations.find(current => current.validator == Validators.required)) {
+            group.addControl(field.name, new FormArray([], this.minSelectedCheckboxes(1)));
+          }
+          else {
+            group.addControl(field.name, new FormArray([]));
+          }
+        }
+        else {
           group.addControl(field.name, new FormArray([]));
         }
+
         field.options.forEach((o, i) => {
           const control = new FormControl(null);
           (group.controls[field.name] as FormArray).push(control);
