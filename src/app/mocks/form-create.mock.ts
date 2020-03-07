@@ -41,38 +41,25 @@ export const FormCreateItems: FieldItem[] = [
     },
     {
         id: Guid.create().toString(),
-        name: "startDate",
-        label: "Start Date",
-        type: "date",
-        width: 6,
+        name: "date",
+        label: "Date",
+        type: "daterange",
+        width: 12,
         order: 4,
     },
     {
         id: Guid.create().toString(),
-        name: "endDate",
-        label: "End Date",
-        type: "date",
-        width: 6,
-        order: 5,
-    },
-    {
-        id: Guid.create().toString(),
-        name: "active",
-        type: "checkbox",
-        placeholder: "Active",
-        width: 6,
-        value: false,
+        name: "options",
+        required: false,
+        type: "multicheckbox",
+        isInlineRadio: false,
+        width: 12,
         order: 6,
+        options: [
+            {id:"check-active",value:"Active",disabled:false},
+            {id:"check-horizontal",value:"Horizontal",disabled:false},
+        ],
     },
-    {
-        id: Guid.create().toString(),
-        name: "horizontal",
-        type: "checkbox",
-        placeholder: "Horiontal Form",
-        width: 6,
-        value: false,
-        order: 7,
-    }
 ]
 
 

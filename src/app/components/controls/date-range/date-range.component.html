@@ -2,43 +2,66 @@
   <div class="form-group" [formGroup]="group">
     <label class="col-form-label"><strong>{{ field.label }} :</strong></label>
     <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
-    <div class="form-inline">
-      <div class="form-group hidden">
+    <div class="row">
+      <div [ngClass]="{'col-12 mb-1':!isInline,'col':isInline}">
         <div class="input-group">
-          <input name="datepicker" class="form-control" ngbDatepicker #datepicker="ngbDatepicker"
-            [autoClose]="'outside'" (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t"
-            outsideDays="hidden" [startDate]="fromDate">
-          <ng-template #t let-date let-focused="focused">
-            <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
-              [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
-              (mouseleave)="hoveredDate = null">
-              {{ date.day }}
-            </span>
-          </ng-template>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="input-group mr-2">
-          <input #dpFromDate class="form-control" (change)="inputChanged($event)" placeholder="yyyy-mm-dd" name="dpFromDate"
-            [value]="formatter.format(fromDate)" (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+          <div class="input-group-prepend">
+            <span class="input-group-text justify-content-center">From Date</span>
+          </div>
+          <input class="form-control" [ngClass]="getValidationClass(fromDateControl)" [footerTemplate]="footerTemplate"
+            (dateSelect)="OnFromDateSelected($event)" [ngClass]="getValidClass()" placeholder="{{field.placeholder}}"
+            ngbDatepicker #d1="ngbDatepicker">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary  calendar" (click)="datepicker.toggle()" type="button">
+            <button class="btn bg-light btn-outline-secondary" (click)="d1.toggle()" type="button">
               <fa-icon [icon]="faCalendarAlt"></fa-icon>
             </button>
           </div>
+          <div *ngIf="!valid && fromDateControl.invalid && ( fromDateControl.dirty || fromDateControl.touched)"
+            class="invalid-feedback">
+            {{valid}}
+          </div>
         </div>
+        <ng-template #footerTemplate>
+          <hr class="my-0">
+          <button class="btn btn-primary btn-sm m-2 float-left" (click)="getToday();d1.close()">
+            <fa-icon [icon]="faCalendarDay"></fa-icon>
+            Today
+          </button>
+          <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d1.close()">
+            <fa-icon [icon]="faTimes"></fa-icon>
+            Close
+          </button>
+        </ng-template>
+      </div>
+      <div [ngClass]="{'col-12':!isInline,'col':isInline}">
         <div class="input-group">
-          <input #dpToDate class="form-control" placeholder="yyyy-mm-dd" name="dpToDate"
-            [value]="formatter.format(toDate)" (change)="inputChanged($event)" (input)="toDate = validateInput(toDate, dpToDate.value)">
+          <div class="input-group-prepend">
+            <span class="input-group-text justify-content-center">To Date</span>
+          </div>
+          <input class="form-control" [ngClass]="getValidationClass(toDateControl)" [footerTemplate]="footerTemplate"
+            (dateSelect)="OnEndDateSelected($event)" [ngClass]="getValidClass()" placeholder="{{field.placeholder}}"
+            ngbDatepicker #d2="ngbDatepicker">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary  calendar" (click)="datepicker.toggle()" type="button">
+            <button class="btn bg-light btn-outline-secondary" (click)="d2.toggle()" type="button">
               <fa-icon [icon]="faCalendarAlt"></fa-icon>
             </button>
           </div>
+          <div *ngIf="!valid && toDateControl.invalid && ( toDateControl.dirty || toDateControl.touched)"
+            class="invalid-feedback">
+            {{valid}}
+          </div>
         </div>
-      </div>
-      <div *ngIf="(hasError && group.get(field.name).touched)" class="invalid-feedback">
-        DARI VARI
+        <ng-template #footerTemplate>
+          <hr class="my-0">
+          <button class="btn btn-primary btn-sm m-2 float-left" (click)="getToday();d2.close()">
+            <fa-icon [icon]="faCalendarDay"></fa-icon>
+            Today
+          </button>
+          <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d2.close()">
+            <fa-icon [icon]="faTimes"></fa-icon>
+            Close
+          </button>
+        </ng-template>
       </div>
     </div>
   </div>
@@ -51,40 +74,66 @@
       <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
     </label>
     <div class="col-md-8">
-      <div class="form-inline">
-        <div class="form-group hidden">
+      <div class="row">
+        <div class="col-12 mb-1">
           <div class="input-group">
-            <input name="datepicker" class="form-control" ngbDatepicker #datepicker="ngbDatepicker"
-              [autoClose]="'outside'" (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t"
-              outsideDays="hidden" [startDate]="fromDate">
-            <ng-template #t let-date let-focused="focused">
-              <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
-                [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
-                (mouseleave)="hoveredDate = null">
-                {{ date.day }}
-              </span>
-            </ng-template>
+            <div class="input-group-prepend">
+              <span class="input-group-text justify-content-center">From Date</span>
+            </div>
+            <input class="form-control" [ngClass]="getValidationClass(fromDateControl)"
+              [footerTemplate]="footerTemplate" (dateSelect)="OnFromDateSelected($event)" [ngClass]="getValidClass()"
+              placeholder="{{field.placeholder}}" ngbDatepicker #d1="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn bg-light btn-outline-secondary" (click)="d1.toggle()" type="button">
+                <fa-icon [icon]="faCalendarAlt"></fa-icon>
+              </button>
+            </div>
+            <div *ngIf="!valid && fromDateControl.invalid && ( fromDateControl.dirty || fromDateControl.touched)"
+              class="invalid-feedback">
+              {{valid}}
+            </div>
           </div>
+          <ng-template #footerTemplate>
+            <hr class="my-0">
+            <button class="btn btn-primary btn-sm m-2 float-left" (click)="getToday();d1.close()">
+              <fa-icon [icon]="faCalendarDay"></fa-icon>
+              Today
+            </button>
+            <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d1.close()">
+              <fa-icon [icon]="faTimes"></fa-icon>
+              Close
+            </button>
+          </ng-template>
         </div>
-        <div class="form-group">
-          <div class="input-group mr-2">
-            <input #dpFromDate class="form-control" placeholder="yyyy-mm-dd" name="dpFromDate"
-              [value]="formatter.format(fromDate)" (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary  calendar" (click)="datepicker.toggle()" type="button">
-                <fa-icon [icon]="faCalendarAlt"></fa-icon>
-              </button>
-            </div>
-          </div>
+        <div class="col-12">
           <div class="input-group">
-            <input #dpToDate class="form-control" placeholder="yyyy-mm-dd" name="dpToDate"
-              [value]="formatter.format(toDate)" (input)="toDate = validateInput(toDate, dpToDate.value)">
+            <div class="input-group-prepend">
+              <span class="input-group-text justify-content-center">To Date</span>
+            </div>
+            <input class="form-control" [ngClass]="getValidationClass(toDateControl)" [footerTemplate]="footerTemplate"
+              (dateSelect)="OnEndDateSelected($event)" [ngClass]="getValidClass()" placeholder="{{field.placeholder}}"
+              ngbDatepicker #d2="ngbDatepicker">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary  calendar" (click)="datepicker.toggle()" type="button">
+              <button class="btn bg-light btn-outline-secondary" (click)="d2.toggle()" type="button">
                 <fa-icon [icon]="faCalendarAlt"></fa-icon>
               </button>
             </div>
+            <div *ngIf="!valid && toDateControl.invalid && ( toDateControl.dirty || toDateControl.touched)"
+              class="invalid-feedback">
+              {{valid}}
+            </div>
           </div>
+          <ng-template #footerTemplate>
+            <hr class="my-0">
+            <button class="btn btn-primary btn-sm m-2 float-left" (click)="getToday();d2.close()">
+              <fa-icon [icon]="faCalendarDay"></fa-icon>
+              Today
+            </button>
+            <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d2.close()">
+              <fa-icon [icon]="faTimes"></fa-icon>
+              Close
+            </button>
+          </ng-template>
         </div>
       </div>
     </div>

@@ -138,7 +138,7 @@ export class FormService {
       }
 
       if (field.type === "multicheckbox") {
-        if (field.validations.find(current => current.validator == Validators.required)) {
+        if (field.validations?.find(current => current.validator == Validators.required)) {
           group.addControl(field.name, new FormArray([], this.minSelectedCheckboxes(1)));
         } else {
           group.addControl(field.name, new FormArray([]));

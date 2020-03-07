@@ -9,6 +9,8 @@ export class FieldCreateComponent implements OnInit {
 
   constructor() { }
 
+  color = "info";
+
   ngOnInit() {
   }
 

@@ -3,9 +3,18 @@
     <h5>{{this.formService.getFormItemName()}}</h5>
   </div>
   <div class="card-body">
-    <app-main-panel-manage-form></app-main-panel-manage-form>
-    <app-basic-form [formGroup]="this.formService.formGroup"
-      [isHorizontalForm]="this.formService.getFormItem().isHorizontal"
-      [editMode]="this.formService.getFormItem().editMode" [formItem]="this.formService.getFormItem()"></app-basic-form>
+    <div class="overflow-auto">
+      <pre>{{this.formService.formGroup.value | json}}</pre>
+    </div>
+    <form [formGroup]="this.formService.formGroup">
+      <app-main-panel-manage-form></app-main-panel-manage-form>
+      <app-basic-reactive-fields [formGroup]="this.formService.formGroup"
+        [isHorizontalForm]="this.formService.getFormItem().isHorizontal"
+        [editMode]="this.formService.getFormItem().editMode" [formItem]="this.formService.getFormItem()">
+      </app-basic-reactive-fields>
+      <div class="form-row  p-2">
+        <button type="submit" class="btn btn-success"
+          [disabled]="this.formService.formGroup.invalid">Save</button>
+      </div>
+    </form>
   </div>
-</div>

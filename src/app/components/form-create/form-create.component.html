@@ -1,38 +1,29 @@
-<!-- <pre>{{createForm.value | json}}</pre>
-<form [formGroup]="createForm" (ngSubmit)="OnSubmit($event)">
+<form [formGroup]="this.formCreateService.getFormGroup()" (submit)="OnSubmit($event)">
+
+    <!-- <app-basic-reactive-fields [formGroup]="this.formCreateService.getFormGroup()"
+        [formItem]="this.formCreateService.getFormItem()" [editMode]="this.formCreateService.getFormItem().editMode"
+        [isHorizontalForm]="this.formCreateService.getFormItem().isHorizontal"></app-basic-reactive-fields> -->
+
+<div class="form-row">
+    <div class="p-2">
+        <app-input [group]="this.formCreateService.getFormGroup()" [field]="nameField"></app-input>
+        <app-input [group]="this.formCreateService.getFormGroup()" [field]="actionField"></app-input>
+        <app-input [group]="this.formCreateService.getFormGroup()" [field]="urlField"></app-input>
+        <app-date-range [group]="this.formCreateService.getFormGroup()" [field]="dateRangeField" [isInline]="false"></app-date-range>
+        <app-multi-checkbox [group]="this.formCreateService.getFormGroup()" [field]="checkboxField" (SelectedValues)="OnSelectedValues($event)"></app-multi-checkbox>
+    </div>
+</div>
+
     <div class="form-row">
-        <div class="col-12 p-2">
-            <div class="form-group">
-                <label class="col-form-label">Form Name:</label>
-                <input class="form-control" type="text" formControlName="name">
-            </div>
+        <div class="col">
+            <button type="submit" class="btn btn-block btn-success"
+                [disabled]="this.formCreateService.getFormGroup().invalid">Save</button>
         </div>
-        <div class="col-12 p-2">
-            <div class="form-group">
-                <label class="col-form-label">Action Name:</label>
-                <input class="form-control" type="text" formControlName="action">
-            </div>
+        <div class="col">
+            <button type="submit" class="btn btn-block btn-info">View</button>
         </div>
-        <div class="col-12 p-2">
-            <div class="form-group">
-                <label class="custom-control custom-checkbox py-1">
-                    <input class="custom-control-input" type="checkbox" formControlName="horizontal" />
-                    <span class="custom-control-label">Horizontal Mode</span>
-                </label>
-            </div>
-        </div>
-        <div class="col-12 p-2">
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary" [disabled]="createForm.invalid">Save</button>
-            </div>
+        <div class="col">
+            <button type="submit" class="btn btn-block btn-danger">Delete</button>
         </div>
     </div>
 </form>
-
-<ngb-alert *ngIf="isSuccess" type="success">
-    Form Created! to Add Fields <a class="text-success" data-toggle="tab" role="tab" aria-controls="field" href="#field"><strong>Click Here</strong></a>
-</ngb-alert> -->
-
-<app-basic-form [formGroup]="this.formCreateService.getFormGroup()" [formItem]="this.formCreateService.getFormItem()"
-    [editMode]="this.formCreateService.getFormItem().editMode"
-    [isHorizontalForm]="this.formCreateService.getFormItem().isHorizontal"></app-basic-form>

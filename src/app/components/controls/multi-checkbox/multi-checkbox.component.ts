@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { BaseComponent } from '../base-component';
 import { FormArray, FormControl, Validators } from '@angular/forms';
-import { Option } from 'src/app/models/option';
+import { Option } from '../../../models/option';
 
 @Component({
   selector: 'app-multi-checkbox',
@@ -14,10 +14,12 @@ export class MultiCheckboxComponent extends BaseComponent {
     super();
   }
 
-  public selectedOptions;
+  public values;
+
+  @Output() SelectedValues: EventEmitter<any> = new EventEmitter<any>();
 
   ngOnInit() {
-    this.selectedOptions = this.fieldOptions;
+    this.values = [];
   }
 
 
@@ -43,16 +45,25 @@ export class MultiCheckboxComponent extends BaseComponent {
     return <string>error;
   }
 
-  onCheckChange(event,index:number) {
+  onCheckChange(event, index: number) {
     const formArray: FormArray = this.group.get(this.field.name) as FormArray;
-    let item = this.field.options.find(current=>current.id == event.target.id)
+    let item = this.field.options.find(current => current.id == event.target.id);
+    
     if (event.target.checked) {
-      if(item){
+      if (item) {
         formArray.controls[index].setValue(item.id);
+        this.values[index] = formArray.controls[index].value;
       }
     } else {
       formArray.controls[index].setValue(null);
+      this.values[index] = null;
     }
+
+    this.values = this.values.filter(function (el) {
+      return el != null;
+    });
+
+    this.SelectedValues.emit(this.values);
   }
 
 }

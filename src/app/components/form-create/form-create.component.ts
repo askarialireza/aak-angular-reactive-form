@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormService } from '../../services/form.service';
-import { FieldItem } from 'src/app/models/field-item';
-import { FormCreateService } from 'src/app/services/form-create.service';
+import { FieldItem } from '../../models/field-item';
+import { FormCreateService } from '../../services/form-create.service';
+
 
 @Component({
   selector: 'app-form-create',
@@ -11,48 +11,65 @@ import { FormCreateService } from 'src/app/services/form-create.service';
 })
 export class FormCreateComponent implements OnInit {
 
-  // public createForm: FormGroup = new FormGroup({
-  //   name: new FormControl('', Validators.required),
-  //   action: new FormControl('', Validators.required),
-  //   horizontal: new FormControl(''),
-  // });
 
   isSuccess: boolean = false;
 
-  public namefield: FieldItem;
+  public nameField: FieldItem;
+
+  public urlField: FieldItem
 
   public actionField: FieldItem;
 
-  public startDateField: FieldItem;
+  public dateRangeField: FieldItem;
 
-  public endDateField: FieldItem;
+  public checkboxField: FieldItem;
 
-  public isActiveField: FieldItem;
+  public isHorizontal: boolean;
 
-  constructor(public formCreateService: FormCreateService,private formService: FormService) {
+  constructor(public formCreateService: FormCreateService, private formService: FormService) {
+    this.isHorizontal = false;
+    this.getFields();
   }
 
 
 
   ngOnInit() {
-    //this.formService.formGroup = this.formService.getFormGroup();
 
     this.formService.sortFieldItemsByOrder(this.formCreateService.getFieldItems());
 
     this.formCreateService.formGroup = this.formService.createControl(this.formCreateService.getFieldItems());
   }
 
+  getFields() {
+    this.nameField = this.formCreateService.getFieldItems().find(current => current.name == "name");
+    this.urlField = this.formCreateService.getFieldItems().find(current => current.name == "url");
+    this.actionField = this.formCreateService.getFieldItems().find(current => current.name == "action");
+    this.dateRangeField = this.formCreateService.getFieldItems().find(current => current.name == "date");
+    this.checkboxField = this.formCreateService.getFieldItems().find(current => current.name == "options");
+  }
+
+
   OnSubmit(event: Event) {
-    //   if (this.createForm.valid) {
-    //     let formName = this.createForm.get('name').value;
 
-    //     this.formService.setFormItemName(formName);
+    if (this.formCreateService.formGroup.valid) {
+      let formName = this.formCreateService.formGroup.get('name').value;
 
-    //     let horizontal = this.createForm.get('horizontal').value;
+      this.formService.setFormItemName(formName);
 
-    //     this.formService.setFormItenHorizontalMode(this.formService.getFormItem(),horizontal);
-    //   }
-    //   this.isSuccess = true;
+      //this.formService.getFormItem().isHorizontal = this.isHorizontal;
 
+      this.isSuccess = true;
+    }
+
+
+  }
+
+  OnSelectedValues(values: string[]) {
+    if (values.includes("check-horizontal")) {
+      this.formService.getFormItem().isHorizontal = true;
+    }
+    else {
+      this.formService.getFormItem().isHorizontal = false;
+    }
   }
 }

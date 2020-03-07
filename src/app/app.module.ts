@@ -34,10 +34,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormCreateService } from './services/form-create.service';
 import { MultiCheckboxComponent } from './components/controls/multi-checkbox/multi-checkbox.component';
 import { DateRangeComponent } from './components/controls/date-range/date-range.component';
+import { BasicReactiveFieldsComponent } from './components/basic-reactive-fields/basic-reactive-fields.component';
+import { AAkButtonDirective } from './directives/aak-button.directive';
 
 
 @NgModule({
   declarations: [
+    AAkButtonDirective,
     AppComponent,
     BasicFormComponent,
     ManageControlComponent,
@@ -60,6 +63,7 @@ import { DateRangeComponent } from './components/controls/date-range/date-range.
     NavbarComponent,
     MultiCheckboxComponent,
     DateRangeComponent,
+    BasicReactiveFieldsComponent,
   ],
 
   imports: [

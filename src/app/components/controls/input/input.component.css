@@ -1,0 +1,7 @@
+.dragbar{
+    background-color:black;
+    height:100%;
+    width: 3px;
+    float: left;
+    cursor: col-resize;
+ }

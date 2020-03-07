@@ -1,7 +1,7 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, Input } from '@angular/core';
 import { BaseComponent } from '../base-component';
 import { NgbCalendar, NgbDateParserFormatter, NgbDate, NgbDatepickerI18n, NgbDateStruct, NgbCalendarPersian } from '@ng-bootstrap/ng-bootstrap';
-import { FormArray } from '@angular/forms';
+import { FormArray, AbstractControl } from '@angular/forms';
 import * as fas from '@fortawesome/free-solid-svg-icons';
 
 
@@ -58,69 +58,94 @@ export class DateRangeComponent extends BaseComponent {
 
   constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     super()
+    this.isInline = true;
     //this.fromDate = calendar.getToday();
     //this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
 
   ngOnInit() {
-    
+    this.fromDateControl = (this.group.get(this.field.name) as FormArray).controls[0];
+    this.toDateControl = (this.group.get(this.field.name) as FormArray).controls[1];
   }
 
+  @Input() isInline: boolean;
+
+  today = this.calendar.getToday();
+  valid: boolean = false;
   hoveredDate: NgbDate;
   fromDate: NgbDate;
   toDate: NgbDate;
   faCalendarAlt = fas.faCalendarAlt;
-  hasError:boolean = false;
+  faCalendarDay = fas.faCalendarDay;
+  faTimes = fas.faTimes;
+  fromDateControl: AbstractControl;
+  toDateControl: AbstractControl;
 
-  onDateSelection(date: NgbDate) {
-    const formArray: FormArray = this.group.get(this.field.name) as FormArray;
-    this.group.get(this.field.name).markAsTouched();
-    if (!this.fromDate && !this.toDate) {
-      this.fromDate = date;
-    } else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {
-      this.toDate = date;
-    } else {
-      this.toDate = null;
-      this.fromDate = date;
+  onDateSelection() {
+
+    if (this.fromDate && this.toDate) {
+      if (this.toDate.before(this.fromDate)) {
+        this.valid = false;
+      } else {
+        this.valid = true;
+      }
     }
-    this.hasError = this.getValidationError();
-    console.log(formArray.controls[0],formArray.controls[1]);
-  }
-
-  isHovered(date: NgbDate) {
-    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
-  }
-
-  isInside(date: NgbDate) {
-    return date.after(this.fromDate) && date.before(this.toDate);
-  }
-
-  isRange(date: NgbDate) {
-    return date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date);
-  }
-
-  validateInput(currentValue: NgbDate, input: string): NgbDate {
-    const parsed = this.formatter.parse(input);
-    return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
+    else {
+      this.valid = false;
+    }
+    let object = [
+      this.fromDate,
+      this.fromDateControl,
+      this.toDate,
+      this.toDateControl,
+      this.valid,
+    ]
+    console.log(object);
   }
 
   getValidationError() {
 
-    let fromDateBoolean: boolean = false;
-    let toDateBoolean: boolean = false;
-    if (this.fromDate !== null || this.fromDate !== undefined) {
-      fromDateBoolean = true;
-    }
-    if (this.toDate !== null || this.toDate !== undefined) {
-      toDateBoolean = true
-    }
+    // let fromDateBoolean: boolean = false;
+    // let toDateBoolean: boolean = false;
+    // if (this.fromDate !== null || this.fromDate !== undefined) {
+    //   fromDateBoolean = true;
+    // }
+    // if (this.toDate !== null || this.toDate !== undefined) {
+    //   toDateBoolean = true
+    // }
 
-    console.log(fromDateBoolean && toDateBoolean);
-    return (fromDateBoolean && toDateBoolean);
+    // //console.log(fromDateBoolean && toDateBoolean);
+    // return (fromDateBoolean && toDateBoolean);
   }
 
   inputChanged(e) {
     this.group.get(this.field.name).markAsTouched();
   }
 
+  getToday() {
+    this.group.get(this.field.name).setValue(this.today);
+  }
+
+  OnFromDateSelected(ngbDate: NgbDate) {
+    this.fromDate = ngbDate;
+    console.log(this.onDateSelection());
+    this.fromDateControl.setValue(this.fromDate);
+  }
+
+  OnEndDateSelected(ngbDate: NgbDate) {
+    this.toDate = ngbDate;
+    console.log(this.onDateSelection());
+    this.toDateControl.setValue(this.toDate);
+  }
+
+  getValidationClass(control: AbstractControl) {
+    if (this.valid) {
+      return 'is-valid';
+    }
+    else {
+      if (control.invalid && (control.dirty || control.touched)) {
+        return 'is-invalid';
+      }
+    }
+  }
 }
