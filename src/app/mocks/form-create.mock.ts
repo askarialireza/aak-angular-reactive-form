@@ -2,6 +2,7 @@ import { FieldItem } from '../models/field-item';
 import { Validators, FormGroup } from '@angular/forms';
 import { Guid } from 'guid-typescript';
 import { Form } from '../models/form';
+import { BASE_URL } from './backend.mock';
 
 export const FormCreateItems: FieldItem[] = [
     {
@@ -34,7 +35,7 @@ export const FormCreateItems: FieldItem[] = [
         name: "url",
         label: "Url",
         type: "input",
-        placeholder: 'SAMPLE URL',
+        value: `${BASE_URL}/forms/${Guid.create().toString().replace(/-/g,"")}`,
         readonly: true,
         width: 12,
         order: 3,
@@ -71,5 +72,6 @@ export const FormCreate: Form = {
     editMode: false,
     fieldItems: FormCreateItems,
 };
+
 
 

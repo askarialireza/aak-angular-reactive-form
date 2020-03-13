@@ -31,6 +31,7 @@
     "bootstrap4-toggle": "^3.6.1",
     "guid-typescript": "^1.0.9",
     "jquery": "^3.4.1",
+    "mds.persian.datetime": "^1.0.16",
     "ngx-summernote": "^0.7.6",
     "npm-check-updates": "^4.0.2",
     "popper.js": "^1.16.0",

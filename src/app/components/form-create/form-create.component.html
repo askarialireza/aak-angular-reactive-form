@@ -4,15 +4,17 @@
         [formItem]="this.formCreateService.getFormItem()" [editMode]="this.formCreateService.getFormItem().editMode"
         [isHorizontalForm]="this.formCreateService.getFormItem().isHorizontal"></app-basic-reactive-fields> -->
 
-<div class="form-row">
-    <div class="p-2">
-        <app-input [group]="this.formCreateService.getFormGroup()" [field]="nameField"></app-input>
-        <app-input [group]="this.formCreateService.getFormGroup()" [field]="actionField"></app-input>
-        <app-input [group]="this.formCreateService.getFormGroup()" [field]="urlField"></app-input>
-        <app-date-range [group]="this.formCreateService.getFormGroup()" [field]="dateRangeField" [isInline]="false"></app-date-range>
-        <app-multi-checkbox [group]="this.formCreateService.getFormGroup()" [field]="checkboxField" (SelectedValues)="OnSelectedValues($event)"></app-multi-checkbox>
+    <div class="form-row">
+        <div class="p-2">
+            <app-input [group]="this.formCreateService.getFormGroup()" [field]="nameField"></app-input>
+            <app-input [group]="this.formCreateService.getFormGroup()" [field]="actionField"></app-input>
+            <app-input [group]="this.formCreateService.getFormGroup()" [field]="urlField"></app-input>
+            <app-date-range [group]="this.formCreateService.getFormGroup()" [field]="dateRangeField" [isInline]="false">
+            </app-date-range>
+            <app-multi-checkbox [group]="this.formCreateService.getFormGroup()" [field]="checkboxField"
+                (SelectedValues)="OnSelectedValues($event)"></app-multi-checkbox>
+        </div>
     </div>
-</div>
 
     <div class="form-row">
         <div class="col">

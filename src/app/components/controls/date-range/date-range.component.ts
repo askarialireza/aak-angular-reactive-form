@@ -128,13 +128,11 @@ export class DateRangeComponent extends BaseComponent {
 
   OnFromDateSelected(ngbDate: NgbDate) {
     this.fromDate = ngbDate;
-    console.log(this.onDateSelection());
     this.fromDateControl.setValue(this.fromDate);
   }
 
   OnEndDateSelected(ngbDate: NgbDate) {
     this.toDate = ngbDate;
-    console.log(this.onDateSelection());
     this.toDateControl.setValue(this.toDate);
   }
 

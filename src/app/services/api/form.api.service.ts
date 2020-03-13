@@ -31,5 +31,13 @@ export class FormApiService {
     
   }
 
+  postForm(form:Form) {
+
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+
+    return this.http.post<Form>(this.apiUrl, form, { headers });   
+
+  }
+
 
 }

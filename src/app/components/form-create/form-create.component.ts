@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormService } from '../../services/form.service';
 import { FieldItem } from '../../models/field-item';
 import { FormCreateService } from '../../services/form-create.service';
+import { Form } from 'src/app/models/form';
+import { Guid } from 'guid-typescript';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
+import { Mds } from 'mds.persian.datetime'
+import { FormApiService } from 'src/app/services/api/form.api.service';
+//import PersianDateTime = Mds.PersianDateTime;
 
 
 @Component({
@@ -26,12 +32,17 @@ export class FormCreateComponent implements OnInit {
 
   public isHorizontal: boolean;
 
-  constructor(public formCreateService: FormCreateService, private formService: FormService) {
+  constructor(
+    public formCreateService: FormCreateService,
+    private formService: FormService,
+    private formApiService: FormApiService
+  ) {
+
     this.isHorizontal = false;
+
     this.getFields();
+
   }
-
-
 
   ngOnInit() {
 
@@ -41,35 +52,78 @@ export class FormCreateComponent implements OnInit {
   }
 
   getFields() {
-    this.nameField = this.formCreateService.getFieldItems().find(current => current.name == "name");
-    this.urlField = this.formCreateService.getFieldItems().find(current => current.name == "url");
-    this.actionField = this.formCreateService.getFieldItems().find(current => current.name == "action");
-    this.dateRangeField = this.formCreateService.getFieldItems().find(current => current.name == "date");
-    this.checkboxField = this.formCreateService.getFieldItems().find(current => current.name == "options");
+
+    this.nameField =
+      this.formCreateService.getFieldItems()
+        .find(current => current.name == "name");
+
+    this.urlField =
+      this.formCreateService.getFieldItems()
+        .find(current => current.name == "url");
+
+    this.actionField =
+      this.formCreateService.getFieldItems()
+        .find(current => current.name == "action");
+
+    this.dateRangeField =
+      this.formCreateService.getFieldItems()
+        .find(current => current.name == "date");
+
+    this.checkboxField =
+      this.formCreateService.getFieldItems()
+        .find(current => current.name == "options");
   }
 
 
   OnSubmit(event: Event) {
 
     if (this.formCreateService.formGroup.valid) {
-      let formName = this.formCreateService.formGroup.get('name').value;
 
-      this.formService.setFormItemName(formName);
+      let formName: string = this.formCreateService.formGroup.get('name').value;
 
-      //this.formService.getFormItem().isHorizontal = this.isHorizontal;
+      let url: string = this.formCreateService.formGroup.get('url').value;
 
-      this.isSuccess = true;
+      let action: string = this.formCreateService.formGroup.get('action').value;
+
+      let startDate: Date =
+        this.formCreateService.convertNgbDateToDate(this.formCreateService.formGroup.get('date').value[0]);
+
+      let endDate: Date =
+        this.formCreateService.convertNgbDateToDate(this.formCreateService.formGroup.get('date').value[1]);
+
+      let selectedValues = this.formCreateService.formGroup.get('options').value;
+
+      let isHorizontal: boolean = (selectedValues.includes("check-horizontal")) ? true : false;
+
+      let isActive: boolean = (selectedValues.includes("check-active")) ? true : false;
+
+      let form: Form = {
+        id: Guid.create().toString(),
+        name: formName.trim(),
+        url: url.trim(),
+        action: action.trim(),
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        isHorizontal: isHorizontal,
+        isActive: isActive
+      }
+
+      console.log(form);
+
+      // this.formApiService.postForm(form)
+      // .subscribe();
     }
 
 
   }
 
+
   OnSelectedValues(values: string[]) {
-    if (values.includes("check-horizontal")) {
-      this.formService.getFormItem().isHorizontal = true;
-    }
-    else {
-      this.formService.getFormItem().isHorizontal = false;
-    }
+    // if (values.includes("check-horizontal")) {
+    //   this.formService.getFormItem().isHorizontal = true;
+    // }
+    // else {
+    //   this.formService.getFormItem().isHorizontal = false;
+    // }
   }
 }

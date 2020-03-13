@@ -10,49 +10,62 @@ import { FormApiService } from 'src/app/services/api/form.api.service';
 })
 export class MainPanelComponent implements OnInit {
 
+  public isLoading;
+
+  public hasError;
+
+  public errrorMessage;
+
   public formName: string;
 
   public formItem: Form;
 
   constructor(public formService: FormService, private formApiService: FormApiService) {
 
-   }
+    this.isLoading = true;
+    this.hasError = false;
+
+  }
 
   ngOnInit() {
     this.formApiService.getDefaultForm()
-    .subscribe(
-      result => {
-        this.formService.FormItem = result;
-        this.formItem = result;
-        this.formService.isHorizontalMode = result["isHorizontal"];
-        this.formService.editModeEnabled = result["editMode"];
-        this.formName = result["name"];
-        this.formService.formGroup = this.formService.getFormGroup();
-        this.formService.sortFieldItemsByOrder(this.formService.getFormItem().fieldItems);
-        this.formService.formGroup = this.formService.createControl(this.formService.getFormItem().fieldItems);
-      },
-      error => {
-        console.log(error);
-      },
-      () => {
+      .subscribe(
+        result => {
+          this.formService.FormItem = result;
+          this.formItem = result;
+          this.formService.isHorizontalMode = result["isHorizontal"];
+          this.formService.editModeEnabled = result["editMode"];
+          this.formName = result["name"];
+          this.formService.formGroup = this.formService.getFormGroup();
+          this.formService.sortFieldItemsByOrder(this.formService.getFormItem().fieldItems);
+          this.formService.formGroup = this.formService.createControl(this.formService.getFormItem().fieldItems);
+          this.isLoading = false;
+        },
+        error => {
+          this.isLoading = false;
+          this.hasError = true;
+          this.errrorMessage = error.message;
+          //console.log(error);
+        },
+        () => {
 
-      }
-    );
+        }
+      );
   }
 
-  OnSubmit(data:Form) {
+  OnSubmit(data: Form) {
 
-    data.value = JSON.stringify(this.formService.formGroup.value,null,0);
+    data.value = JSON.stringify(this.formService.formGroup.value, null, 0);
 
     this.formApiService.submitForm(data)
-    .subscribe(
-      result => {
-      },
-      error => {
-        console.log(error);
-      },
-      () => {
-      }
-    );
+      .subscribe(
+        result => {
+        },
+        error => {
+          console.log(error);
+        },
+        () => {
+        }
+      );
   }
 }

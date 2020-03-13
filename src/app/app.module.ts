@@ -10,7 +10,6 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
 import { AppComponent } from './components/app/app.component';
-import { BasicFormComponent } from './components/basic-form/basic-form.component';
 import { InputComponent } from './components/controls/input/input.component';
 import { SelectComponent } from './components/controls/select/select.component';
 import { RadioComponent } from './components/controls/radio/radio.component';
@@ -36,17 +35,16 @@ import { FormCreateService } from './services/form-create.service';
 import { MultiCheckboxComponent } from './components/controls/multi-checkbox/multi-checkbox.component';
 import { DateRangeComponent } from './components/controls/date-range/date-range.component';
 import { BasicReactiveFieldsComponent } from './components/basic-reactive-fields/basic-reactive-fields.component';
-import { AAkButtonDirective } from './directives/aak-button.directive';
 import { FontAwesomeService } from './services/fontawesome.service';
 import { FormApiService } from './services/api/form.api.service';
 import { FielditemApiService } from './services/api/fielditem.api.service';
+import { LoadingComponent } from './components/loading/loading.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 
 @NgModule({
   declarations: [
-    AAkButtonDirective,
     AppComponent,
-    BasicFormComponent,
     ManageControlComponent,
     InputComponent,
     SelectComponent,
@@ -68,6 +66,8 @@ import { FielditemApiService } from './services/api/fielditem.api.service';
     MultiCheckboxComponent,
     DateRangeComponent,
     BasicReactiveFieldsComponent,
+    LoadingComponent,
+    NotificationComponent
   ],
 
   imports: [
