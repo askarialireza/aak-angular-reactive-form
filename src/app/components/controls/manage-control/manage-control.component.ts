@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FieldItem } from '../../../models/field-item';
 import { FormService } from '../../../services/form.service';
 import * as fas from '@fortawesome/free-solid-svg-icons';
+import { FielditemApiService } from 'src/app/services/api/fielditem.api.service';
 
 @Component({
   selector: 'app-manage-control',
@@ -26,7 +27,7 @@ export class ManageControlComponent implements OnInit {
   faPlus = fas.faPlus;
   faMinus = fas.faMinus;
 
-  constructor(public formService: FormService) {
+  constructor(private fieldItemApiService: FielditemApiService, public formService: FormService) {
     this.changeViewListEnabled = false;
   }
 
@@ -39,25 +40,47 @@ export class ManageControlComponent implements OnInit {
 
   DeleteField() {
 
-    this.formService.deleteFieldItem(this.field);
+    let id = this.field.id;
+
+    this.fieldItemApiService.deleteFieldItem(id).subscribe(
+
+      result => {
+
+        this.formService.FormItem.fieldItems.splice(this.formService.FormItem.fieldItems.indexOf(this.field), 1);
+
+        this.formService.formGroup.removeControl(this.field.name);
+
+      }
+
+    );
 
   }
 
   ChangeListView() {
-    this.field.isInlineRadio = !this.field.isInlineRadio;
-    this.isInline = this.field.isInlineRadio;
+
+    this.field.inlineView = !this.field.inlineView;
+
+    this.isInline = this.field.inlineView;
+
   }
 
   GetListView() {
-    return this.field.isInlineRadio;
+
+    return this.field.inlineView;
+
   }
 
   IsFirstItem() {
 
     if (this.formService.getIndexOfFieldItem(this.field) == 0) {
+
       return true;
+
     }
+
     else {
+
+
       return false;
     }
 
@@ -66,10 +89,14 @@ export class ManageControlComponent implements OnInit {
   IsLastItem() {
 
     if (this.formService.getIndexOfFieldItem(this.field) == this.formService.getFieldItemsCount() - 1) {
+      
       return true;
+      
     }
     else {
+
       return false;
+
     }
 
   }

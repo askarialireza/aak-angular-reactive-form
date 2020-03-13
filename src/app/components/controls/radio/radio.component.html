@@ -8,7 +8,7 @@
       <div class="col-md-8">
         <ng-container *ngFor="let item of field.options">
           <label class="custom-control custom-radio py-1"
-            [ngClass]="{'custom-control-inline w-auto' : field.isInlineRadio}">
+            [ngClass]="{'custom-control-inline w-auto' : field.inlineView}">
             <input class="custom-control-input" type="radio" [ngClass]="getValidClass()" [value]="item.id" [formControlName]="field.name" />
             <span class="custom-control-label">{{item.value}}</span>
           </label>
@@ -33,7 +33,7 @@
     </div>
     <ng-container *ngFor="let item of field.options">
       <label class="custom-control custom-radio py-1"
-        [ngClass]="{'custom-control-inline w-auto' : field.isInlineRadio}">
+        [ngClass]="{'custom-control-inline w-auto' : field.inlineView}">
         <input class="custom-control-input" type="radio" [ngClass]="getValidClass()" [value]="item.id" [formControlName]="field.name" />
         <span class="custom-control-label">{{item.value}}</span>
       </label>

@@ -5,16 +5,18 @@
     </label>
     <app-manage-control *ngIf="editable" [field]="field" [changeViewListEnabled]="true"></app-manage-control>
     <div ngbRadioGroup [formControlName]="field.name">
-      <ng-container *ngFor="let item of field.options">
-        <div class="px-1" [ngClass]="{'d-inline' : field.isInlineRadio}">
-          <label ngbButtonLabel class="btn-radio"  (click)="onClickBtn(item)">
-            <input ngbButton type="radio" class="d-none" [value]="item.id">
-            <fa-icon *ngIf="item.disabled" [icon]="faCheck"></fa-icon>
-            <fa-icon *ngIf="!item.disabled" [icon]="faMinus"></fa-icon>
-            {{item.value}}
-          </label>
-        </div>
-      </ng-container>
+      <div class="row equal m-0">
+        <ng-container *ngFor="let item of field.options">
+          <div class="col-md-4 p-2" [ngClass]="{'d-inline' : field.inlineView}">
+            <label ngbButtonLabel class="btn-block h-100 btn-radio"  (click)="onClickBtn(item)">
+              <input ngbButton type="radio" class="d-none" [value]="item.id">
+              <fa-icon *ngIf="item.disabled" [icon]="['fas','check']" [classes]="['d-block','mx-auto']"></fa-icon>
+              <fa-icon *ngIf="!item.disabled" [icon]="iconArray" [classes]="['d-block','mx-auto']"></fa-icon>
+              {{item.value}}
+            </label>
+          </div>
+        </ng-container>
+      </div>
     </div>
     <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
       class="invalid-feedback">
@@ -35,16 +37,16 @@
     </label>
     <div class="col-md-8">
       <div ngbRadioGroup [formControlName]="field.name">
-        <ng-container *ngFor="let item of field.options">
-          <div class="px-1" [ngClass]="{'d-inline' : field.isInlineRadio}">
-            <label ngbButtonLabel class="btn-radio" (click)="onClickBtn(item)">
-              <input ngbButton type="radio" class="d-none" [value]="item.id">
-              <fa-icon *ngIf="item.disabled" [icon]="faCheck"></fa-icon>
-              <fa-icon *ngIf="!item.disabled" [icon]="faMinus"></fa-icon>
-              {{item.value}}
-            </label>
-          </div>
-        </ng-container>
+          <ng-container *ngFor="let item of field.options">
+            <div class="px-1" [ngClass]="{'d-inline' : field.inlineView}">
+              <label ngbButtonLabel class="btn-radio" (click)="onClickBtn(item)">
+                <input ngbButton type="radio" class="d-none" [value]="item.id">
+                <fa-icon *ngIf="item.disabled" [icon]="iconArray"></fa-icon>
+                <fa-icon *ngIf="!item.disabled" [icon]="iconArray"></fa-icon>
+                {{item.value}}
+              </label>
+            </div>
+          </ng-container>
       </div>
       <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
         class="invalid-feedback">

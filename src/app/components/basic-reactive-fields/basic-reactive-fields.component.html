@@ -1,5 +1,5 @@
 <div [ngClass]="{'form-row':!isHorizontalForm}">
-  <ng-container *ngFor="let item of formItem.fieldItems">
+  <ng-container *ngFor="let item of formItem?.fieldItems">
     <div class="p-2 {{this.formService.getColumnClass(formItem,item)}}"
       [ngClass]="{'bg-light border border-info rounded': editMode}">
       <ng-container [ngSwitch]="item.type">

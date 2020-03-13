@@ -19,3 +19,9 @@
     color: #dc3545;
 } 
 
+.square:before{
+	content: "";
+	display: block;
+	padding-top: 100%; 
+}
+

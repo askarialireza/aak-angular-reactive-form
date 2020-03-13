@@ -52,7 +52,7 @@ export const FormCreateItems: FieldItem[] = [
         name: "options",
         required: false,
         type: "multicheckbox",
-        isInlineRadio: false,
+        inlineView: false,
         width: 12,
         order: 6,
         options: [

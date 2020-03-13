@@ -1,16 +1,16 @@
 <div class="card shadow-sm">
   <div class="card-header text-center">
-    <h5>{{this.formService.getFormItemName()}}</h5>
+    <h5>{{formName}}</h5>
   </div>
   <div class="card-body">
-    <div class="overflow-auto">
+    <!-- <div class="overflow-auto">
       <pre>{{this.formService.formGroup.value | json}}</pre>
-    </div>
-    <form [formGroup]="this.formService.formGroup">
-      <app-main-panel-manage-form></app-main-panel-manage-form>
+    </div> -->
+    <form [formGroup]="this.formService.formGroup" (submit)="OnSubmit(this.formService.FormItem)">
+      <!-- <app-main-panel-manage-form></app-main-panel-manage-form> -->
       <app-basic-reactive-fields [formGroup]="this.formService.formGroup"
-        [isHorizontalForm]="this.formService.getFormItem().isHorizontal"
-        [editMode]="this.formService.getFormItem().editMode" [formItem]="this.formService.getFormItem()">
+        [isHorizontalForm]="this.formService.isHorizontalMode"
+        [editMode]="this.formService.editModeEnabled" [formItem]="this.formItem">
       </app-basic-reactive-fields>
       <div class="form-row  p-2">
         <button type="submit" class="btn btn-success"

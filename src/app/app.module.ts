@@ -6,7 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 import { AppComponent } from './components/app/app.component';
 import { BasicFormComponent } from './components/basic-form/basic-form.component';
@@ -36,6 +37,9 @@ import { MultiCheckboxComponent } from './components/controls/multi-checkbox/mul
 import { DateRangeComponent } from './components/controls/date-range/date-range.component';
 import { BasicReactiveFieldsComponent } from './components/basic-reactive-fields/basic-reactive-fields.component';
 import { AAkButtonDirective } from './directives/aak-button.directive';
+import { FontAwesomeService } from './services/fontawesome.service';
+import { FormApiService } from './services/api/form.api.service';
+import { FielditemApiService } from './services/api/fielditem.api.service';
 
 
 @NgModule({
@@ -78,11 +82,17 @@ import { AAkButtonDirective } from './directives/aak-button.directive';
     NgxSummernoteModule,
     FontAwesomeModule,
   ],
-  providers: [FormService, FormCreateService],
+  providers: [
+    FormService,
+    FormCreateService,
+    FontAwesomeService,
+    FormApiService,
+    FielditemApiService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor() {
-
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas);
   }
 }

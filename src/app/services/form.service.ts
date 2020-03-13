@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray, AbstractControl, ValidatorFn } from '@angular/forms';
-import { FieldItem } from '../models/field-item';
-import { FormItem, FieldItems } from '../mocks/form.mock';
+import { Observable } from 'rxjs';
 import { Form } from '../models/form';
+import { Injectable } from '@angular/core';
+import { FieldItem } from '../models/field-item';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray, ValidatorFn } from '@angular/forms';
+import { BASE_URL } from '../mocks/backend.mock';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +17,10 @@ export class FormService {
 
   public editModeEnabled: boolean;
 
+  public FormItem: Form;
 
   constructor(private formBuilder: FormBuilder) {
-
     this.formGroup = new FormGroup({});
-    this.isHorizontalMode = this.getFormItem().isHorizontal;
-    this.editModeEnabled = this.getFormItem().editMode;
   }
 
   getFormGroup(): FormGroup {
@@ -28,7 +28,7 @@ export class FormService {
   }
 
   getFormItemName() {
-    return FormItem.name;
+    return this.FormItem.name;
   }
 
   getFormItemHorizontalMode(form: Form) {
@@ -40,29 +40,29 @@ export class FormService {
   }
 
   getFormItemEditMode() {
-    return FormItem.editMode;
+    return this.FormItem.editMode;
   }
 
   setFormItemName(value: string) {
     if (value) {
-      FormItem.name = value;
+      this.FormItem.name = value;
     }
   }
 
   getFormItem(): Form {
-    return FormItem;
+    return this.FormItem;
   }
 
   getFieldItems(): FieldItem[] {
-    return FormItem.fieldItems;
+    return this.FormItem.fieldItems;
   }
 
   getIndexOfFieldItem(field: FieldItem): number {
-    return FormItem.fieldItems.indexOf(field);
+    return this.FormItem.fieldItems.indexOf(field);
   }
 
   getFieldItemsCount() {
-    return FormItem.fieldItems.length;
+    return this.FormItem.fieldItems.length;
   }
 
   sortFieldItemsByOrder(fieldItems: FieldItem[]) {
@@ -70,19 +70,19 @@ export class FormService {
   }
 
   MoveItemNext(fieldItem: FieldItem) {
-    let index = FormItem.fieldItems.indexOf(fieldItem);
-    var temp = FormItem.fieldItems.splice(index, 1, FormItem.fieldItems[index + 1])[0];
+    let index = this.FormItem.fieldItems.indexOf(fieldItem);
+    var temp = this.FormItem.fieldItems.splice(index, 1, this.FormItem.fieldItems[index + 1])[0];
     temp.order++;
-    FormItem.fieldItems.splice(index + 1, 1, temp);
-    FormItem.fieldItems[index].order--;
+    this.FormItem.fieldItems.splice(index + 1, 1, temp);
+    this.FormItem.fieldItems[index].order--;
   }
 
   MoveItemPrevious(fieldItem: FieldItem) {
-    let index = FormItem.fieldItems.indexOf(fieldItem);
-    var temp = FormItem.fieldItems.splice(index, 1, FormItem.fieldItems[index - 1])[0];
+    let index = this.FormItem.fieldItems.indexOf(fieldItem);
+    var temp = this.FormItem.fieldItems.splice(index, 1, this.FormItem.fieldItems[index - 1])[0];
     temp.order--;
-    FormItem.fieldItems.splice(index - 1, 1, temp);
-    FormItem.fieldItems[index].order++;
+    this.FormItem.fieldItems.splice(index - 1, 1, temp);
+    this.FormItem.fieldItems[index].order++;
   }
 
   IncreaseWidth(fieldItem: FieldItem) {
@@ -90,7 +90,7 @@ export class FormService {
     if (fieldItem) {
       if (fieldItem.width) {
         if (fieldItem.width < 12) {
-          FormItem.fieldItems.find(current => current.id == fieldItem.id).width++;
+          this.FormItem.fieldItems.find(current => current.id == fieldItem.id).width++;
         }
       }
     }
@@ -100,7 +100,7 @@ export class FormService {
     if (fieldItem) {
       if (fieldItem.width) {
         if (fieldItem.width > 1) {
-          FormItem.fieldItems.find(current => current.id == fieldItem.id).width--;
+          this.FormItem.fieldItems.find(current => current.id == fieldItem.id).width--;
         }
       }
     }
@@ -108,10 +108,10 @@ export class FormService {
 
   addFieldItem(field: FieldItem) {
     if (field) {
-      FormItem.fieldItems.push(field);
+      this.FormItem.fieldItems.push(field);
     }
 
-    this.sortFieldItemsByOrder(FormItem.fieldItems);
+    this.sortFieldItemsByOrder(this.FormItem.fieldItems);
 
     const control = this.formBuilder.control(
       field.value,
@@ -119,12 +119,6 @@ export class FormService {
     );
 
     this.formGroup.addControl(field.name, control);
-  }
-
-  deleteFieldItem(field: FieldItem) {
-    FormItem.fieldItems.splice(FormItem.fieldItems.indexOf(field), 1);
-
-    this.formGroup.removeControl(field.name);
   }
 
   createControl(fieldItems: FieldItem[]) {
@@ -236,5 +230,7 @@ export class FormService {
       }
     }
   }
+
+
 
 }

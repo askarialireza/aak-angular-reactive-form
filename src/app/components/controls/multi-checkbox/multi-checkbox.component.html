@@ -4,7 +4,7 @@
     <app-manage-control *ngIf="editable" [field]="field" [changeViewListEnabled]="true"></app-manage-control>
     <label [formArrayName]="field.name" *ngFor="let option of fieldOptions; let i = index"
       class="custom-control custom-checkbox" for="{{option.id}}"
-      [ngClass]="{'custom-control-inline w-auto' : field.isInlineRadio}">
+      [ngClass]="{'custom-control-inline w-auto' : field.inlineView}">
       <input class="custom-control-input" id="{{option.id}}" type="checkbox" [ngClass]="getValidClass()"
         [formControlName]="i" (change)="onCheckChange($event,i)" />
       <span class="custom-control-label">{{option.value}}</span>
@@ -25,7 +25,7 @@
     <div class="col-12 col-md-8">
       <label [formArrayName]="field.name" *ngFor="let option of fieldOptions; let i = index"
         class="custom-control custom-checkbox" for="{{option.id}}"
-        [ngClass]="{'custom-control-inline w-auto' : field.isInlineRadio}">
+        [ngClass]="{'custom-control-inline w-auto' : field.inlineView}">
 
         <input class="custom-control-input" id="{{option.id}}" type="checkbox" [ngClass]="getValidClass()"
           [formControlName]="i" (change)="onCheckChange($event,i)" />

@@ -10,8 +10,6 @@ import { FormService } from '../../services/form.service';
 })
 export class BasicReactiveFieldsComponent implements OnInit {
 
-  constructor(public formService: FormService) { }
-
   @Input() editMode: boolean;
 
   @Input() isHorizontalForm: boolean;
@@ -20,11 +18,18 @@ export class BasicReactiveFieldsComponent implements OnInit {
 
   @Input() formGroup: FormGroup;
 
-  ngOnInit() {
+  constructor(public formService: FormService) {
+
   }
-  
+
+  ngOnInit() {
+
+  }
+
   OnSelectedValues(e: Event) {
+
     console.log(e);
+
   }
 
 

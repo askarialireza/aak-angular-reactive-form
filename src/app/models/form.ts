@@ -15,6 +15,7 @@ export class Form {
         isActive?:boolean,
         startDate?:string,
         endDate?:string,
+        value?:string,
     } = {}) {
         this.id = options.id || Guid.create().toString();
         this.name = options.name || Guid.create().toString();
@@ -23,6 +24,7 @@ export class Form {
         this.isHorizontal = options.isHorizontal || false;
         this.fieldItems = options.fieldItems || null;
         this.editMode = options.editMode || false;
+        this.value = options.value || null;
 
     }
 
@@ -37,4 +39,5 @@ export class Form {
     public isActive?:boolean;
     public startDate?:string;
     public endDate?:string;
+    public value?:string;
 }

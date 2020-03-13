@@ -24,12 +24,13 @@ export class FieldItem {
         readonly?: boolean,
         pattern?: string,
         autocomplete?: boolean,
-        isInlineRadio?: boolean,
+        inlineView?: boolean,
         width?: number,
         disabled?: boolean,
         height?: number,
         uploadPath?: string,
-        class?: string;
+        class?: string,
+        formId?:string,
     } = {}) {
         this.id = (options.id) ? options.id : Guid.create().toString();
         this.name = (options.name) ? options.name : Guid.create().toString();
@@ -50,12 +51,13 @@ export class FieldItem {
         this.minlength = options.minlength || null;
         this.minValue = options.minValue || null;
         this.maxValue = options.maxValue || null;
-        this.isInlineRadio = options.isInlineRadio || null;
+        this.inlineView = options.inlineView || null;
         this.disabled = options.disabled || null;
         this.width = options.width || 6;
         this.height = options.height || null;
         this.uploadPath = options.uploadPath || null;
         this.class = options.class || null;
+        this.formId = options.formId ||null;
     }
 
     public id?: string;
@@ -70,7 +72,7 @@ export class FieldItem {
     public validations?: Validator[];
     public options?: Option[];
     public color?: string;
-    public isInlineRadio?: boolean;
+    public inlineView?: boolean;
     public minValue?: number;
     public maxValue?: number;
     public minlength?: number;
@@ -83,4 +85,5 @@ export class FieldItem {
     public height?: number;
     public uploadPath?: string;
     public class?: string;
+    public formId?: string;
 }
