@@ -1,24 +1,9 @@
-
-  .invalid-feedback {
-    display: block !important;
-    width: 100%;
-    margin-top: .25rem;
-    font-size: 80%;
-    color: #dc3545;
-} 
-
-.input-group>.input-group-prepend {
-  flex: 0 0 25%;
-}
-.input-group .input-group-text {
-  width: 100%;
+/deep/ .mat-form-field-appearance-outline .mat-form-field-prefix {
+  top: 0 !important;
 }
 
-.input-group>.input-group-append:not(:last-child)>.btn {
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-}
-
-.btn-outline-secondary {
-  border: 1px solid #ced4da;
+.perfix {
+  top: 0 !important;
+  padding: 10px 5px;
+  font-weight: 600;
 }

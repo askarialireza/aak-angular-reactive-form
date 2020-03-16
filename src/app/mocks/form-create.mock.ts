@@ -35,7 +35,7 @@ export const FormCreateItems: FieldItem[] = [
         name: "url",
         label: "Url",
         type: "input",
-        value: `${BASE_URL}/forms/${Guid.create().toString().replace(/-/g,"")}`,
+        value: `forms/view/${Guid.create().toString()}`,
         readonly: true,
         width: 12,
         order: 3,

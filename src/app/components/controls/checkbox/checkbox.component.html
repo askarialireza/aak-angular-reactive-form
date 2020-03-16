@@ -1,43 +1,46 @@
 <ng-container *ngIf="!horizontalMode">
   <div class="form-group" [formGroup]="group">
-    <label *ngIf="field.label" class="col-form-label "><strong>{{ field.label }} :</strong></label>
+    <label *ngIf="field.label" class="col-form-label d-block"><strong>{{ field.label }}</strong></label>
     <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
-    <label class="custom-control custom-checkbox py-1">
-      <input class="custom-control-input" type="checkbox" [formControlName]="field.name" 
-        [ngClass]="getValidClass()" />
-      <span class="custom-control-label">{{field.placeholder}}</span>
-    </label>
-    <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
-      class="invalid-feedback">
-      <ng-container *ngFor="let item of field.validations;">
-        <div *ngIf="group.get(field.name)?.hasError(item.name)">
-          {{item.message}}
-        </div>
-      </ng-container>
+    <mat-checkbox class="example-margin" [formControlName]="field.name">
+      {{field.placeholder}}
+    </mat-checkbox>
+    <div class="mat-form-field-appearance-outline">
+      <div class="mat-form-field-subscript-wrapper">
+        <mat-error
+          *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+          <ng-container *ngFor="let item of field.validations;">
+            <div *ngIf="group.get(field.name)?.hasError(item.name)">
+              {{item.message}}
+            </div>
+          </ng-container>
+        </mat-error>
+      </div>
     </div>
   </div>
 </ng-container>
-<!-- [(ngModel)]="field.value" -->
 
 <ng-container *ngIf="horizontalMode">
   <div class="form-group row p-2" [formGroup]="group">
     <label *ngIf="field.label" class="col-md-4 col-form-label ">
-      <strong>{{ field.label }} :</strong>
+      <strong>{{ field.label }}</strong>
       <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
     </label>
     <div class="col-md-8">
-      <label class="custom-control custom-checkbox py-1">
-        <input class="custom-control-input" type="checkbox" [formControlName]="field.name"
-          [ngClass]="getValidClass()" />
-        <span class="custom-control-label">{{field.placeholder}}</span>
-      </label>
-      <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
-        class="invalid-feedback">
-        <ng-container *ngFor="let item of field.validations;">
-          <div *ngIf="group.get(field.name)?.hasError(item.name)">
-            {{item.message}}
-          </div>
-        </ng-container>
+      <mat-checkbox class="example-margin" [formControlName]="field.name">
+        {{field.placeholder}}
+      </mat-checkbox>
+      <div class="mat-form-field-appearance-outline">
+        <div class="mat-form-field-subscript-wrapper">
+          <mat-error
+            *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+            <ng-container *ngFor="let item of field.validations;">
+              <div *ngIf="group.get(field.name)?.hasError(item.name)">
+                {{item.message}}
+              </div>
+            </ng-container>
+          </mat-error>
+        </div>
       </div>
     </div>
   </div>

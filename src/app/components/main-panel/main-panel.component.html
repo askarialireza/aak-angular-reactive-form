@@ -1,26 +1,22 @@
-<div class="card shadow-sm">
-  <div *ngIf="!isLoading" class="card-header text-center">
-    <h5>{{formName}}</h5>
+<mat-card-title *ngIf="!isLoading && !hasError">{{formName}}</mat-card-title>
+<app-loading *ngIf="isLoading"></app-loading>
+
+<app-notification *ngIf="!isLoading && hasError" [message]="errrorMessage"></app-notification>
+
+<form *ngIf="!isLoading && !hasError" [formGroup]="this.formService.formGroup"
+  (submit)="OnSubmit(this.formService.FormItem)">
+
+  <pre>{{this.formService.formGroup.value | json}}</pre>
+
+  <app-main-panel-manage-form *ngIf="this.formService.editModeEnabled"></app-main-panel-manage-form>
+
+  <app-basic-reactive-fields [formGroup]="this.formService.formGroup"
+    [isHorizontalForm]="this.formService.isHorizontalMode" [editMode]="this.formService.editModeEnabled"
+    [formItem]="this.formItem">
+  </app-basic-reactive-fields>
+
+  <div class="form-row p-2">
+    <button type="submit" class="btn btn-success" [disabled]="this.formService.formGroup.invalid">Save</button>
   </div>
-  <div class="card-body">
 
-    <app-loading *ngIf="isLoading"></app-loading>
-
-    <app-notification *ngIf="!isLoading && hasError" [message]="errrorMessage"></app-notification>
-
-    <form *ngIf="!isLoading && !hasError" [formGroup]="this.formService.formGroup"
-      (submit)="OnSubmit(this.formService.FormItem)">
-
-      <app-main-panel-manage-form></app-main-panel-manage-form>
-
-      <app-basic-reactive-fields [formGroup]="this.formService.formGroup"
-        [isHorizontalForm]="this.formService.isHorizontalMode" [editMode]="this.formService.editModeEnabled"
-        [formItem]="this.formItem">
-      </app-basic-reactive-fields>
-
-      <div class="form-row p-2">
-        <button type="submit" class="btn btn-success" [disabled]="this.formService.formGroup.invalid">Save</button>
-      </div>
-
-    </form>
-  </div>
+</form>

@@ -3,7 +3,7 @@
     <!-- <app-basic-reactive-fields [formGroup]="this.formCreateService.getFormGroup()"
         [formItem]="this.formCreateService.getFormItem()" [editMode]="this.formCreateService.getFormItem().editMode"
         [isHorizontalForm]="this.formCreateService.getFormItem().isHorizontal"></app-basic-reactive-fields> -->
-
+    <pre> {{this.formCreateService.getFormGroup().value|json}}</pre>
     <div class="form-row">
         <div class="p-2">
             <app-input [group]="this.formCreateService.getFormGroup()" [field]="nameField"></app-input>

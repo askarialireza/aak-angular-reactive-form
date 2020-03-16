@@ -207,22 +207,21 @@ export class FormService {
     let result = "col-12";
     if (item) {
       if (item.width) {
-        let order = form.fieldItems.indexOf(item) + 1;
-        form.fieldItems.find(current => current.id == item.id).order = order;
-        let classOrder = "order-";
-        if (order > 12) {
-          classOrder = "order-12";
-        }
-        else {
-          classOrder += order.toString();
-        }
+        // let order = form.fieldItems.indexOf(item) + 1;
+        // form.fieldItems.find(current => current.id == item.id).order = order;
+        // let classOrder = "order-";
+        // if (order > 12) {
+        //   classOrder = "order-12";
+        // }
+        // else {
+        //   classOrder += order.toString();
+        // }
 
-        result += ` ${classOrder}`;
+        // result += ` ${classOrder}`;
 
-        if (this.getFormItemHorizontalMode(form) == false) {
+        if (this.isHorizontalMode == false) {
           result += ` col-md-${item.width.toString()}`;
         }
-
         return result;
       }
       else {

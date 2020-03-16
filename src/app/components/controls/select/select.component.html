@@ -1,43 +1,43 @@
 <ng-container *ngIf="!horizontalMode">
   <div class="form-group" [formGroup]="group">
-    <label class="col-form-label"><strong>{{ field.label }} :</strong></label>
+    <label class="col-form-label"><strong>{{ field.label }}</strong></label>
     <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
-    <select class="form-control" [ngClass]="getValidClass()" [formControlName]="field.name"
-      (ngModelChange)="selectedItemChanged($event)">
-      <option [ngValue]="null">{{field.placeholder}}</option>
-      <option *ngFor="let item of field.options" [ngValue]="item.id">{{item.value}}</option>
-    </select>
-    <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
-      class="invalid-feedback">
-      <ng-container *ngFor="let item of field.validations;">
-        <div *ngIf="group.get(field.name)?.hasError(item.name)">
-          {{item.message}}
-        </div>
-      </ng-container>
-    </div>
+    <mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
+      <mat-select [(value)]="selectedValue" [placeholder]="field.placeholder" [formControlName]="field.name" (ngModelChange)="selectedItemChanged($event)">
+        <mat-option>{{field.placeholder}}</mat-option>
+        <mat-option *ngFor="let item of field.options" value="{{item.id}}">{{item.value}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+        <ng-container *ngFor="let item of field.validations;">
+          <div *ngIf="group.get(field.name)?.hasError(item.name)">
+            {{item.message}}
+          </div>
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
   </div>
 </ng-container>
 
 <ng-container *ngIf="horizontalMode">
   <div class="form-group row p-2" [formGroup]="group">
     <label class="col-md-4 col-form-label">
-      <strong>{{ field.label }} :</strong>
+      <strong>{{ field.label }}</strong>
       <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
     </label>
     <div class="col-md-8">
-      <select class="form-control" [ngClass]="getValidClass()" [formControlName]="field.name"
-      (ngModelChange)="selectedItemChanged($event)">
-      <option [ngValue]="null">{{field.placeholder}}</option>
-      <option *ngFor="let item of field.options" [ngValue]="item.id">{{item.value}}</option>
-    </select>
-    <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
-      class="invalid-feedback">
-      <ng-container *ngFor="let item of field.validations;">
-        <div *ngIf="group.get(field.name)?.hasError(item.name)">
-          {{item.message}}
-        </div>
-      </ng-container>
-    </div>
+      <mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
+        <mat-select [(value)]="selectedValue" [placeholder]="field.placeholder" [formControlName]="field.name" (ngModelChange)="selectedItemChanged($event)">
+          <mat-option>{{field.placeholder}}</mat-option>
+          <mat-option *ngFor="let item of field.options" value="{{item.id}}">{{item.value}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+          <ng-container *ngFor="let item of field.validations;">
+            <div *ngIf="group.get(field.name)?.hasError(item.name)">
+              {{item.message}}
+            </div>
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
     </div>
   </div>
 </ng-container>

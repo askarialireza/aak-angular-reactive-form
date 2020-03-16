@@ -1,60 +1,20 @@
-<div [ngClass]="{'form-row':!isHorizontalForm}">
+<div cdkDropList [ngClass]="{'form-row':!isHorizontalForm}">
+
+  <!-- <ul class="p-0 w-100">
+    <li *ngFor="let item of formItem?.fieldItems" class="m-0 p-0 list-unstyled">
+      <div class="p-2 {{this.formService.getColumnClass(formItem,item)}}"
+        [ngClass]="{'bg-light border border-info rounded': editMode}">
+        <ng-container reactive-field [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode"
+          [field]="item"></ng-container>
+      </div>
+    </li>
+  </ul> -->
+
   <ng-container *ngFor="let item of formItem?.fieldItems">
-    <div class="p-2 {{this.formService.getColumnClass(formItem,item)}}"
+    <div cdkDrag class="p-2 {{this.formService.getColumnClass(formItem,item)}}"
       [ngClass]="{'bg-light border border-info rounded': editMode}">
-      <ng-container [ngSwitch]="item.type">
-        <ng-container *ngSwitchCase="'input'">
-          <app-input [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode" [field]="item">
-          </app-input>
-        </ng-container>
-        <ng-container *ngSwitchCase="'checkbox'">
-          <app-checkbox [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode" [field]="item">
-          </app-checkbox>
-        </ng-container>
-        <ng-container *ngSwitchCase="'select'">
-          <app-select [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode" [field]="item">
-          </app-select>
-        </ng-container>
-        <ng-container *ngSwitchCase="'radio'">
-          <app-radio [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode" [field]="item">
-          </app-radio>
-        </ng-container>
-        <ng-container *ngSwitchCase="'multicheckbox'">
-          <app-multi-checkbox [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode" (SelectedValues)="OnSelectedValues($event)"
-            [field]="item">
-          </app-multi-checkbox>
-        </ng-container>
-        <ng-container *ngSwitchCase="'date'">
-          <app-date-picker [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode"
-            [field]="item">
-          </app-date-picker>
-        </ng-container>
-        <ng-container *ngSwitchCase="'daterange'">
-          <app-date-range [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode"
-            [field]="item">
-          </app-date-range>
-        </ng-container>
-        <ng-container *ngSwitchCase="'textarea'">
-          <app-textarea [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode" [field]="item">
-          </app-textarea>
-        </ng-container>
-        <ng-container *ngSwitchCase="'summernote'">
-          <app-summernote-textarea [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode"
-            [field]="item"></app-summernote-textarea>
-        </ng-container>
-        <ng-container *ngSwitchCase="'range'">
-          <app-range [horizontalMode]="isHorizontalForm" [editable]="editMode" [group]="formGroup" [field]="item">
-          </app-range>
-        </ng-container>
-        <ng-container *ngSwitchCase="'submit'">
-          <app-submit [group]="formGroup" [field]="item"></app-submit>
-        </ng-container>
-        <ng-container *ngSwitchCase="'radiobutton'">
-          <app-radiobutton [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode"
-            [field]="item">
-          </app-radiobutton>
-        </ng-container>
-      </ng-container>
+      <ng-container reactive-field [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode"
+        [field]="item"></ng-container>
     </div>
   </ng-container>
 </div>

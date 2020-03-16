@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -40,10 +40,16 @@ import { FormApiService } from './services/api/form.api.service';
 import { FielditemApiService } from './services/api/fielditem.api.service';
 import { LoadingComponent } from './components/loading/loading.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { FormViewComponent } from './components/form-view/form-view.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+import { FieldDirective } from './directives/field.directive';
 
 
 @NgModule({
   declarations: [
+    FieldDirective,
     AppComponent,
     ManageControlComponent,
     InputComponent,
@@ -56,6 +62,8 @@ import { NotificationComponent } from './components/notification/notification.co
     SummernoteTextareaComponent,
     SubmitComponent,
     RadiobuttonComponent,
+    MultiCheckboxComponent,
+    DateRangeComponent,
     MainPanelComponent,
     SidebarPanelComponent,
     ReactiveFormComponent,
@@ -63,11 +71,13 @@ import { NotificationComponent } from './components/notification/notification.co
     FormCreateComponent,
     MainPanelManageFormComponent,
     NavbarComponent,
-    MultiCheckboxComponent,
-    DateRangeComponent,
     BasicReactiveFieldsComponent,
     LoadingComponent,
-    NotificationComponent
+    NotificationComponent,
+    FormViewComponent,
+    NotFoundComponent,
+    FooterComponent,
+    HomeComponent,
   ],
 
   imports: [
@@ -78,8 +88,8 @@ import { NotificationComponent } from './components/notification/notification.co
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    NgbModule,
     NgxSummernoteModule,
+    MaterialModule,
     FontAwesomeModule,
   ],
   providers: [
@@ -90,6 +100,22 @@ import { NotificationComponent } from './components/notification/notification.co
     FielditemApiService,
   ],
   bootstrap: [AppComponent],
+  entryComponents: [
+    InputComponent,
+    SelectComponent,
+    RadiobuttonComponent,
+    CheckboxComponent,
+    RangeComponent,
+    TextareaComponent,
+    SummernoteTextareaComponent,
+    RadioComponent,
+    DatePickerComponent,
+    DateRangeComponent,
+    RangeComponent,
+    MultiCheckboxComponent,
+    TextareaComponent,
+    SummernoteTextareaComponent,
+  ]
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {

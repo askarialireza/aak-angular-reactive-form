@@ -25,12 +25,4 @@ export class BasicReactiveFieldsComponent implements OnInit {
   ngOnInit() {
 
   }
-
-  OnSelectedValues(e: Event) {
-
-    console.log(e);
-
-  }
-
-
 }

@@ -1,73 +1,47 @@
 <ng-container *ngIf="!horizontalMode">
 	<div class="form-group" [formGroup]="group">
-		<label class="col-form-label"><strong>{{ field.label }} :</strong></label>
+		<label class="col-form-label"><strong>{{ field.label }}</strong></label>
 		<app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
-		<div class="input-group">
-			<input class="form-control" [footerTemplate]="footerTemplate" (dateSelect)="OnDateSelected($event)"  [ngClass]="getValidClass()" placeholder="{{field.placeholder}}"
-				[formControlName]="field.name" ngbDatepicker #d="ngbDatepicker">
-			<div class="input-group-append">
-				<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-					<fa-icon [icon]="faCalendarAlt"></fa-icon>
-				</button>
-			</div>
-			<div *ngIf="group.get(field.name).invalid && ( group.get(field.name).dirty || group.get(field.name).touched)"
-				class="invalid-feedback">
+		<mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
+			<input matInput [matDatepicker]="picker" (dateChange)="onDateChanged($event)"
+				placeholder="{{field.placeholder}}" [formControlName]="field.name">
+			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker #picker></mat-datepicker>
+			<!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+			<mat-error
+				*ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
 				<ng-container *ngFor="let item of field.validations;">
 					<div *ngIf="group.get(field.name)?.hasError(item.name)">
 						{{item.message}}
 					</div>
 				</ng-container>
-			</div>
-		</div>
+			</mat-error>
+		</mat-form-field>
 	</div>
-	<ng-template #footerTemplate>
-		<hr class="my-0">
-		<button class="btn btn-primary btn-sm m-2 float-left" (click)="getToday();d.close()">
-			<fa-icon [icon]="faCalendarDay"></fa-icon>
-			Today
-		</button>
-		<button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">
-			<fa-icon [icon]="faTimes"></fa-icon>
-			Close
-		</button>
-	  </ng-template>
 </ng-container>
 
 <ng-container *ngIf="horizontalMode">
 	<div class="form-group row p-2" [formGroup]="group">
 		<label class="col-md-4 col-form-label">
-			<strong>{{ field.label }} :</strong>
+			<strong>{{ field.label }}</strong>
 			<app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
 		</label>
 		<div class="col-md-8">
-			<div class="input-group">
-				<input class="form-control" [ngClass]="getValidClass()" [footerTemplate]="footerTemplate"  placeholder="{{field.placeholder}}"
-					[formControlName]="field.name" ngbDatepicker #d="ngbDatepicker">
-				<div class="input-group-append">
-					<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-						<fa-icon [icon]="faCalendarAlt"></fa-icon>
-					</button>
-				</div>
-				<div *ngIf="group.get(field.name).invalid && ( group.get(field.name).dirty || group.get(field.name).touched)"
-					class="invalid-feedback">
+			<mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
+				<input matInput [matDatepicker]="picker" (dateChange)="onDateChanged($event)"
+					placeholder="{{field.placeholder}}" [formControlName]="field.name">
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+				<!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+				<mat-error
+					*ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
 					<ng-container *ngFor="let item of field.validations;">
 						<div *ngIf="group.get(field.name)?.hasError(item.name)">
 							{{item.message}}
 						</div>
 					</ng-container>
-				</div>
-			</div>
+				</mat-error>
+			</mat-form-field>
 		</div>
 	</div>
-	<ng-template #footerTemplate>
-		<hr class="my-0">
-		<button class="btn btn-primary btn-sm m-2 float-left" (click)="getToday();d.close()">
-			<fa-icon [icon]="faCalendarDay"></fa-icon>
-			Today
-		</button>
-		<button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">
-			<fa-icon [icon]="faTimes"></fa-icon>
-			Close
-		</button>
-	  </ng-template>
 </ng-container>

@@ -1,35 +1,41 @@
 <ng-container *ngIf="!horizontalMode">
     <div class="form-group" [formGroup]="group">
-        <label class="col-form-label"><strong>{{ field.label }} :</strong></label>
+        <label class="col-form-label"><strong>{{ field.label }}</strong></label>
         <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
-        <textarea class="form-control" [formControlName]="field.name" [ngClass]="getValidClass()"></textarea>
-        <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
-            class="invalid-feedback">
-            <ng-container *ngFor="let item of field.validations;">
-                <div *ngIf="group.get(field.name)?.hasError(item.name)">
-                    {{item.message}}
-                </div>
-            </ng-container>
-        </div>
+        <mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
+            <textarea matInput [formControlName]="field.name" [type]="field.inputType" [readOnly]="field.readonly"
+                [placeholder]="field.placeholder" [pattern]="field.pattern"></textarea>
+            <mat-error
+                *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+                <ng-container *ngFor="let item of field.validations;">
+                    <div *ngIf="group.get(field.name)?.hasError(item.name)">
+                        {{item.message}}
+                    </div>
+                </ng-container>
+            </mat-error>
+        </mat-form-field>
     </div>
 </ng-container>
 
 <ng-container *ngIf="horizontalMode">
     <div class="form-group row p-2" [formGroup]="group">
         <label class="col-md-4 col-form-label">
-            <strong>{{ field.label }} :</strong>
+            <strong>{{ field.label }}</strong>
             <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
         </label>
         <div class="col-md-8">
-            <textarea class="form-control" [formControlName]="field.name" [ngClass]="getValidClass()"></textarea>
-            <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
-                class="invalid-feedback">
-                <ng-container *ngFor="let item of field.validations;">
-                    <div *ngIf="group.get(field.name)?.hasError(item.name)">
-                        {{item.message}}
-                    </div>
-                </ng-container>
-            </div>
+            <mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
+                <textarea matInput [formControlName]="field.name" [type]="field.inputType" [readOnly]="field.readonly"
+                    [placeholder]="field.placeholder" [pattern]="field.pattern"></textarea>
+                <mat-error
+                    *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+                    <ng-container *ngFor="let item of field.validations;">
+                        <div *ngIf="group.get(field.name)?.hasError(item.name)">
+                            {{item.message}}
+                        </div>
+                    </ng-container>
+                </mat-error>
+            </mat-form-field>
         </div>
     </div>
 </ng-container>

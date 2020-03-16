@@ -9,13 +9,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class FormApiService {
 
-  private apiUrl : string;
+  private apiUrl: string;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
     this.apiUrl = `${BASE_URL}/api/forms`;
 
-   }
+  }
 
   getDefaultForm(): Observable<Form> {
 
@@ -23,19 +23,25 @@ export class FormApiService {
 
   }
 
+  getForm(id: string) {
+
+    return this.http.get<Form>(`${this.apiUrl}/${id}`);
+
+  }
+
   submitForm(data: Form) {
 
     const headers = new HttpHeaders().set('content-type', 'application/json');
 
-    return this.http.post<Form>(this.apiUrl, data, { headers });
-    
+    return this.http.put<Form>(this.apiUrl, data, { headers });
+
   }
 
-  postForm(form:Form) {
+  postForm(form: Form) {
 
     const headers = new HttpHeaders().set('content-type', 'application/json');
 
-    return this.http.post<Form>(this.apiUrl, form, { headers });   
+    return this.http.post<Form>(this.apiUrl, form, { headers });
 
   }
 

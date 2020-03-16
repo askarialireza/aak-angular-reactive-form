@@ -9,6 +9,8 @@ import { BaseComponent } from '../base-component';
 
 export class SelectComponent extends BaseComponent {
 
+  public selectedValue = null;
+
   @Output() public valueChanged = new EventEmitter<string>();
 
   constructor() {

@@ -1,0 +1,25 @@
+<div class="container h-100 p-4">
+  <div class="card h-100">
+    <div class="card-body">
+      <app-loading *ngIf="!form && !notFound && isLoading"></app-loading>
+      <div *ngIf="form && !notFound && !isLoading" class="code">
+        <form [formGroup]="formGroup">
+          <app-basic-reactive-fields [formGroup]="this.formService.formGroup" [isHorizontalForm]="this.isHorizontal"
+            [editMode]="this.formService.editModeEnabled" [formItem]="this.form">
+          </app-basic-reactive-fields>
+          <div class="form-row p-2">
+            <button class="btn btn-primary">Submit Form</button>
+          </div>
+        </form>
+      </div>
+      <ng-container *ngIf="!form && notFound && !isLoading" >
+        <div class="text-muted text-center d-flex h-100">
+          <div class="my-auto mx-auto">
+            <fa-icon [icon]="['fas','exclamation-triangle']" size="7x"></fa-icon>
+            <h2 class="my-2">Form Not Found !</h2>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

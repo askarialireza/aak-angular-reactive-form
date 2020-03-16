@@ -1,11 +1,13 @@
-<app-navbar></app-navbar>
-<div class="container-fluid p-3">
-  <div class="row">
-    <div class="col-12 col-md-3">
-      <app-sidebar-panel></app-sidebar-panel>
-    </div>
-    <div class="col-12 col-md-9">
+<mat-card>
+  <mat-horizontal-stepper linear #stepper>
+    <mat-step>
       <app-main-panel></app-main-panel>
-    </div>
-  </div>
-</div>
+    </mat-step>
+    <mat-step>
+      STEP 2
+    </mat-step>
+    <mat-step>
+      STEP 3
+    </mat-step>
+  </mat-horizontal-stepper>
+</mat-card>

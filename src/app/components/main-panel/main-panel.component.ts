@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormService } from '../../services/form.service';
 import { Form } from 'src/app/models/form';
 import { FormApiService } from 'src/app/services/api/form.api.service';
+import { TestFormItem } from 'src/app/mocks/form.mock';
 
 @Component({
   selector: 'app-main-panel',
@@ -43,8 +44,17 @@ export class MainPanelComponent implements OnInit {
         },
         error => {
           this.isLoading = false;
-          this.hasError = true;
-          this.errrorMessage = error.message;
+          //this.hasError = true;
+          //this.errrorMessage = error.message;
+
+          this.formItem = TestFormItem;
+          this.formName = TestFormItem.name;
+          this.formService.FormItem = TestFormItem;
+          this.formService.isHorizontalMode = false;
+          this.formService.editModeEnabled = false;
+          this.formService.formGroup = this.formService.getFormGroup();
+          this.formService.sortFieldItemsByOrder(this.formService.getFormItem().fieldItems);
+          this.formService.formGroup = this.formService.createControl(this.formService.getFormItem().fieldItems);
           //console.log(error);
         },
         () => {

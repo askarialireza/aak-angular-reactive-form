@@ -46,10 +46,11 @@ export class MultiCheckboxComponent extends BaseComponent {
   }
 
   onCheckChange(event, index: number) {
+
     const formArray: FormArray = this.group.get(this.field.name) as FormArray;
-    let item = this.field.options.find(current => current.id == event.target.id);
+    let item = this.field.options.find(current => current.id == event.source.id);
     
-    if (event.target.checked) {
+    if (event.source.checked) {
       if (item) {
         formArray.controls[index].setValue(item.id);
         this.values[index] = formArray.controls[index].value;
