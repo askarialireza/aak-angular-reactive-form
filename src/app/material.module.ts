@@ -52,6 +52,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatMomentDateModule,
     MatRadioModule,
     MatCheckboxModule,
+    MatButtonToggleModule,
   ],
   exports: [
     MatIconModule,
@@ -67,6 +68,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatMomentDateModule,
     MatRadioModule,
     MatCheckboxModule,
+    MatButtonToggleModule,
   ],
   providers: [
     { provide: DateAdapter, useClass: MaterialPersianDateAdapter, deps: [MAT_DATE_LOCALE] },

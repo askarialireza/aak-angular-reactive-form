@@ -19,7 +19,7 @@ import { CheckboxComponent } from './components/controls/checkbox/checkbox.compo
 import { TextareaComponent } from './components/controls/textarea/textarea.component';
 import { SummernoteTextareaComponent } from './components/controls/summernote-textarea/summernote-textarea.component';
 import { SubmitComponent } from './components/controls/submit/submit.component';
-import { RadiobuttonComponent } from './components/controls/radiobutton/radiobutton.component';
+import { ButtonToggleComponent } from './components/controls/button-toggle/button-toggle.component';
 import { FormService } from './services/form.service';
 import { ManageControlComponent } from './components/controls/manage-control/manage-control.component';
 import { NgxSummernoteModule } from 'ngx-summernote';
@@ -61,7 +61,7 @@ import { FieldDirective } from './directives/field.directive';
     TextareaComponent,
     SummernoteTextareaComponent,
     SubmitComponent,
-    RadiobuttonComponent,
+    ButtonToggleComponent,
     MultiCheckboxComponent,
     DateRangeComponent,
     MainPanelComponent,
@@ -103,7 +103,7 @@ import { FieldDirective } from './directives/field.directive';
   entryComponents: [
     InputComponent,
     SelectComponent,
-    RadiobuttonComponent,
+    ButtonToggleComponent,
     CheckboxComponent,
     RangeComponent,
     TextareaComponent,

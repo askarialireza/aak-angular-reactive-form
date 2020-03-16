@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { RadiobuttonComponent } from './radiobutton.component';
+import { ButtonToggleComponent } from './button-toggle.component';
 
-describe('RadiobuttonComponent', () => {
-  let component: RadiobuttonComponent;
-  let fixture: ComponentFixture<RadiobuttonComponent>;
+describe('ButtonToggleComponent', () => {
+  let component: ButtonToggleComponent;
+  let fixture: ComponentFixture<ButtonToggleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RadiobuttonComponent ]
+      declarations: [ ButtonToggleComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RadiobuttonComponent);
+    fixture = TestBed.createComponent(ButtonToggleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

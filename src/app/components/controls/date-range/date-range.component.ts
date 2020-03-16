@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { BaseComponent } from '../base-component';
+import { BaseComponent } from '../../../infrastructure/base-component';
 import { FormArray, AbstractControl } from '@angular/forms';
 
 @Component({

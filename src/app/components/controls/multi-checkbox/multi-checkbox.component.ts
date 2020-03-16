@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { BaseComponent } from '../base-component';
+import { BaseComponent } from '../../../infrastructure/base-component';
 import { FormArray, FormControl, Validators } from '@angular/forms';
 import { Option } from '../../../models/option';
 

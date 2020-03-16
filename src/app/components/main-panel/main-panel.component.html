@@ -6,9 +6,8 @@
 <form *ngIf="!isLoading && !hasError" [formGroup]="this.formService.formGroup"
   (submit)="OnSubmit(this.formService.FormItem)">
 
-  <pre>{{this.formService.formGroup.value | json}}</pre>
-
-  <app-main-panel-manage-form *ngIf="this.formService.editModeEnabled"></app-main-panel-manage-form>
+  <!-- <pre>{{this.formService.formGroup.value | json}}</pre> -->
+  <!-- <app-main-panel-manage-form *ngIf="this.formService.editModeEnabled"></app-main-panel-manage-form> -->
 
   <app-basic-reactive-fields [formGroup]="this.formService.formGroup"
     [isHorizontalForm]="this.formService.isHorizontalMode" [editMode]="this.formService.editModeEnabled"

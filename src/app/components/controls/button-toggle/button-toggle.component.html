@@ -1,0 +1,57 @@
+<ng-container *ngIf="!horizontalMode">
+  <div class="form-group" [formGroup]="group">
+    <label class="col-form-label d-block">
+      <strong>{{field.label}}</strong>
+    </label>
+    <app-manage-control *ngIf="editable" [field]="field" [changeViewListEnabled]="true"></app-manage-control>
+    <mat-button-toggle-group [vertical]="!field.inlineView" (change)="onChanged($event)">
+      <mat-button-toggle class="p-1" *ngFor="let item of field.options" [value]="item.id">
+        <fa-icon *ngIf="item.disabled" [icon]="['fas','check']" [classes]="['d-block','mx-auto']"></fa-icon>
+        <fa-icon *ngIf="!item.disabled" [icon]="iconArray" [classes]="['d-block','mx-auto']"></fa-icon>
+        {{item.value}}
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+    <div class="mat-form-field-appearance-outline">
+      <div class="mat-form-field-subscript-wrapper">
+        <mat-error class="mt-1"
+          *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+          <ng-container *ngFor="let item of field.validations;">
+            <div *ngIf="group.get(field.name)?.hasError(item.name)">
+              {{item.message}}
+            </div>
+          </ng-container>
+        </mat-error>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="horizontalMode">
+  <div class="form-group row p-2" [formGroup]="group">
+    <label class="col-md-4 col-form-label">
+      <strong>{{field.label}}</strong>
+      <app-manage-control *ngIf="editable" [field]="field" [changeViewListEnabled]="true"></app-manage-control>
+    </label>
+    <div class="col-md-8">
+      <mat-button-toggle-group [vertical]="!field.inlineView" name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle *ngFor="let item of field.options" [value]="item.id">
+          <fa-icon *ngIf="item.disabled" [icon]="['fas','check']" [classes]="['d-block','mx-auto']"></fa-icon>
+          <fa-icon *ngIf="!item.disabled" [icon]="iconArray" [classes]="['d-block','mx-auto']"></fa-icon>
+          {{item.value}}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+      <div class="mat-form-field-appearance-outline">
+        <div class="mat-form-field-subscript-wrapper">
+          <mat-error class="mt-1"
+            *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+            <ng-container *ngFor="let item of field.validations;">
+              <div *ngIf="group.get(field.name)?.hasError(item.name)">
+                {{item.message}}
+              </div>
+            </ng-container>
+          </mat-error>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

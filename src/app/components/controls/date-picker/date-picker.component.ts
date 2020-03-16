@@ -1,5 +1,5 @@
 import { Component,EventEmitter, Output } from "@angular/core";
-import { BaseComponent } from '../base-component';
+import { BaseComponent } from '../../../infrastructure/base-component';
 import * as fas from '@fortawesome/free-solid-svg-icons';
 
 @Component({

@@ -1,12 +1,12 @@
 import { ComponentFactoryResolver, ComponentRef, Directive, Input, OnInit, ViewContainerRef } from "@angular/core";
 import { InputComponent } from "../components/controls/input/input.component";
-import { BaseComponent } from '../components/controls/base-component';
+import { BaseComponent } from '../infrastructure/base-component';
 import { CheckboxComponent } from '../components/controls/checkbox/checkbox.component';
 import { DatePickerComponent } from '../components/controls/date-picker/date-picker.component';
 import { DateRangeComponent } from '../components/controls/date-range/date-range.component';
 import { MultiCheckboxComponent } from '../components/controls/multi-checkbox/multi-checkbox.component';
 import { RadioComponent } from '../components/controls/radio/radio.component';
-import { RadiobuttonComponent } from '../components/controls/radiobutton/radiobutton.component';
+import { ButtonToggleComponent } from '../components/controls/button-toggle/button-toggle.component';
 import { RangeComponent } from '../components/controls/range/range.component';
 import { SelectComponent } from '../components/controls/select/select.component';
 import { SummernoteTextareaComponent } from '../components/controls/summernote-textarea/summernote-textarea.component';
@@ -19,7 +19,7 @@ const componentMapper = {
     daterange: DateRangeComponent,
     multicheckbox: MultiCheckboxComponent,
     radio: RadioComponent,
-    radiobutton: RadiobuttonComponent,
+    radiobutton: ButtonToggleComponent,
     range: RangeComponent,
     select: SelectComponent,
     summernote: SummernoteTextareaComponent,

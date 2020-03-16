@@ -1,6 +1,6 @@
 import { OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FieldItem } from '../../models/field-item';
+import { FieldItem } from '../models/field-item';
 
 export abstract class BaseComponent implements OnInit {
 
