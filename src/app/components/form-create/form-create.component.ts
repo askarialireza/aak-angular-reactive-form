@@ -4,8 +4,6 @@ import { FieldItem } from '../../models/field-item';
 import { FormCreateService } from '../../services/form-create.service';
 import { Form } from 'src/app/models/form';
 import { Guid } from 'guid-typescript';
-import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
-import { Mds } from 'mds.persian.datetime'
 import { FormApiService } from 'src/app/services/api/form.api.service';
 //import PersianDateTime = Mds.PersianDateTime;
 
@@ -85,12 +83,6 @@ export class FormCreateComponent implements OnInit {
 
       let action: string = this.formCreateService.formGroup.get('action').value;
 
-      let startDate: Date =
-        this.formCreateService.convertNgbDateToDate(this.formCreateService.formGroup.get('date').value[0]);
-
-      let endDate: Date =
-        this.formCreateService.convertNgbDateToDate(this.formCreateService.formGroup.get('date').value[1]);
-
       let selectedValues = this.formCreateService.formGroup.get('options').value;
 
       let isHorizontal: boolean = (selectedValues.includes("check-horizontal")) ? true : false;
@@ -102,8 +94,6 @@ export class FormCreateComponent implements OnInit {
         name: formName.trim(),
         url: url.trim(),
         action: action.trim(),
-        startDate: startDate.toISOString(),
-        endDate: endDate.toISOString(),
         isHorizontal: isHorizontal,
         isActive: isActive
       }

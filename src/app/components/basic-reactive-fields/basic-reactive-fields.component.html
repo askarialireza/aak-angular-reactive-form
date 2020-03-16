@@ -1,15 +1,5 @@
 <div cdkDropList [ngClass]="{'form-row':!isHorizontalForm}">
 
-  <!-- <ul class="p-0 w-100">
-    <li *ngFor="let item of formItem?.fieldItems" class="m-0 p-0 list-unstyled">
-      <div class="p-2 {{this.formService.getColumnClass(formItem,item)}}"
-        [ngClass]="{'bg-light border border-info rounded': editMode}">
-        <ng-container reactive-field [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode"
-          [field]="item"></ng-container>
-      </div>
-    </li>
-  </ul> -->
-
   <ng-container *ngFor="let item of formItem?.fieldItems">
     <div cdkDrag class="p-2 {{this.formService.getColumnClass(formItem,item)}}"
       [ngClass]="{'bg-light border border-info rounded': editMode}">

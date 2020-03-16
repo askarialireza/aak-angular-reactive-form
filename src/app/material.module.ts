@@ -39,6 +39,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
+    MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
@@ -55,6 +56,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatButtonToggleModule,
   ],
   exports: [
+    MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
