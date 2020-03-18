@@ -1,85 +1,38 @@
-<ng-container *ngIf="!horizontalMode">
-  <div class="form-group" [formGroup]="group">
-    <label class="col-form-label"><strong>{{ field.label }} :</strong></label>
-    <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
-    <div class="row">
-      <div [ngClass]="{'col-12 mb-1':!isInline,'col':isInline}">
-        <mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
-          <input matInput [matDatepicker]="picker" placeholder="{{field.placeholder}}" (dateChange)="OnFromDateSelected($event)">
-          <span class="perfix text-primary" matPrefix>From Date</span>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          <mat-error
-            *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
-            <ng-container *ngFor="let item of field.validations;">
-              <div *ngIf="group.get(field.name)?.hasError(item.name)">
-                {{item.message}}
-              </div>
-            </ng-container>
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div [ngClass]="{'col-12':!isInline,'col':isInline}">
-        <mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
-          <input matInput [matDatepicker]="picker2" placeholder="{{field.placeholder}}" (dateChange)="OnEndDateSelected($event)">
-          <span class="perfix text-primary" matPrefix>To Date</span>
-          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
-          <mat-error
-            *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
-            <ng-container *ngFor="let item of field.validations;">
-              <div *ngIf="group.get(field.name)?.hasError(item.name)">
-                {{item.message}}
-              </div>
-            </ng-container>
-          </mat-error>
-        </mat-form-field>
-      </div>
+<ng-container [formGroup]="group">
+  <div class="row">
+    <div [ngClass]="{'col-12 mb-1':!field.inlineView,'col':field.inlineView}">
+      <mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
+        <input matInput [max]="toDate" [matDatepicker]="picker" [required]="field.required"
+          placeholder="{{field.placeholder}}" (dateChange)="OnFromDateSelected($event)">
+        <span class="perfix text-primary" matPrefix>From Date</span>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error
+          *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+          <ng-container *ngFor="let item of field.validations;">
+            <div *ngIf="group.get(field.name)?.hasError(item.name)">
+              {{item.message}}
+            </div>
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
     </div>
-  </div>
-</ng-container>
-
-<ng-container *ngIf="horizontalMode">
-  <div class="form-group row p-2" [formGroup]="group">
-    <label class="col-form-label col-md-4">
-      <strong>{{ field.label }}</strong>
-      <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
-    </label>
-    <div class="col-md-8">
-      <div class="row">
-        <div [ngClass]="{'col-12 mb-1':!isInline,'col':isInline}">
-          <mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
-            <input matInput [matDatepicker]="picker" placeholder="{{field.placeholder}}" (dateChange)="OnFromDateSelected($event)">
-            <span class="perfix text-primary" matPrefix>From Date</span>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-            <mat-error
-              *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
-              <ng-container *ngFor="let item of field.validations;">
-                <div *ngIf="group.get(field.name)?.hasError(item.name)">
-                  {{item.message}}
-                </div>
-              </ng-container>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div [ngClass]="{'col-12':!isInline,'col':isInline}">
-          <mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
-            <input matInput [matDatepicker]="picker2" placeholder="{{field.placeholder}}" (dateChange)="OnEndDateSelected($event)">
-            <span class="perfix text-primary" matPrefix>To Date</span>
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
-            <mat-error
-              *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
-              <ng-container *ngFor="let item of field.validations;">
-                <div *ngIf="group.get(field.name)?.hasError(item.name)">
-                  {{item.message}}
-                </div>
-              </ng-container>
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
+    <div [ngClass]="{'col-12':!field.inlineView,'col':field.inlineView}">
+      <mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
+        <input matInput [min]="fromDate" [matDatepicker]="picker2" placeholder="{{field.placeholder}}"
+          (dateChange)="OnEndDateSelected($event)">
+        <span class="perfix text-primary" matPrefix>To Date</span>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+        <mat-error
+          *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+          <ng-container *ngFor="let item of field.validations;">
+            <div *ngIf="group.get(field.name)?.hasError(item.name)">
+              {{item.message}}
+            </div>
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
     </div>
   </div>
 </ng-container>

@@ -45,6 +45,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { FieldDirective } from './directives/field.directive';
+import { UploadComponent } from './components/controls/upload/upload.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { FieldDirective } from './directives/field.directive';
     SubmitComponent,
     ButtonToggleComponent,
     MultiCheckboxComponent,
+    UploadComponent,
     DateRangeComponent,
     MainPanelComponent,
     SidebarPanelComponent,
@@ -115,6 +117,7 @@ import { FieldDirective } from './directives/field.directive';
     MultiCheckboxComponent,
     TextareaComponent,
     SummernoteTextareaComponent,
+    UploadComponent,
   ]
 })
 export class AppModule {

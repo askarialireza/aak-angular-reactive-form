@@ -11,6 +11,7 @@ import { RangeComponent } from '../components/controls/range/range.component';
 import { SelectComponent } from '../components/controls/select/select.component';
 import { SummernoteTextareaComponent } from '../components/controls/summernote-textarea/summernote-textarea.component';
 import { TextareaComponent } from '../components/controls/textarea/textarea.component';
+import { UploadComponent } from '../components/controls/upload/upload.component';
 
 const componentMapper = {
     input: InputComponent,
@@ -24,6 +25,7 @@ const componentMapper = {
     select: SelectComponent,
     summernote: SummernoteTextareaComponent,
     textarea: TextareaComponent,
+    upload: UploadComponent,
 };
 @Directive({ selector: "[reactive-field]" })
 export class FieldDirective extends BaseComponent {
@@ -43,7 +45,5 @@ export class FieldDirective extends BaseComponent {
         this.componentRef = this.container.createComponent(factory);
         this.componentRef.instance.field = this.field;
         this.componentRef.instance.group = this.group;
-        this.componentRef.instance.horizontalMode = this.horizontalMode;
-        this.componentRef.instance.editable = this.editable;
     }
 }

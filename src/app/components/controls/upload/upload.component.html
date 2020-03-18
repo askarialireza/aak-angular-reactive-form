@@ -1,9 +1,12 @@
 <ng-container [formGroup]="group">
+
   <mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
-    <mat-select [(value)]="selectedValue" [placeholder]="field.placeholder" [formControlName]="field.name" (ngModelChange)="selectedItemChanged($event)">
-      <mat-option>{{field.placeholder}}</mat-option>
-      <mat-option *ngFor="let item of field.options" value="{{item.id}}">{{item.value}}</mat-option>
-    </mat-select>
+    <ngx-mat-file-input #uploadInput (ngModelChange)="modelChanged($event)" [formControlName]="field.name" [placeholder]="field.placeholder">
+    </ngx-mat-file-input>
+    <button mat-icon-button matSuffix *ngIf="!uploadInput.empty" (click)="uploadInput.clear($event)">
+      <mat-icon>clear</mat-icon>
+    </button>
+    <mat-icon *ngIf="uploadInput" matSuffix >folder</mat-icon>
     <mat-error *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
       <ng-container *ngFor="let item of field.validations;">
         <div *ngIf="group.get(field.name)?.hasError(item.name)">

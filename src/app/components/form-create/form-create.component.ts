@@ -18,27 +18,11 @@ export class FormCreateComponent implements OnInit {
 
   isSuccess: boolean = false;
 
-  public nameField: FieldItem;
-
-  public urlField: FieldItem
-
-  public actionField: FieldItem;
-
-  public dateRangeField: FieldItem;
-
-  public checkboxField: FieldItem;
-
-  public isHorizontal: boolean;
-
   constructor(
     public formCreateService: FormCreateService,
     private formService: FormService,
     private formApiService: FormApiService
   ) {
-
-    this.isHorizontal = false;
-
-    this.getFields();
 
   }
 
@@ -48,30 +32,6 @@ export class FormCreateComponent implements OnInit {
 
     this.formCreateService.formGroup = this.formService.createControl(this.formCreateService.getFieldItems());
   }
-
-  getFields() {
-
-    this.nameField =
-      this.formCreateService.getFieldItems()
-        .find(current => current.name == "name");
-
-    this.urlField =
-      this.formCreateService.getFieldItems()
-        .find(current => current.name == "url");
-
-    this.actionField =
-      this.formCreateService.getFieldItems()
-        .find(current => current.name == "action");
-
-    this.dateRangeField =
-      this.formCreateService.getFieldItems()
-        .find(current => current.name == "date");
-
-    this.checkboxField =
-      this.formCreateService.getFieldItems()
-        .find(current => current.name == "options");
-  }
-
 
   OnSubmit(event: Event) {
 
@@ -89,13 +49,19 @@ export class FormCreateComponent implements OnInit {
 
       let isActive: boolean = (selectedValues.includes("check-active")) ? true : false;
 
+      let startDate: Date = this.formCreateService.formGroup.get('date').value[0];
+
+      let endDate: Date = this.formCreateService.formGroup.get('date').value[1];
+
       let form: Form = {
         id: Guid.create().toString(),
         name: formName.trim(),
         url: url.trim(),
         action: action.trim(),
         isHorizontal: isHorizontal,
-        isActive: isActive
+        isActive: isActive,
+        startDate: startDate,
+        endDate: endDate,
       }
 
       console.log(form);

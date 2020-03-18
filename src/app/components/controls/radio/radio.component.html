@@ -1,39 +1,12 @@
-<ng-container *ngIf="!horizontalMode">
-  <div class="form-group" [formGroup]="group">
-    <div class="w-100">
-      <label class="col-form-label "><strong>{{field.label}}</strong></label>
-      <app-manage-control *ngIf="editable" [field]="field" [changeViewListEnabled]="true"></app-manage-control>
-    </div>
-    <mat-radio-group [ngClass]="{'d-flex flex-column' : !field.inlineView}" class="d-flex flex-column" [formControlName]="field.name">
-      <mat-radio-button class="mr-2" *ngFor="let item of field.options" value="{{item.id}}">{{item.value}}</mat-radio-button>
-    </mat-radio-group>
-    <mat-error *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
-      <ng-container *ngFor="let item of field.validations;">
-        <div *ngIf="group.get(field.name)?.hasError(item.name)">
-          {{item.message}}
-        </div>
-      </ng-container>
-    </mat-error>
-  </div>
-</ng-container>
-
-<ng-container *ngIf="horizontalMode">
-  <div class="form-group row p-2" [formGroup]="group">
-      <label class="col-md-4 col-form-label ">
-        <strong>{{field.label}}</strong>
-        <app-manage-control *ngIf="editable" [field]="field" [changeViewListEnabled]="true"></app-manage-control>
-      </label>
-      <div class="col-md-8">
-        <mat-radio-group [ngClass]="{'d-flex flex-column' : !field.inlineView}" class="d-flex flex-column" [formControlName]="field.name">
-          <mat-radio-button class="mr-2" *ngFor="let item of field.options" value="{{item.id}}">{{item.value}}</mat-radio-button>
-        </mat-radio-group>
-        <mat-error *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
-          <ng-container *ngFor="let item of field.validations;">
-            <div *ngIf="group.get(field.name)?.hasError(item.name)">
-              {{item.message}}
-            </div>
-          </ng-container>
-        </mat-error>
+<ng-container [formGroup]="group">
+  <mat-radio-group [ngClass]="{'d-flex flex-column' : !field.inlineView}" class="d-flex flex-column" [formControlName]="field.name">
+    <mat-radio-button class="mr-2" *ngFor="let item of field.options" value="{{item.id}}">{{item.value}}</mat-radio-button>
+  </mat-radio-group>
+  <mat-error *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+    <ng-container *ngFor="let item of field.validations;">
+      <div *ngIf="group.get(field.name)?.hasError(item.name)">
+        {{item.message}}
       </div>
-  </div>
+    </ng-container>
+  </mat-error>
 </ng-container>

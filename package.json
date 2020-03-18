@@ -32,6 +32,7 @@
     "jalali-moment": "^3.3.3",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
+    "ngx-material-file-input": "^2.1.1",
     "ngx-summernote": "^0.7.6",
     "npm-check-updates": "^4.0.2",
     "popper.js": "^1.16.0",

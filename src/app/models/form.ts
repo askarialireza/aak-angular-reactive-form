@@ -11,11 +11,12 @@ export class Form {
         isHorizontal?: boolean,
         fieldItems?: FieldItem[],
         editMode?: boolean,
-        url?:string,
-        isActive?:boolean,
-        startDate?:string,
-        endDate?:string,
-        value?:string,
+        url?: string,
+        isActive?: boolean,
+        startDate?: Date,
+        endDate?: Date,
+        value?: string,
+        logo?: string,
     } = {}) {
         this.id = options.id || Guid.create().toString();
         this.name = options.name || Guid.create().toString();
@@ -25,19 +26,21 @@ export class Form {
         this.fieldItems = options.fieldItems || null;
         this.editMode = options.editMode || false;
         this.value = options.value || null;
+        this.logo = options.logo || null;
 
     }
 
     public id?: string;
+    public logo?: string;
     public name?: string;
     public date?: string;
     public action?: string;
     public isHorizontal?: boolean;
     public fieldItems?: FieldItem[];
     public editMode?: boolean;
-    public url?:string;
-    public isActive?:boolean;
-    public startDate?:string;
-    public endDate?:string;
-    public value?:string;
+    public url?: string;
+    public isActive?: boolean;
+    public startDate?: Date;
+    public endDate?: Date;
+    public value?: string;
 }

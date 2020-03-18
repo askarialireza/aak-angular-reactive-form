@@ -1,20 +1,7 @@
 <form [formGroup]="this.formCreateService.getFormGroup()" (submit)="OnSubmit($event)">
 
-    <!-- <app-basic-reactive-fields [formGroup]="this.formCreateService.getFormGroup()"
-        [formItem]="this.formCreateService.getFormItem()" [editMode]="this.formCreateService.getFormItem().editMode"
-        [isHorizontalForm]="this.formCreateService.getFormItem().isHorizontal"></app-basic-reactive-fields> -->
-    <pre> {{this.formCreateService.getFormGroup().value|json}}</pre>
-    <div class="form-row">
-        <div class="p-2">
-            <app-input [group]="this.formCreateService.getFormGroup()" [field]="nameField"></app-input>
-            <app-input [group]="this.formCreateService.getFormGroup()" [field]="actionField"></app-input>
-            <app-input [group]="this.formCreateService.getFormGroup()" [field]="urlField"></app-input>
-            <app-date-range [group]="this.formCreateService.getFormGroup()" [field]="dateRangeField" [isInline]="false">
-            </app-date-range>
-            <app-multi-checkbox [group]="this.formCreateService.getFormGroup()" [field]="checkboxField"
-                (SelectedValues)="OnSelectedValues($event)"></app-multi-checkbox>
-        </div>
-    </div>
+    <app-basic-reactive-fields [formGroup]="this.formCreateService.getFormGroup()" [isHorizontalForm]="false" [editMode]="false"
+    [formItem]="this.formCreateService.getFormItem()"></app-basic-reactive-fields>
 
     <div class="form-row">
         <div class="col">

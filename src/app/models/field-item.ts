@@ -30,7 +30,8 @@ export class FieldItem {
         height?: number,
         uploadPath?: string,
         class?: string,
-        formId?:string,
+        formId?: string,
+        icon?: string,
     } = {}) {
         this.id = (options.id) ? options.id : Guid.create().toString();
         this.name = (options.name) ? options.name : Guid.create().toString();
@@ -57,7 +58,8 @@ export class FieldItem {
         this.height = options.height || null;
         this.uploadPath = options.uploadPath || null;
         this.class = options.class || null;
-        this.formId = options.formId ||null;
+        this.formId = options.formId || null;
+        this.icon = options.icon || null;
     }
 
     public id?: string;
@@ -86,4 +88,5 @@ export class FieldItem {
     public uploadPath?: string;
     public class?: string;
     public formId?: string;
+    public icon?: string;
 }

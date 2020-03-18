@@ -1,10 +1,19 @@
 <div cdkDropList [ngClass]="{'form-row':!isHorizontalForm}">
-
   <ng-container *ngFor="let item of formItem?.fieldItems">
     <div cdkDrag class="p-2 {{this.formService.getColumnClass(formItem,item)}}"
-      [ngClass]="{'bg-light border border-info rounded': editMode}">
-      <ng-container reactive-field [group]="formGroup" [horizontalMode]="isHorizontalForm" [editable]="editMode"
-        [field]="item"></ng-container>
+      [ngClass]="{'bg-light border border-info': editMode}">
+      <div class="form-group" [ngClass]="{'row p-2': isHorizontalForm}">
+        <label *ngIf="item.label" class="col-form-label" [ngClass]="{'col-md-4': isHorizontalForm}">
+          <strong>{{ item.label }}</strong>
+          <fa-icon *ngIf="item.required" [icon]="['fas','circle']" [classes]="['mx-1','text-danger','fa-vxs']" size="xs"></fa-icon>
+          <fa-icon [icon]="['fas','info-circle']" [classes]="['mx-1','text-muted']"></fa-icon>
+          <app-manage-control *ngIf="editMode && isHorizontalForm" [field]="item"></app-manage-control>
+        </label>
+        <app-manage-control *ngIf="editMode && !isHorizontalForm" [field]="item"></app-manage-control>
+      </div>
+      <div class="reactive-field-{{item.type}}" [ngClass]="{'col-md-8': isHorizontalForm}">
+        <ng-container reactive-field [group]="formGroup" [field]="item"></ng-container>
+      </div>
     </div>
   </ng-container>
 </div>

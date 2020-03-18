@@ -1,43 +1,15 @@
-<ng-container *ngIf="!horizontalMode">
-  <div class="form-group" [formGroup]="group">
-    <label class="col-form-label"><strong>{{ field.label }}</strong></label>
-    <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
-    <div class="w-100">
-      <mat-slider class="d-block w-100" thumbLabel min="{{field.minValue}}" max="{{field.maxValue}}"
-        [formControlName]="field.name"></mat-slider>
-    </div>
-    <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
-      class="invalid-feedback">
-      {{field.value}}
-      <ng-container *ngFor="let item of field.validations;">
-        <div *ngIf="group.get(field.name)?.hasError(item.name)">
-          {{item.message}}
-        </div>
-      </ng-container>
-    </div>
+<ng-container [formGroup]="group">
+  <div class="w-100">
+    <mat-slider class="d-block w-100" thumbLabel min="{{field.minValue}}" max="{{field.maxValue}}"
+    [formControlName]="field.name"></mat-slider>
   </div>
-</ng-container>
-
-<ng-container *ngIf="horizontalMode">
-  <div class="form-group row p-2" [formGroup]="group">
-    <label class="col-md-4 col-form-label">
-      <strong>{{ field.label }}</strong>
-      <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
-    </label>
-    <div class="col-md-8">
-      <div class="w-100">
-        <mat-slider class="d-block w-100" thumbLabel min="{{field.minValue}}" max="{{field.maxValue}}"
-        [formControlName]="field.name"></mat-slider>
+  <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
+    class="invalid-feedback">
+    {{field.value}}
+    <ng-container *ngFor="let item of field.validations;">
+      <div *ngIf="group.get(field.name)?.hasError(item.name)">
+        {{item.message}}
       </div>
-      <div *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)"
-        class="invalid-feedback">
-        {{field.value}}
-        <ng-container *ngFor="let item of field.validations;">
-          <div *ngIf="group.get(field.name)?.hasError(item.name)">
-            {{item.message}}
-          </div>
-        </ng-container>
-      </div>
-    </div>
+    </ng-container>
   </div>
 </ng-container>

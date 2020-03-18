@@ -51,7 +51,7 @@ export class MainPanelComponent implements OnInit {
           this.formName = TestFormItem.name;
           this.formService.FormItem = TestFormItem;
           this.formService.isHorizontalMode = false;
-          this.formService.editModeEnabled = false;
+          this.formService.editModeEnabled = true;
           this.formService.formGroup = this.formService.getFormGroup();
           this.formService.sortFieldItemsByOrder(this.formService.getFormItem().fieldItems);
           this.formService.formGroup = this.formService.createControl(this.formService.getFormItem().fieldItems);

@@ -11,10 +11,6 @@ export abstract class BaseComponent implements OnInit {
 
     @Input() group: FormGroup;
 
-    @Input() editable: boolean;
-
-    @Input() horizontalMode : boolean;
-
     ngOnInit() { 
         
      }

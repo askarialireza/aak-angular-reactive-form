@@ -58,7 +58,7 @@ export class FormService {
   }
 
   getIndexOfFieldItem(field: FieldItem): number {
-    return this.FormItem.fieldItems.indexOf(field);
+    return this.FormItem?.fieldItems?.indexOf(field);
   }
 
   getFieldItemsCount() {
@@ -152,7 +152,7 @@ export class FormService {
       }
 
       if (field.type === "daterange") {
-        group.addControl(field.name, new FormArray([]));
+        group.addControl(field.name, new FormArray([],this.bindValidations(field.validations || [])));
 
         for (let index = 0; index < 2; index++) {
           const control = new FormControl(null);
@@ -207,17 +207,17 @@ export class FormService {
     let result = "col-12";
     if (item) {
       if (item.width) {
-        // let order = form.fieldItems.indexOf(item) + 1;
-        // form.fieldItems.find(current => current.id == item.id).order = order;
-        // let classOrder = "order-";
-        // if (order > 12) {
-        //   classOrder = "order-12";
-        // }
-        // else {
-        //   classOrder += order.toString();
-        // }
+        let order = form.fieldItems.indexOf(item) + 1;
+        form.fieldItems.find(current => current.id == item.id).order = order;
+        let classOrder = "order-";
+        if (order > 12) {
+          classOrder = "order-12";
+        }
+        else {
+          classOrder += order.toString();
+        }
 
-        // result += ` ${classOrder}`;
+        result += ` ${classOrder}`;
 
         if (this.isHorizontalMode == false) {
           result += ` col-md-${item.width.toString()}`;

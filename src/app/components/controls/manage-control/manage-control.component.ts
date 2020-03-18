@@ -13,7 +13,7 @@ export class ManageControlComponent implements OnInit {
 
   @Input() field: FieldItem;
 
-  @Input() changeViewListEnabled: boolean;
+  changeViewListEnabled: boolean;
 
   public isInline: boolean;
 
@@ -33,6 +33,7 @@ export class ManageControlComponent implements OnInit {
 
   ngOnInit() {
     this.isInline = this.GetListView();
+    this.changeViewListEnabled = this.CheckControl(this.field);
   }
 
   EditField() {
@@ -89,9 +90,9 @@ export class ManageControlComponent implements OnInit {
   IsLastItem() {
 
     if (this.formService.getIndexOfFieldItem(this.field) == this.formService.getFieldItemsCount() - 1) {
-      
+
       return true;
-      
+
     }
     else {
 
@@ -139,6 +140,22 @@ export class ManageControlComponent implements OnInit {
       if (this.field.width == 1) {
         return true;
       }
+    }
+  }
+
+  CheckControl(field: FieldItem) {
+    switch (field.type) {
+      case "checkbox":
+      case "radio":
+      case "radiobutton":
+      case "multicheckbox":
+      case "daterange":
+        return true;
+        break;
+
+      default:
+        return false;
+        break;
     }
   }
 

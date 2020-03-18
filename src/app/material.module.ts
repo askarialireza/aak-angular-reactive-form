@@ -32,9 +32,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatNativeDateModule, DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core/';
 import { MaterialPersianDateAdapter, PERSIAN_DATE_FORMATS } from './infrastructure/material.persian-date.adapter';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -54,6 +55,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatRadioModule,
     MatCheckboxModule,
     MatButtonToggleModule,
+    MaterialFileInputModule,
+    MatExpansionModule,
   ],
   exports: [
     MatButtonModule,
@@ -71,6 +74,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatRadioModule,
     MatCheckboxModule,
     MatButtonToggleModule,
+    MaterialFileInputModule,
+    MatExpansionModule,
   ],
   providers: [
     { provide: DateAdapter, useClass: MaterialPersianDateAdapter, deps: [MAT_DATE_LOCALE] },

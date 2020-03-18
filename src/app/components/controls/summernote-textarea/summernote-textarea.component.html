@@ -1,43 +1,15 @@
-<ng-container *ngIf="!horizontalMode">
-  <div class="form-group" [formGroup]="group">
-    <label class="col-form-label"><strong>{{ field.label }}</strong></label>
-    <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
-    <div [ngxSummernote]="config" [formControlName]="field.name"></div>
-    <div class="mat-form-field-appearance-outline">
-      <div class="mat-form-field-subscript-wrapper">
-        <mat-error class="mt-1"
-          *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
-          <ng-container *ngFor="let item of field.validations;">
-            <div *ngIf="group.get(field.name)?.hasError(item.name)">
-              {{item.message}}
-            </div>
-          </ng-container>
-        </mat-error>
-      </div>
-    </div>
-  </div>
-</ng-container>
-
-<ng-container *ngIf="horizontalMode">
-  <div class="form-group row  p-2" [formGroup]="group">
-    <label class="col-md-4 col-form-label">
-      <strong>{{ field.label }}</strong>
-      <app-manage-control *ngIf="editable" [field]="field"></app-manage-control>
-    </label>
-    <div class="col-md-8">
-      <div [ngxSummernote]="config" [formControlName]="field.name"></div>
-      <div class="mat-form-field-appearance-outline">
-        <div class="mat-form-field-subscript-wrapper">
-          <mat-error class="mt-3"
-            *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
-            <ng-container *ngFor="let item of field.validations;">
-              <div *ngIf="group.get(field.name)?.hasError(item.name)">
-                {{item.message}}
-              </div>
-            </ng-container>
-          </mat-error>
-        </div>
-      </div>
+<ng-container [formGroup]="group">
+  <div [ngxSummernote]="config" [formControlName]="field.name"></div>
+  <div class="mat-form-field-appearance-outline">
+    <div class="mat-form-field-subscript-wrapper">
+      <mat-error class="mt-3"
+        *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+        <ng-container *ngFor="let item of field.validations;">
+          <div *ngIf="group.get(field.name)?.hasError(item.name)">
+            {{item.message}}
+          </div>
+        </ng-container>
+      </mat-error>
     </div>
   </div>
 </ng-container>
