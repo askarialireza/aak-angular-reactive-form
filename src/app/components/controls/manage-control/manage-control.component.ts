@@ -47,7 +47,7 @@ export class ManageControlComponent implements OnInit {
 
       result => {
 
-        this.formService.FormItem.fieldItems.splice(this.formService.FormItem.fieldItems.indexOf(this.field), 1);
+        this.formService.formItem.fieldItems.splice(this.formService.formItem.fieldItems.indexOf(this.field), 1);
 
         this.formService.formGroup.removeControl(this.field.name);
 
@@ -104,46 +104,53 @@ export class ManageControlComponent implements OnInit {
 
   MoveDown() {
 
-    this.formService.MoveItemNext(this.field);
+    this.moveItemNext(this.field);
 
   }
 
   MoveUp() {
 
-    this.formService.MoveItemPrevious(this.field);
+    this.moveItemPrevious(this.field);
 
   }
 
   IncreaseWidth() {
 
-    this.formService.IncreaseWidth(this.field);
-    this.IsMaximumWidth();
+    this.increaseWidth(this.field);
+
+    this.isMaximumWidth();
   }
 
 
   DecreaseWidth() {
 
-    this.formService.DecreaseWidth(this.field);
-    this.IsMinimumWidth();
+    this.decreaseWidth(this.field);
+
+    this.isMinimumWidth();
   }
 
-  IsMaximumWidth() {
+  isMaximumWidth() {
+    
     if (this.field.width) {
       if (this.field.width == 12) {
         return true;
       }
     }
+
   }
 
-  IsMinimumWidth() {
+  isMinimumWidth() {
+
     if (this.field.width) {
       if (this.field.width == 1) {
         return true;
       }
     }
+
   }
 
   CheckControl(field: FieldItem) {
+
     switch (field.type) {
       case "checkbox":
       case "radio":
@@ -157,6 +164,53 @@ export class ManageControlComponent implements OnInit {
         return false;
         break;
     }
+
+  }
+
+  moveItemNext(fieldItem: FieldItem) {
+
+    let index = this.formService.formItem.fieldItems.indexOf(fieldItem);
+    var temp =
+      this.formService.formItem.fieldItems.splice(index, 1, this.formService.formItem.fieldItems[index + 1])[0];
+    temp.order++;
+    this.formService.formItem.fieldItems.splice(index + 1, 1, temp);
+    this.formService.formItem.fieldItems[index].order--;
+
+  }
+
+  moveItemPrevious(fieldItem: FieldItem) {
+
+    let index = this.formService.formItem.fieldItems.indexOf(fieldItem);
+    var temp =
+      this.formService.formItem.fieldItems.splice(index, 1, this.formService.formItem.fieldItems[index - 1])[0];
+    temp.order--;
+    this.formService.formItem.fieldItems.splice(index - 1, 1, temp);
+    this.formService.formItem.fieldItems[index].order++;
+
+  }
+
+  increaseWidth(fieldItem: FieldItem) {
+
+    if (fieldItem) {
+      if (fieldItem.width) {
+        if (fieldItem.width < 12) {
+          this.formService.formItem.fieldItems.find(current => current.id == fieldItem.id).width++;
+        }
+      }
+    }
+
+  }
+
+  decreaseWidth(fieldItem: FieldItem) {
+
+    if (fieldItem) {
+      if (fieldItem.width) {
+        if (fieldItem.width > 1) {
+          this.formService.formItem.fieldItems.find(current => current.id == fieldItem.id).width--;
+        }
+      }
+    }
+
   }
 
 }

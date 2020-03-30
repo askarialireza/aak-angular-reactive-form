@@ -32,10 +32,10 @@ export class MainPanelComponent implements OnInit {
     this.formApiService.getDefaultForm()
       .subscribe(
         result => {
-          this.formService.FormItem = result;
+          this.formService.formItem = result;
           this.formItem = result;
-          this.formService.isHorizontalMode = result["isHorizontal"];
-          this.formService.editModeEnabled = result["editMode"];
+          this.formService.isHorizontalModeEnabled = result["isHorizontal"];
+          this.formService.isEditModeEnabled = result["editMode"];
           this.formName = result["name"];
           this.formService.formGroup = this.formService.getFormGroup();
           this.formService.sortFieldItemsByOrder(this.formService.getFormItem().fieldItems);
@@ -49,9 +49,9 @@ export class MainPanelComponent implements OnInit {
 
           this.formItem = TestFormItem;
           this.formName = TestFormItem.name;
-          this.formService.FormItem = TestFormItem;
-          this.formService.isHorizontalMode = false;
-          this.formService.editModeEnabled = true;
+          this.formService.formItem = TestFormItem;
+          this.formService.isHorizontalModeEnabled = false;
+          this.formService.isEditModeEnabled = true;
           this.formService.formGroup = this.formService.getFormGroup();
           this.formService.sortFieldItemsByOrder(this.formService.getFormItem().fieldItems);
           this.formService.formGroup = this.formService.createControl(this.formService.getFormItem().fieldItems);

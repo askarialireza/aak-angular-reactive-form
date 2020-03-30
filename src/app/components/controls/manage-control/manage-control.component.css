@@ -2,12 +2,16 @@
     width: max-content !important;
 }
 
-.btn-group {
+.menu-button {
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
 }
 
 .dropdown-toggle::after {
     content: none;
+}
+
+.rtl .dropdown-menu, [dir=rtl] .dropdown-menu {
+    right: auto !important;
 }

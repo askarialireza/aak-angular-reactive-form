@@ -34,9 +34,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
-import { MatNativeDateModule, DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core/';
+import { MatNativeDateModule } from '@angular/material/core/';
 import { MaterialPersianDateAdapter, PERSIAN_DATE_FORMATS } from './infrastructure/material.persian-date.adapter';
-
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, SatDatepickerModule } from 'saturn-datepicker'
 
 @NgModule({
   imports: [
@@ -57,6 +57,8 @@ import { MaterialPersianDateAdapter, PERSIAN_DATE_FORMATS } from './infrastructu
     MatButtonToggleModule,
     MaterialFileInputModule,
     MatExpansionModule,
+    SatDatepickerModule,
+    MatMenuModule,
   ],
   exports: [
     MatButtonModule,
@@ -76,6 +78,8 @@ import { MaterialPersianDateAdapter, PERSIAN_DATE_FORMATS } from './infrastructu
     MatButtonToggleModule,
     MaterialFileInputModule,
     MatExpansionModule,
+    SatDatepickerModule,
+    MatMenuModule,
   ],
   providers: [
     { provide: DateAdapter, useClass: MaterialPersianDateAdapter, deps: [MAT_DATE_LOCALE] },

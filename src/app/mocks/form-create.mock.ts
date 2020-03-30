@@ -47,6 +47,14 @@ export const FormCreateItems: FieldItem[] = [
         type: "daterange",
         width: 12,
         order: 4,
+        required: true,
+        validations: [
+            {
+                name: "required",
+                validator: Validators.required,
+                message: "Form Name is Required",
+            },
+        ],
     },
     {
         id: Guid.create().toString(),
@@ -57,8 +65,8 @@ export const FormCreateItems: FieldItem[] = [
         width: 12,
         order: 6,
         options: [
-            {id:"check-active",value:"Active",disabled:false},
-            {id:"check-horizontal",value:"Horizontal",disabled:false},
+            { id: "check-active", value: "Active", disabled: false },
+            { id: "check-horizontal", value: "Horizontal", disabled: false },
         ],
     },
 ]

@@ -1,4 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import url(assets/WebFonts/css/fontiran.css); 
+@import url(assets/css/sat-datepicker-bundle.css);
+
+[dir=rtl] .mat-form-field {
+    text-align: right;
+ }
+
+* :not(.material-icons) {
+    font-family: IRANYekan !important;
+    font-size: small;
+}
 
 html, body {
     height: 100%;

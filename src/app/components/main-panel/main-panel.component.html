@@ -4,12 +4,12 @@
 <app-notification *ngIf="!isLoading && hasError" [message]="errrorMessage"></app-notification>
 
 <form *ngIf="!isLoading && !hasError" [formGroup]="this.formService.formGroup"
-  (submit)="OnSubmit(this.formService.FormItem)">
+  (submit)="OnSubmit(this.formService.formItem)">
 
   <!-- <app-main-panel-manage-form *ngIf="this.formService.editModeEnabled"></app-main-panel-manage-form> -->
 
   <app-basic-reactive-fields [formGroup]="this.formService.formGroup"
-    [isHorizontalForm]="this.formService.isHorizontalMode" [editMode]="this.formService.editModeEnabled"
+    [isHorizontalForm]="this.formService.isHorizontalModeEnabled" [editMode]="this.formService.isEditModeEnabled"
     [formItem]="this.formItem">
   </app-basic-reactive-fields>
 

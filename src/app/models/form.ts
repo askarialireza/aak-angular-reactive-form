@@ -1,5 +1,6 @@
 import { FieldItem } from './field-item';
 import { Guid } from 'guid-typescript';
+import { FormInterfaceSetting } from './form-interface-setting';
 
 export class Form {
 
@@ -17,6 +18,7 @@ export class Form {
         endDate?: Date,
         value?: string,
         logo?: string,
+        interfaceSetting?: FormInterfaceSetting,
     } = {}) {
         this.id = options.id || Guid.create().toString();
         this.name = options.name || Guid.create().toString();
@@ -27,12 +29,12 @@ export class Form {
         this.editMode = options.editMode || false;
         this.value = options.value || null;
         this.logo = options.logo || null;
-
+        this.interfaceSetting = options.interfaceSetting || null;
     }
 
     public id?: string;
-    public logo?: string;
     public name?: string;
+    public logo?: string;
     public date?: string;
     public action?: string;
     public isHorizontal?: boolean;
@@ -43,4 +45,5 @@ export class Form {
     public startDate?: Date;
     public endDate?: Date;
     public value?: string;
+    public interfaceSetting?: FormInterfaceSetting;
 }

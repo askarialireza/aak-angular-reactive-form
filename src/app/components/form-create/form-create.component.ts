@@ -62,6 +62,7 @@ export class FormCreateComponent implements OnInit {
         isActive: isActive,
         startDate: startDate,
         endDate: endDate,
+        interfaceSetting: null,
       }
 
       console.log(form);

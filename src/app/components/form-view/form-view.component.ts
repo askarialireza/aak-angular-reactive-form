@@ -34,12 +34,13 @@ export class FormViewComponent implements OnInit {
     this.formApiService.getForm(this.id)
       .subscribe(
         result => {
+          console.log(result);
           this.isLoading = false;
           this.notFound = false
           this.form = result;
           this.isHorizontal = result["isHorizontal"];
-          this.formService.FormItem = result;
-          //this.formService.formGroup = this.formService.getFormGroup();
+          this.formService.formItem = result;
+          this.formService.formGroup = this.formService.getFormGroup();
           this.formService.sortFieldItemsByOrder(this.formService.getFormItem().fieldItems);
           this.formService.formGroup = this.formService.createControl(this.formService.getFormItem().fieldItems);
 
