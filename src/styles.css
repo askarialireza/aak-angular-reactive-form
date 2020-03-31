@@ -1,14 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-@import url(assets/WebFonts/css/fontiran.css); 
-@import url(assets/css/sat-datepicker-bundle.css);
-
 [dir=rtl] .mat-form-field {
     text-align: right;
  }
 
 * :not(.material-icons) {
     font-family: IRANYekan !important;
-    font-size: small;
+    /* font-size: small; */
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.5em 0 0.75em 0 !important;
 }
 
 html, body {
@@ -39,5 +39,4 @@ body {
         margin-top: 0.5rem;
     }
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

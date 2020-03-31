@@ -1,14 +1,13 @@
-<form [formGroup]="this.formCreateService.getFormGroup()" (submit)="OnSubmit($event)">
+<form [formGroup]="formGroup" (submit)="OnSubmit($event)">
 
-<pre dir="ltr" style="text-align: left;">{{this.formCreateService.getFormGroup().value | json}}</pre>
-
-    <app-basic-reactive-fields [formGroup]="this.formCreateService.getFormGroup()" [isHorizontalForm]="false"
+    <app-basic-reactive-fields [formGroup]="formGroup" [isHorizontalForm]="false"
         [editMode]="false" [formItem]="this.formCreateService.getFormItem()"></app-basic-reactive-fields>
 
     <div>
         <button type="submit" class="btn btn-success mr-2"
-            [disabled]="this.formCreateService.getFormGroup().invalid">Save</button>
-        <button type="submit" class="btn btn-info mr-2">View</button>
-        <button type="submit" class="btn btn-danger mr-2">Delete</button>
+            [disabled]="formGroup.invalid">ذخیره فرم</button>
+        <button type="submit" class="btn btn-info mr-2">نمایش فرم</button>
+        <button type="submit" class="btn btn-danger mr-2">حذف فرم</button>
     </div>
+    
 </form>

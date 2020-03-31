@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Form } from '../../models/form';
 import { FormService } from '../../services/form.service';
@@ -17,6 +17,8 @@ export class BasicReactiveFieldsComponent implements OnInit {
   @Input() formItem: Form;
 
   @Input() formGroup: FormGroup;
+
+  @Output() formValueChanged: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(public formService: FormService) {
 

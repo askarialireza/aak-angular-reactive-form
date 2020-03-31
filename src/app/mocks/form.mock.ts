@@ -2,8 +2,17 @@ import { FieldItem } from '../models/field-item';
 import { Validators } from '@angular/forms';
 import { Guid } from 'guid-typescript';
 import { Form } from '../models/form';
+import { Option } from '../models/option';
 
 let _formId : string = Guid.create().toString();
+
+export const Options: Option[] = [
+    { id: Guid.create().toString(), value: "گزینه 1", },
+    { id: Guid.create().toString(), value: "گزینه 2", },
+    { id: Guid.create().toString(), value: "گزینه 3", },
+    { id: Guid.create().toString(), value: "گزینه 4", },
+];
+
 
 export const TestFieldItems: FieldItem[] = [
     {
@@ -28,7 +37,7 @@ export const TestFieldItems: FieldItem[] = [
         name: "uploadfile",
         required: true,
         type: "upload",
-        placeholder: "Test Input",
+        placeholder: "لطفا فایل مورد نظر خود را بارگزاری نمایید",
         label: "Test Input",
         order: 2,
         width: 12,
@@ -56,12 +65,7 @@ export const TestFieldItems: FieldItem[] = [
                 message: `Test Radio is Required.`,
             },
         ],
-        options: [
-            { id: Guid.create().toString(), value: "Option 1", },
-            { id: Guid.create().toString(), value: "Option 2", },
-            { id: Guid.create().toString(), value: "Option 3", },
-            { id: Guid.create().toString(), value: "Option 4", },
-        ],
+        options: Options,
     },
     {
         id: Guid.create().toString(),
@@ -201,12 +205,7 @@ export const TestFieldItems: FieldItem[] = [
         label: "Test Label Select",
         order: 6,
         width: 12,
-        options: [
-            { id: Guid.create().toString(), value: "Option 1", },
-            { id: Guid.create().toString(), value: "Option 2", },
-            { id: Guid.create().toString(), value: "Option 3", },
-            { id: Guid.create().toString(), value: "Option 4", },
-        ],
+        options: Options,
         validations: [
             {
                 name: "required",
@@ -225,12 +224,7 @@ export const TestFieldItems: FieldItem[] = [
         inlineView : true,
         order: 3,
         width: 12,
-        options: [
-            { id: Guid.create().toString(), value: "Option 1", disabled: false },
-            { id: Guid.create().toString(), value: "Option 2", disabled: false },
-            { id: Guid.create().toString(), value: "Option 3", disabled: false },
-            { id: Guid.create().toString(), value: "Option 4", disabled: false },
-        ],
+        options: Options,
         validations: [
             {
                 name: "required",
@@ -249,12 +243,7 @@ export const TestFieldItems: FieldItem[] = [
         order: 5,
         width: 12,
         inlineView: true,
-        options: [
-            { id: Guid.create().toString(), value: "Option 1", },
-            { id: Guid.create().toString(), value: "Option 2", },
-            { id: Guid.create().toString(), value: "Option 3", },
-            { id: Guid.create().toString(), value: "Option 4", },
-        ],
+        options: Options,
         validations: [
             {
                 name: "required",
@@ -291,3 +280,4 @@ export const TestFormItem: Form = {
     name: 'Test Form',
     fieldItems: TestFieldItems,
 }
+

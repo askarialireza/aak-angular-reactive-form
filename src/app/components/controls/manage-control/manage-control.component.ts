@@ -33,7 +33,7 @@ export class ManageControlComponent implements OnInit {
 
   ngOnInit() {
     this.isInline = this.GetListView();
-    this.changeViewListEnabled = this.CheckControl(this.field);
+    this.changeViewListEnabled = this.checkControl(this.field);
   }
 
   EditField() {
@@ -149,14 +149,13 @@ export class ManageControlComponent implements OnInit {
 
   }
 
-  CheckControl(field: FieldItem) {
+  checkControl(field: FieldItem) {
 
     switch (field.type) {
       case "checkbox":
       case "radio":
       case "radiobutton":
       case "multicheckbox":
-      case "daterange":
         return true;
         break;
 

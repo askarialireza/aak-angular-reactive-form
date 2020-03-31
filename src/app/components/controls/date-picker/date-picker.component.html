@@ -1,12 +1,9 @@
 <ng-container [formGroup]="group">
 	<mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
-		<input matInput [matDatepicker]="picker" (dateChange)="onDateChanged($event)"
+		<input matInput [satDatepicker]="picker" (dateChange)="onDateChanged($event)"
 			placeholder="{{field.placeholder}}" [formControlName]="field.name">
-		<!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-		<mat-datepicker #picker></mat-datepicker> -->
 		<sat-datepicker #picker></sat-datepicker>
 		<sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
-		<!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
 		<mat-error
 			*ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
 			<ng-container *ngFor="let item of field.validations;">

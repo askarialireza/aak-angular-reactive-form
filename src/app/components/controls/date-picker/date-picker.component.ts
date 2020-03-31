@@ -22,7 +22,6 @@ export class DatePickerComponent extends BaseComponent {
   }
 
   onDateChanged(e) {
-    console.log(e);
   }
 
 }

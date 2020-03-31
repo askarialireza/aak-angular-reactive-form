@@ -10,7 +10,7 @@
     <fa-icon [icon]="faEdit" [classes]="['mr-2']"></fa-icon>
     <span>ویرایش</span>
   </button>
-  <button mat-menu-item (click)="ChangeListView()">
+  <button mat-menu-item *ngIf="checkControl(field)" (click)="ChangeListView()">
     <fa-icon *ngIf="isInline" [icon]="faEllipsisVertical" [classes]="['mr-2']"></fa-icon>
     <span *ngIf="isInline">چیدمان عمودی</span>
 

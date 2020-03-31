@@ -32,6 +32,7 @@ export class FieldItem {
         class?: string,
         formId?: string,
         icon?: string,
+        hint?: string,
     } = {}) {
         this.id = (options.id) ? options.id : Guid.create().toString();
         this.name = (options.name) ? options.name : Guid.create().toString();
@@ -60,6 +61,7 @@ export class FieldItem {
         this.class = options.class || null;
         this.formId = options.formId || null;
         this.icon = options.icon || null;
+        this.hint = options.hint || null;
     }
 
     public id?: string;
@@ -89,4 +91,5 @@ export class FieldItem {
     public class?: string;
     public formId?: string;
     public icon?: string;
+    public hint?: string;
 }

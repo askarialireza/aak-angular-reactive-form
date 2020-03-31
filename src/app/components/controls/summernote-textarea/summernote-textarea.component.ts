@@ -20,13 +20,14 @@ export class SummernoteTextareaComponent extends BaseComponent {
       tabsize: 2,
       height: this.getHeight(),
       uploadImagePath: this.getUploadPath(),
+      lang: 'fa-IR',
       toolbar: [
         ['misc', ['codeview', 'undo', 'redo']],
         ['style', ['bold', 'italic', 'underline', 'clear']],
-        ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+        ['font', ['bold', 'italic', 'underline', 'strikethrough','clear']],
         ['fontsize', ['fontname', 'fontsize', 'color']],
-        ['para', ['style', 'ul', 'ol', 'paragraph', 'height']],
-        ['insert', ['table', 'picture', 'link', 'video', 'hr']]
+        ['para', ['ul', 'ol', 'paragraph', 'height']],
+        //['insert', ['table', 'picture', 'link', 'video', 'hr']]
       ],
       fontNames: ['Helvetica', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Roboto', 'Times']
     };

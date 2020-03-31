@@ -6,7 +6,7 @@
 <form *ngIf="!isLoading && !hasError" [formGroup]="this.formService.formGroup"
   (submit)="OnSubmit(this.formService.formItem)">
 
-  <!-- <app-main-panel-manage-form *ngIf="this.formService.editModeEnabled"></app-main-panel-manage-form> -->
+  <app-main-panel-manage-form></app-main-panel-manage-form>
 
   <app-basic-reactive-fields [formGroup]="this.formService.formGroup"
     [isHorizontalForm]="this.formService.isHorizontalModeEnabled" [editMode]="this.formService.isEditModeEnabled"

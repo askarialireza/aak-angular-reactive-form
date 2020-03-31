@@ -18,7 +18,6 @@ import { RangeComponent } from './components/controls/range/range.component';
 import { CheckboxComponent } from './components/controls/checkbox/checkbox.component';
 import { TextareaComponent } from './components/controls/textarea/textarea.component';
 import { SummernoteTextareaComponent } from './components/controls/summernote-textarea/summernote-textarea.component';
-import { SubmitComponent } from './components/controls/submit/submit.component';
 import { ButtonToggleComponent } from './components/controls/button-toggle/button-toggle.component';
 import { FormService } from './services/form.service';
 import { ManageControlComponent } from './components/controls/manage-control/manage-control.component';
@@ -46,7 +45,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { FieldDirective } from './directives/field.directive';
 import { UploadComponent } from './components/controls/upload/upload.component';
-
+import { FieldSelectPanelComponent } from './components/field-select-panel/field-select-panel.component';
+import { FieldTypeSelectModalComponent } from './components/field-select-panel-modals/field-type-select-modal/field-type-select-modal.component';
+import { FieldSettingModalComponent } from './components/field-select-panel-modals/field-setting-modal/field-setting-modal.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,6 @@ import { UploadComponent } from './components/controls/upload/upload.component';
     CheckboxComponent,
     TextareaComponent,
     SummernoteTextareaComponent,
-    SubmitComponent,
     ButtonToggleComponent,
     MultiCheckboxComponent,
     UploadComponent,
@@ -80,6 +80,9 @@ import { UploadComponent } from './components/controls/upload/upload.component';
     NotFoundComponent,
     FooterComponent,
     HomeComponent,
+    FieldSelectPanelComponent,
+    FieldTypeSelectModalComponent,
+    FieldSettingModalComponent,
   ],
 
   imports: [

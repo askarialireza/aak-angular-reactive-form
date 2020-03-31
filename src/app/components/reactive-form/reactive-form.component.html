@@ -1,14 +1,22 @@
 <mat-card>
   <mat-horizontal-stepper linear #stepper>
-    <mat-step>
+    <mat-step label="مشخصات" [stepControl]="this.formCreateService.formGroup">
       <div class="m-0 mx-md-5">
-        <app-form-create></app-form-create>
+        <form [formGroup]="this.formCreateService.formGroup" (submit)="onSumbitStep1($event)">
+          <app-basic-reactive-fields [formGroup]="this.formCreateService.formGroup" [isHorizontalForm]="false"
+              [editMode]="false" [formItem]="this.formCreateService.getFormItem()"></app-basic-reactive-fields>
+          <div>
+              <button matStepperNext type="submit" class="btn btn-success mr-2"
+                  [disabled]="this.formCreateService.formGroup.invalid">ذخیره فرم</button>
+          </div>    
+      </form>
       </div>
     </mat-step>
-    <mat-step>
+    <mat-step label="فیلد‌ها">
+      <app-field-select-panel></app-field-select-panel>
       <app-main-panel></app-main-panel>
     </mat-step>
-    <mat-step>
+    <mat-step label="تنظیمات">
       STEP 3
     </mat-step>
   </mat-horizontal-stepper>

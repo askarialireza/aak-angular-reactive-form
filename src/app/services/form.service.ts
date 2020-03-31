@@ -112,25 +112,7 @@ export class FormService {
         return;
       }
 
-      // if (field.type === "daterange") {
-
-      //   group.addControl(field.name, new FormArray([]));
-
-      //   for (let index = 0; index < 2; index++) {
-
-      //     const control = new FormControl(null, (field.required) ? [Validators.required] : null);
-
-      //     (group.controls[field.name] as FormArray).push(control);
-
-      //   }
-
-      //   return;
-      // }
-
-      const control = this.formBuilder.control(
-        field.value,
-        this.bindValidations(field.validations || [])
-      );
+      const control = this.formBuilder.control(field.value, this.bindValidations(field.validations || []));
 
       group.addControl(field.name, control);
 
@@ -170,28 +152,39 @@ export class FormService {
 
   getColumnClass(form: Form, item: FieldItem) {
     let result = "col-12";
-    if (item) {
-      if (item.width) {
-        let order = form.fieldItems.indexOf(item) + 1;
-        form.fieldItems.find(current => current.id == item.id).order = order;
-        let classOrder = "order-";
-        if (order > 12) {
-          classOrder = "order-12";
-        }
-        else {
-          classOrder += order.toString();
-        }
+    if (item.width) {
 
-        result += ` ${classOrder}`;
+      if (this.isHorizontalModeEnabled == false) {
 
-        if (this.isHorizontalModeEnabled == false) {
-          result += ` col-md-${item.width.toString()}`;
-        }
-        return result;
+        result += ` col-md-${item.width.toString()}`;
+
+      }
+
+      let order = form.fieldItems.indexOf(item) + 1;
+
+      form.fieldItems.find(current => current.id == item.id).order = order;
+
+      let classOrder = "order-";
+
+      if (order > 12) {
+
+        classOrder = "order-12";
+
       }
       else {
-        return null;
+
+        classOrder += order.toString();
+
       }
+
+      result += ` ${classOrder}`;
+
+      return result;
+    }
+    else {
+
+      return null;
+      
     }
   }
 

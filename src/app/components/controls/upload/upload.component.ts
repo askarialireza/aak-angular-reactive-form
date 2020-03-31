@@ -10,12 +10,20 @@ export class UploadComponent extends BaseComponent {
 
   constructor() {
     super();
-   }
+  }
 
   ngOnInit() {
   }
 
   modelChanged(e) {
+    console.log(e);
+  }
+
+  onSelectedFilesChanged(e) {
+    console.log(e);
+  }
+
+  onUploadClicked(e) {
     console.log(e);
   }
 

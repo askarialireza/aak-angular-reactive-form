@@ -4,6 +4,7 @@
       [formControlName]="field.name">
     <sat-datepicker #picker [rangeMode]="true" [rangeHoverEffect]="true"></sat-datepicker>
     <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
+    <mat-hint *ngIf="field.hint" align="start"><strong>{{field.hint}}</strong> </mat-hint>
     <mat-error
     *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
     <ng-container *ngFor="let item of field.validations;">
