@@ -8,8 +8,12 @@ import { BaseComponent } from 'src/app/infrastructure/base-component';
 })
 export class ToggleComponent extends BaseComponent {
 
+  public checked: boolean;
+
   constructor() {
     super();
+
+    this.checked = true;
    }
 
   ngOnInit() {

@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { MainPanelComponent } from './main-panel.component';
+import { FieldCreateModalComponent } from './field-create-modal.component';
 
-describe('MainPanelComponent', () => {
-  let component: MainPanelComponent;
-  let fixture: ComponentFixture<MainPanelComponent>;
+describe('FieldSettingModalComponent', () => {
+  let component: FieldCreateModalComponent;
+  let fixture: ComponentFixture<FieldCreateModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainPanelComponent ]
+      declarations: [ FieldCreateModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainPanelComponent);
+    fixture = TestBed.createComponent(FieldCreateModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

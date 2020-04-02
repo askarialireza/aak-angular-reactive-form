@@ -12,6 +12,7 @@ import { SelectComponent } from '../components/controls/select/select.component'
 import { SummernoteTextareaComponent } from '../components/controls/summernote-textarea/summernote-textarea.component';
 import { TextareaComponent } from '../components/controls/textarea/textarea.component';
 import { UploadComponent } from '../components/controls/upload/upload.component';
+import { ToggleComponent } from '../components/controls/toggle/toggle.component';
 
 const componentMapper = {
     input: InputComponent,
@@ -26,6 +27,7 @@ const componentMapper = {
     summernote: SummernoteTextareaComponent,
     textarea: TextareaComponent,
     upload: UploadComponent,
+    toggle: ToggleComponent,
 };
 @Directive({ selector: "[reactive-field]" })
 export class FieldDirective extends BaseComponent {

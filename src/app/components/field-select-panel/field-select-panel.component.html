@@ -1,19 +1,27 @@
-<h5>فیلد ها</h5>
-<mat-action-list>
-  <button class="field-item" (click)="openTextModal()">
-    <fa-icon [icon]="['fas','calendar']" [classes]="['w-100','mx-auto','x-large']"></fa-icon>
-    <span>متن</span>
-  </button>
-  <button class="field-item">
-    <fa-icon [icon]="['fas','calendar']" [classes]="['w-100','mx-auto','x-large']"></fa-icon>
-    <span>انتخاب</span>
-  </button>
-  <button class="field-item">
-    <fa-icon [icon]="['fas','calendar']" [classes]="['w-100','mx-auto','x-large']"></fa-icon>
-    <span>تاریخ و زمان</span>
-  </button>
-  <button class="field-item">
-    <fa-icon [icon]="['fas','calendar']" [classes]="['w-100','mx-auto','x-large']"></fa-icon>
-    <span>فایل</span>
-  </button>
-</mat-action-list>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        افزودن فیلد
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-action-list>
+      <button class="field-item" (click)="openTextModal()">
+        <fa-icon [icon]="['fas','calendar']" [classes]="['w-100','mx-auto','x-large']"></fa-icon>
+        <span>متن</span>
+      </button>
+      <button class="field-item">
+        <fa-icon [icon]="['fas','calendar']" [classes]="['w-100','mx-auto','x-large']"></fa-icon>
+        <span>انتخاب</span>
+      </button>
+      <button class="field-item">
+        <fa-icon [icon]="['fas','calendar']" [classes]="['w-100','mx-auto','x-large']"></fa-icon>
+        <span>تاریخ و زمان</span>
+      </button>
+      <button class="field-item">
+        <fa-icon [icon]="['fas','calendar']" [classes]="['w-100','mx-auto','x-large']"></fa-icon>
+        <span>فایل</span>
+      </button>
+    </mat-action-list>
+  </mat-expansion-panel>
+</mat-accordion>

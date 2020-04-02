@@ -2,11 +2,15 @@
   <mat-radio-group [ngClass]="{'d-flex flex-column' : !field.inlineView}" class="d-flex flex-column" [formControlName]="field.name">
     <mat-radio-button class="mr-2" *ngFor="let item of field.options" value="{{item.id}}">{{item.value}}</mat-radio-button>
   </mat-radio-group>
-  <mat-error *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
-    <ng-container *ngFor="let item of field.validations;">
-      <div *ngIf="group.get(field.name)?.hasError(item.name)">
-        {{item.message}}
-      </div>
-    </ng-container>
-  </mat-error>
+  <div class="mat-form-field-appearance-outline">
+    <div class="mat-form-field-subscript-wrapper">
+      <mat-error *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+        <ng-container *ngFor="let item of field.validations;">
+          <div class="my-1" *ngIf="group.get(field.name)?.hasError(item.name)">
+            {{item.message}}
+          </div>
+        </ng-container>
+      </mat-error>
+    </div>
+  </div>
 </ng-container>

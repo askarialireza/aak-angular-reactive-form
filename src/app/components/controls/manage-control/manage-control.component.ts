@@ -1,14 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FieldItem } from '../../../models/field-item';
-import { FormService } from '../../../services/form.service';
 import * as fas from '@fortawesome/free-solid-svg-icons';
 import { FielditemApiService } from 'src/app/services/api/fielditem.api.service';
-
+import { FieldItemService } from 'src/app/services/field-item.service';
+import { FormService } from 'src/app/services/form.service';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { BasicReactiveFieldsComponent } from '../../basic-reactive-fields/basic-reactive-fields.component';
+import { FieldEditModalComponent } from '../../field-select-panel-modals/field-edit-modal/field-edit-modal.component';
+@Inject(BasicReactiveFieldsComponent)
 @Component({
   selector: 'app-manage-control',
   templateUrl: './manage-control.component.html',
   styleUrls: ['./manage-control.component.css']
 })
+
 export class ManageControlComponent implements OnInit {
 
   @Input() field: FieldItem;
@@ -27,33 +32,48 @@ export class ManageControlComponent implements OnInit {
   faPlus = fas.faPlus;
   faMinus = fas.faMinus;
 
-  constructor(private fieldItemApiService: FielditemApiService, public formService: FormService) {
+  constructor(
+    public formService: FormService,
+    private fieldItemApiService: FielditemApiService,
+    private fieldItemService: FieldItemService,
+    private modal: MatBottomSheet) {
+
     this.changeViewListEnabled = false;
+
   }
 
   ngOnInit() {
+
     this.isInline = this.GetListView();
     this.changeViewListEnabled = this.checkControl(this.field);
+
   }
 
-  EditField() {
+  EditField(e) {
+    if(e){
+      this.modal.open(FieldEditModalComponent, { data: this.field, panelClass: 'mat-bottom-sheet-custom-container-xlarge' });
+    }
   }
 
   DeleteField() {
 
     let id = this.field.id;
 
-    this.fieldItemApiService.deleteFieldItem(id).subscribe(
+    this.fieldItemService.formItem.fieldItems.splice(this.fieldItemService.formItem.fieldItems.indexOf(this.field), 1);
 
-      result => {
+    this.fieldItemService.formGroup.removeControl(this.field.name);
 
-        this.formService.formItem.fieldItems.splice(this.formService.formItem.fieldItems.indexOf(this.field), 1);
+    // this.fieldItemApiService.deleteFieldItem(id).subscribe(
 
-        this.formService.formGroup.removeControl(this.field.name);
+    //   result => {
 
-      }
+    //     this.fieldItemService.formItem.fieldItems.splice(this.fieldItemService.formItem.fieldItems.indexOf(this.field), 1);
 
-    );
+    //     this.fieldItemService.formGroup.removeControl(this.field.name);
+
+    //   }
+
+    // );
 
   }
 
@@ -73,7 +93,7 @@ export class ManageControlComponent implements OnInit {
 
   IsFirstItem() {
 
-    if (this.formService.getIndexOfFieldItem(this.field) == 0) {
+    if (this.fieldItemService.getIndexOfFieldItem(this.field) == 0) {
 
       return true;
 
@@ -89,7 +109,7 @@ export class ManageControlComponent implements OnInit {
 
   IsLastItem() {
 
-    if (this.formService.getIndexOfFieldItem(this.field) == this.formService.getFieldItemsCount() - 1) {
+    if (this.fieldItemService.getIndexOfFieldItem(this.field) == this.fieldItemService.getFieldItemsCount() - 1) {
 
       return true;
 
@@ -130,7 +150,7 @@ export class ManageControlComponent implements OnInit {
   }
 
   isMaximumWidth() {
-    
+
     if (this.field.width) {
       if (this.field.width == 12) {
         return true;
@@ -168,23 +188,23 @@ export class ManageControlComponent implements OnInit {
 
   moveItemNext(fieldItem: FieldItem) {
 
-    let index = this.formService.formItem.fieldItems.indexOf(fieldItem);
+    let index = this.fieldItemService.formItem.fieldItems.indexOf(fieldItem);
     var temp =
-      this.formService.formItem.fieldItems.splice(index, 1, this.formService.formItem.fieldItems[index + 1])[0];
+      this.fieldItemService.formItem.fieldItems.splice(index, 1, this.fieldItemService.formItem.fieldItems[index + 1])[0];
     temp.order++;
-    this.formService.formItem.fieldItems.splice(index + 1, 1, temp);
-    this.formService.formItem.fieldItems[index].order--;
+    this.fieldItemService.formItem.fieldItems.splice(index + 1, 1, temp);
+    this.fieldItemService.formItem.fieldItems[index].order--;
 
   }
 
   moveItemPrevious(fieldItem: FieldItem) {
 
-    let index = this.formService.formItem.fieldItems.indexOf(fieldItem);
+    let index = this.fieldItemService.formItem.fieldItems.indexOf(fieldItem);
     var temp =
-      this.formService.formItem.fieldItems.splice(index, 1, this.formService.formItem.fieldItems[index - 1])[0];
+      this.fieldItemService.formItem.fieldItems.splice(index, 1, this.fieldItemService.formItem.fieldItems[index - 1])[0];
     temp.order--;
-    this.formService.formItem.fieldItems.splice(index - 1, 1, temp);
-    this.formService.formItem.fieldItems[index].order++;
+    this.fieldItemService.formItem.fieldItems.splice(index - 1, 1, temp);
+    this.fieldItemService.formItem.fieldItems[index].order++;
 
   }
 
@@ -193,7 +213,7 @@ export class ManageControlComponent implements OnInit {
     if (fieldItem) {
       if (fieldItem.width) {
         if (fieldItem.width < 12) {
-          this.formService.formItem.fieldItems.find(current => current.id == fieldItem.id).width++;
+          this.fieldItemService.formItem.fieldItems.find(current => current.id == fieldItem.id).width++;
         }
       }
     }
@@ -205,7 +225,7 @@ export class ManageControlComponent implements OnInit {
     if (fieldItem) {
       if (fieldItem.width) {
         if (fieldItem.width > 1) {
-          this.formService.formItem.fieldItems.find(current => current.id == fieldItem.id).width--;
+          this.fieldItemService.formItem.fieldItems.find(current => current.id == fieldItem.id).width--;
         }
       }
     }

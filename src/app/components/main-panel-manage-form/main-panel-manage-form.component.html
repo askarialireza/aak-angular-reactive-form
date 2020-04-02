@@ -1,20 +1,6 @@
-<!-- <div class="row mb-3">
-  <div class="col-12 col-md-6">
-      <div class="custom-control custom-checkbox ">
-          <input class="custom-control-input" id="customControlValidation1" [(ngModel)]="this.formService.isEditModeEnabled" type="checkbox">
-          <label class="custom-control-label" for="customControlValidation1"><strong>Edit Mode</strong></label>
-        </div>
-  </div>
-  <div class="col-12 col-md-6">
-      <div class="custom-control custom-checkbox ">
-          <input class="custom-control-input" id="customControlValidation2" [(ngModel)]="this.formService.isHorizontalModeEnabled" type="checkbox">
-          <label class="custom-control-label" for="customControlValidation2"><strong>Horizontal Style</strong></label>
-        </div>
-  </div>
-</div> -->
 
 <section class="example-section">
   <mat-checkbox class="example-margin" [(ngModel)]="this.formService.isEditModeEnabled">قابلیت ویرایش</mat-checkbox>
   <mat-checkbox class="example-margin" [(ngModel)]="this.formService.isHorizontalModeEnabled">چیدمان افقی</mat-checkbox>
-  <mat-checkbox class="example-margin" >نمایش JSON</mat-checkbox>
+  <mat-checkbox class="example-margin" [(ngModel)]="this.formService.showJsonCode">نمایش JSON</mat-checkbox>
 </section>

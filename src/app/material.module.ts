@@ -62,6 +62,8 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
     MatMenuModule,
     MatListModule,
     MatBottomSheetModule,
+    MatSlideToggleModule,
+    DragDropModule,
   ],
   exports: [
     MatButtonModule,
@@ -85,7 +87,8 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
     MatMenuModule,
     MatListModule,
     MatBottomSheetModule,
-
+    MatSlideToggleModule,
+    DragDropModule,
   ],
   providers: [
     { provide: DateAdapter, useClass: MaterialPersianDateAdapter, deps: [MAT_DATE_LOCALE] },

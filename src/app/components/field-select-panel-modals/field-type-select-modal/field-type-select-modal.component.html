@@ -1,53 +1,12 @@
 <h5 class="p-2">انتخاب نوع فیلد نوشتاری</h5>
 <mat-nav-list>
-  <a mat-list-item class="list-item" (click)="openLink($event)">
+  <a *ngFor="let item of fieldSelects" mat-list-item class="list-item" (click)="openLink($event,item)">
     <div class="list-item-icon">
-      <i class="material-icons">text_format</i>
+      <i class="material-icons">{{item.icon}}</i>
     </div>
     <div class="list-item-label">
-      <span class="label-title">متن کوتاه</span>
-      <span class="label-hint">مناسب برای درج انواع عبارت‌های نوشتاری کوتاه مانند مشخصات فردی و ..</span>
+      <span class="label-title">{{item.title}}</span>
+      <span class="label-hint">{{item.hint}}</span>
     </div>
   </a>
-
-  <a mat-list-item class="list-item" (click)="openLink($event)">
-    <div class="list-item-icon">
-      <i class="material-icons">format_align_right</i>
-    </div>
-    <div class="list-item-label">
-      <span class="label-title">متن بلند</span>
-      <span class="label-hint">مناسب برای درج انواع متون طولانی مانند توضیحات و ...</span>
-    </div>
-  </a>
-
-  <a mat-list-item class="list-item" (click)="openLink($event)">
-    <div class="list-item-icon">
-      <i class="material-icons">looks_one</i>
-    </div>
-    <div class="list-item-label">
-      <span class="label-title">اعداد</span>
-      <span class="label-hint">مناسب برای درج انواع عبارات عددی مانند کد ملی ، کد پستی و ...</span>
-    </div>
-  </a>
-
-  <a mat-list-item class="list-item" (click)="openLink($event)">
-    <div class="list-item-icon">
-      <i class="material-icons">email</i>
-    </div>
-    <div class="list-item-label">
-      <span class="label-title">پست الکترونیکی</span>
-      <span class="label-hint">مناسب برای درج پست الکترونیکی به همراه اعتبار سنجی ...</span>
-    </div>
-  </a>
-
-  <a mat-list-item class="list-item" (click)="openLink($event)">
-    <div class="list-item-icon">
-      <i class="material-icons">call</i>
-    </div>
-    <div class="list-item-label">
-      <span class="label-title">شماره تماس</span>
-      <span class="label-hint">مناسب برای درج انواع شماره تماس مانند شماره تلفن ثابت یا تلفن همراه ...</span>
-    </div>
-  </a>
-
 </mat-nav-list>

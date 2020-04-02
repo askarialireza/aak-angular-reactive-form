@@ -1,6 +1,6 @@
-<div cdkDropList [ngClass]="{'form-row':!isHorizontalForm}">
+<div [ngClass]="{'form-row':!isHorizontalForm}">
   <ng-container *ngFor="let item of formItem?.fieldItems">
-    <div cdkDrag class="p-2 {{this.formService.getColumnClass(formItem,item)}}"
+    <div class="p-2 {{this.formService.getColumnClass(formItem,item)}}"
       [ngClass]="{'edit-mode': editMode}">
       <div class="form-group" [ngClass]="{'row': isHorizontalForm}">
         <label *ngIf="item.label" class="col-form-label" [ngClass]="{'col-md-4': isHorizontalForm}">

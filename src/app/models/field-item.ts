@@ -33,6 +33,7 @@ export class FieldItem {
         formId?: string,
         icon?: string,
         hint?: string,
+        displayFormat?:any,
     } = {}) {
         this.id = (options.id) ? options.id : Guid.create().toString();
         this.name = (options.name) ? options.name : Guid.create().toString();
@@ -55,13 +56,14 @@ export class FieldItem {
         this.maxValue = options.maxValue || null;
         this.inlineView = options.inlineView || null;
         this.disabled = options.disabled || null;
-        this.width = options.width || 6;
+        this.width = options.width || 12;
         this.height = options.height || null;
         this.uploadPath = options.uploadPath || null;
         this.class = options.class || null;
         this.formId = options.formId || null;
         this.icon = options.icon || null;
         this.hint = options.hint || null;
+        this.displayFormat = options.displayFormat || null;
     }
 
     public id?: string;
@@ -92,4 +94,5 @@ export class FieldItem {
     public formId?: string;
     public icon?: string;
     public hint?: string;
+    public displayFormat?: any;
 }

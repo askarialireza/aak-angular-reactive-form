@@ -23,14 +23,10 @@ import { FormService } from './services/form.service';
 import { ManageControlComponent } from './components/controls/manage-control/manage-control.component';
 import { NgxSummernoteModule } from 'ngx-summernote';
 import { HttpClientModule } from '@angular/common/http';
-import { MainPanelComponent } from './components/main-panel/main-panel.component';
-import { SidebarPanelComponent } from './components/sidebar-panel/sidebar-panel.component';
 import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
 import { FieldCreateComponent } from './components/field-create/field-create.component';
-import { FormCreateComponent } from './components/form-create/form-create.component';
 import { MainPanelManageFormComponent } from './components/main-panel-manage-form/main-panel-manage-form.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FormCreateService } from './services/form-create.service';
 import { MultiCheckboxComponent } from './components/controls/multi-checkbox/multi-checkbox.component';
 import { DateRangeComponent } from './components/controls/date-range/date-range.component';
 import { BasicReactiveFieldsComponent } from './components/basic-reactive-fields/basic-reactive-fields.component';
@@ -47,7 +43,9 @@ import { FieldDirective } from './directives/field.directive';
 import { UploadComponent } from './components/controls/upload/upload.component';
 import { FieldSelectPanelComponent } from './components/field-select-panel/field-select-panel.component';
 import { FieldTypeSelectModalComponent } from './components/field-select-panel-modals/field-type-select-modal/field-type-select-modal.component';
-import { FieldSettingModalComponent } from './components/field-select-panel-modals/field-setting-modal/field-setting-modal.component';
+import { FieldCreateModalComponent } from './components/field-select-panel-modals/field-create-modal/field-create-modal.component';
+import { ToggleComponent } from './components/controls/toggle/toggle.component';
+import { FieldEditModalComponent } from './components/field-select-panel-modals/field-edit-modal/field-edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -66,23 +64,23 @@ import { FieldSettingModalComponent } from './components/field-select-panel-moda
     MultiCheckboxComponent,
     UploadComponent,
     DateRangeComponent,
-    MainPanelComponent,
-    SidebarPanelComponent,
     ReactiveFormComponent,
     FieldCreateComponent,
-    FormCreateComponent,
-    MainPanelManageFormComponent,
     NavbarComponent,
-    BasicReactiveFieldsComponent,
     LoadingComponent,
     NotificationComponent,
     FormViewComponent,
     NotFoundComponent,
     FooterComponent,
     HomeComponent,
+    ToggleComponent,
+
+    MainPanelManageFormComponent,
+    BasicReactiveFieldsComponent,
     FieldSelectPanelComponent,
     FieldTypeSelectModalComponent,
-    FieldSettingModalComponent,
+    FieldCreateModalComponent,
+    FieldEditModalComponent,
   ],
 
   imports: [
@@ -99,7 +97,6 @@ import { FieldSettingModalComponent } from './components/field-select-panel-moda
   ],
   providers: [
     FormService,
-    FormCreateService,
     FontAwesomeService,
     FormApiService,
     FielditemApiService,
@@ -121,6 +118,12 @@ import { FieldSettingModalComponent } from './components/field-select-panel-moda
     TextareaComponent,
     SummernoteTextareaComponent,
     UploadComponent,
+    ToggleComponent,
+    // MainPanelManageFormComponent,
+    // BasicReactiveFieldsComponent,
+    // FieldSelectPanelComponent,
+    // FieldTypeSelectModalComponent,
+    // FieldSettingModalComponent,
   ]
 })
 export class AppModule {

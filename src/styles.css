@@ -27,6 +27,30 @@ body {
     opacity: 0 !important;
 }
 
+.mat-bottom-sheet-custom-container-medium {
+    min-width: 384px !important;
+    max-width: 384px !important;
+    overflow: inherit !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+  
+  .mat-bottom-sheet-custom-container-large {
+    min-width: 512px !important;
+    max-width: 512px !important;
+    overflow: inherit !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+  
+  .mat-bottom-sheet-custom-container-xlarge {
+    min-width: 576px !important;
+    max-width: 576px !important;
+    overflow: inherit !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
 @media (max-width: 992px) {
     .btn-block-max-md {
         display: flex;

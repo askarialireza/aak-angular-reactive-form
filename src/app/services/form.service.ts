@@ -17,8 +17,11 @@ export class FormService {
 
   public isEditModeEnabled: boolean;
 
+  public showJsonCode: boolean;
+
   constructor(private formBuilder: FormBuilder) {
     this.formGroup = new FormGroup({});
+    this.showJsonCode = false;
   }
 
   getFormGroup(): FormGroup {
@@ -55,32 +58,24 @@ export class FormService {
     return this.formItem.fieldItems;
   }
 
-  getIndexOfFieldItem(field: FieldItem): number {
-    return this.formItem?.fieldItems?.indexOf(field);
-  }
-
-  getFieldItemsCount() {
-    return this.formItem.fieldItems.length;
-  }
-
   sortFieldItemsByOrder(fieldItems: FieldItem[]) {
     fieldItems.sort((a, b) => (a.order > b.order) ? 1 : -1)
   }
 
-  addFieldItem(field: FieldItem) {
-    if (field) {
-      this.formItem.fieldItems.push(field);
-    }
+  // addFieldItem(field: FieldItem) {
+  //   if (field) {
+  //     this.formItem.fieldItems.push(field);
+  //   }
 
-    this.sortFieldItemsByOrder(this.formItem.fieldItems);
+  //   this.sortFieldItemsByOrder(this.formItem.fieldItems);
 
-    const control = this.formBuilder.control(
-      field.value,
-      this.bindValidations(field.validations || [])
-    );
+  //   const control = this.formBuilder.control(
+  //     field.value,
+  //     this.bindValidations(field.validations || [])
+  //   );
 
-    this.formGroup.addControl(field.name, control);
-  }
+  //   this.formGroup.addControl(field.name, control);
+  // }
 
   createControl(fieldItems: FieldItem[]) {
 
@@ -154,7 +149,7 @@ export class FormService {
     let result = "col-12";
     if (item.width) {
 
-      if (this.isHorizontalModeEnabled == false) {
+      if (form?.isHorizontal == false) {
 
         result += ` col-md-${item.width.toString()}`;
 

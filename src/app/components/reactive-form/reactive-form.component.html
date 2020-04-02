@@ -1,20 +1,34 @@
 <mat-card>
   <mat-horizontal-stepper linear #stepper>
-    <mat-step label="مشخصات" [stepControl]="this.formCreateService.formGroup">
+    <mat-step label="مشخصات" [stepControl]="this.formGroupOne">
       <div class="m-0 mx-md-5">
-        <form [formGroup]="this.formCreateService.formGroup" (submit)="onSumbitStep1($event)">
-          <app-basic-reactive-fields [formGroup]="this.formCreateService.formGroup" [isHorizontalForm]="false"
-              [editMode]="false" [formItem]="this.formCreateService.getFormItem()"></app-basic-reactive-fields>
-          <div>
-              <button matStepperNext type="submit" class="btn btn-success mr-2"
-                  [disabled]="this.formCreateService.formGroup.invalid">ذخیره فرم</button>
-          </div>    
-      </form>
+        <form [formGroup]="this.formGroupOne" (submit)="onSumbitStep1($event)">
+          <app-basic-reactive-fields [formGroup]="this.formGroupOne" [isHorizontalForm]="false" [editMode]="false"
+            [formItem]="this.formItem"></app-basic-reactive-fields>
+          <div class="my-1 float-left">
+            <button matStepperNext type="submit" class="btn btn-primary" [disabled]="this.formGroupOne.invalid">مرحله
+              بعد</button>
+          </div>
+        </form>
       </div>
     </mat-step>
     <mat-step label="فیلد‌ها">
-      <app-field-select-panel></app-field-select-panel>
-      <app-main-panel></app-main-panel>
+      <h2 class="p-2 text-center">{{this.fieldItemService.formItem.name}}</h2>
+      <form [formGroup]="this.fieldItemService.formGroup">
+        <app-basic-reactive-fields [formGroup]="this.fieldItemService.formGroup"
+          [isHorizontalForm]="this.fieldItemService.formItem.isHorizontal"
+          [editMode]="this.fieldItemService.formItem.editMode" [formItem]="this.fieldItemService.formItem">
+        </app-basic-reactive-fields>
+        <app-field-select-panel></app-field-select-panel>
+        <div class="my-2 float-left">
+          <button type="button" matStepperPrevious class="btn btn-secondary mr-2">
+            مرحله قبل
+          </button>
+          <button matStepperNext [disabled]="!this.fieldItemService.formItem.fieldItems" type="submit" class="btn btn-primary">
+            مرحله بعد
+          </button>
+        </div>
+      </form>
     </mat-step>
     <mat-step label="تنظیمات">
       STEP 3

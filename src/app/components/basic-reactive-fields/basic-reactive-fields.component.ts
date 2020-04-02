@@ -20,9 +20,7 @@ export class BasicReactiveFieldsComponent implements OnInit {
 
   @Output() formValueChanged: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(public formService: FormService) {
-
-  }
+  constructor(public formService: FormService) {}
 
   ngOnInit() {
 

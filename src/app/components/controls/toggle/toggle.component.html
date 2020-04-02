@@ -1,5 +1,21 @@
 <ng-container [formGroup]="group">
-  <mat-slide-toggle class="example-margin" [formControlName]="field.name" [disabled]="field.disabled">
+  <mat-slide-toggle class="example-margin" [checked]="field.value" [formControlName]="field.name">
     {{field.placeholder}}
   </mat-slide-toggle>
+  <div *ngIf="field.hint" class="mat-form-field-subscript-wrapper">
+    <div class="mat-hint">
+      <strong>{{field.hint}}</strong>
+    </div>
+  </div>
+  <div class="mat-form-field-appearance-outline">
+    <div class="mat-form-field-subscript-wrapper">
+      <mat-error *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+        <ng-container *ngFor="let item of field.validations;">
+          <div class="my-1" *ngIf="group.get(field.name)?.hasError(item.name)">
+            {{item.message}}
+          </div>
+        </ng-container>
+      </mat-error>
+    </div>
+  </div>
 </ng-container>
