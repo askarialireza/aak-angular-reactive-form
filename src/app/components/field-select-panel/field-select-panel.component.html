@@ -6,19 +6,19 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-action-list>
-      <button class="field-item" (click)="openTextModal()">
+      <button class="field-item" (click)="openTextModal('text')">
         <fa-icon [icon]="['fas','calendar']" [classes]="['w-100','mx-auto','x-large']"></fa-icon>
         <span>متن</span>
       </button>
-      <button class="field-item">
+      <button class="field-item" (click)="openTextModal('select')">
         <fa-icon [icon]="['fas','calendar']" [classes]="['w-100','mx-auto','x-large']"></fa-icon>
         <span>انتخاب</span>
       </button>
-      <button class="field-item">
+      <button class="field-item" (click)="openTextModal('date')">
         <fa-icon [icon]="['fas','calendar']" [classes]="['w-100','mx-auto','x-large']"></fa-icon>
         <span>تاریخ و زمان</span>
       </button>
-      <button class="field-item">
+      <button class="field-item" (click)="openTextModal('file')">
         <fa-icon [icon]="['fas','calendar']" [classes]="['w-100','mx-auto','x-large']"></fa-icon>
         <span>فایل</span>
       </button>

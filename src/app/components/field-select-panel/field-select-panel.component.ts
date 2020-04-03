@@ -14,7 +14,7 @@ export class FieldSelectPanelComponent implements OnInit {
   ngOnInit() {
   }
 
-  openTextModal() {
-    this.textModal.open(FieldTypeSelectModalComponent);
+  openTextModal(group: string) {
+    this.textModal.open(FieldTypeSelectModalComponent, { data: group });
   }
 }

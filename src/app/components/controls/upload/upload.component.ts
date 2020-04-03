@@ -1,5 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { BaseComponent } from '../../../infrastructure/base-component';
+import { HttpEventType, HttpClient } from '@angular/common/http';
+import { UploadApiService } from 'src/app/services/api/upload.api.service';
+import { FileInput } from 'ngx-material-file-input';
+import * as $ from 'jquery';
+
+
+export enum UploadStatus {
+  NoFileSelected = 1,
+  FileSelected = 2,
+  FileUploading = 3,
+  FileUploaded = 4,
+  FileUploadError = 5,
+}
 
 @Component({
   selector: 'app-upload',
@@ -8,23 +21,63 @@ import { BaseComponent } from '../../../infrastructure/base-component';
 })
 export class UploadComponent extends BaseComponent {
 
-  constructor() {
+  @Output() public onUploadFinished = new EventEmitter();
+
+  public status: UploadStatus;
+
+  public progress: number;
+  public uploadMessage: string;
+  public fileName: string;
+
+  constructor(private uploadApiService: UploadApiService, private http: HttpClient) {
     super();
+    this.progress = 0;
+    this.status = UploadStatus.NoFileSelected;
   }
 
   ngOnInit() {
   }
 
-  modelChanged(e) {
-    console.log(e);
+  onSelectedFile(files) {
+    this.status = UploadStatus.FileSelected;
+    let fileToUpload = <File>files[0];
+    this.fileName = fileToUpload.name;
   }
 
-  onSelectedFilesChanged(e) {
-    console.log(e);
+  onClearFile(e) {
+    this.status = UploadStatus.NoFileSelected;
+    this.progress = 0;
+    $(`#file_${this.field.name}`).val('');
+    this.group.get(this.field.name).setValue(null);
   }
 
-  onUploadClicked(e) {
-    console.log(e);
+  public onUploadFile = (files) => {
+    if (files) {
+      if (files.length === 0) {
+        return;
+      }
+
+      let fileToUpload = <File>files[0];
+      this.fileName = fileToUpload.name;
+      const formData = new FormData();
+      formData.append('file', fileToUpload, fileToUpload.name);
+
+      this.uploadApiService.uploadFile(formData)
+        .subscribe(event => {
+          if (event.type === HttpEventType.UploadProgress) {
+            this.status = UploadStatus.FileUploading;
+            this.progress = Math.round(100 * event.loaded / event.total);
+            this.uploadMessage = `در حال بارگزاری : ${this.progress}%`;
+          }
+          else if (event.type === HttpEventType.Response) {
+            this.status = UploadStatus.FileUploaded;
+            this.onUploadFinished.emit(event.body);
+            console.log(event.body);
+            this.uploadMessage = 'با موفقیت بارگزاری شد.';
+            this.group.get(this.field.name).setValue(event.body);
+          }
+        });
+    }
   }
 
 }

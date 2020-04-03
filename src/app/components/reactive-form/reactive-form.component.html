@@ -14,6 +14,7 @@
     </mat-step>
     <mat-step label="فیلد‌ها">
       <h2 class="p-2 text-center">{{this.fieldItemService.formItem.name}}</h2>
+      <app-image *ngIf="this.logo" [image]="this.logo"></app-image>
       <form [formGroup]="this.fieldItemService.formGroup">
         <app-basic-reactive-fields [formGroup]="this.fieldItemService.formGroup"
           [isHorizontalForm]="this.fieldItemService.formItem.isHorizontal"

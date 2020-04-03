@@ -34,7 +34,7 @@ export class FormViewComponent implements OnInit {
     this.formApiService.getForm(this.id)
       .subscribe(
         result => {
-          console.log(result);
+          //console.log(result);
           this.isLoading = false;
           this.notFound = false
           this.form = result;

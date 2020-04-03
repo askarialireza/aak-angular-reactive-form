@@ -46,6 +46,7 @@ import { FieldTypeSelectModalComponent } from './components/field-select-panel-m
 import { FieldCreateModalComponent } from './components/field-select-panel-modals/field-create-modal/field-create-modal.component';
 import { ToggleComponent } from './components/controls/toggle/toggle.component';
 import { FieldEditModalComponent } from './components/field-select-panel-modals/field-edit-modal/field-edit-modal.component';
+import { ImageComponent } from './components/image/image.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,7 @@ import { FieldEditModalComponent } from './components/field-select-panel-modals/
     FooterComponent,
     HomeComponent,
     ToggleComponent,
-
+    ImageComponent,
     MainPanelManageFormComponent,
     BasicReactiveFieldsComponent,
     FieldSelectPanelComponent,

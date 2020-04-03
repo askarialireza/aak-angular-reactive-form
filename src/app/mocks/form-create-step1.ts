@@ -26,9 +26,18 @@ export const StepOneFieldItems: FieldItem[] = [
       name: "logo",
       label: "لوگو",
       type: "upload",
+      placeholder: 'متن نمایشی',
       hint: 'در صورت نیاز، لوگوی مورد نظر در ابتدای فرم نمایش داده خواهد شد',
       width: 12,
       order: 3,
+      // required: true,
+      // validations: [
+      //   {
+      //     name: "required",
+      //     validator: Validators.required,
+      //     message: "درج نام اجباری است",
+      //   },
+      // ],
     },
     {
       id: Guid.create().toString(),

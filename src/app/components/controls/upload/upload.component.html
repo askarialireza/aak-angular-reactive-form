@@ -1,20 +1,21 @@
 <ng-container [formGroup]="group">
-  <mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
-    <ngx-mat-file-input #uploadInput (ngModelChange)="modelChanged($event)" placeholder="{{field.placeholder}}" [formControlName]="field.name">
-    </ngx-mat-file-input>
-    <button mat-icon-button matSuffix *ngIf="!uploadInput.empty" (click)="uploadInput.clear($event)">
-      <mat-icon>clear</mat-icon>
+<div class="upload-field">
+  <input type="file" id="file_{{field.name}}" (change)="onSelectedFile(file.files)" #file style="display:none;">
+  <input type="hidden" [formControlName]="field.name">
+  <mat-progress-bar *ngIf="this.status == 3" mode="determinate" value="{{progress}}"></mat-progress-bar>
+  <div class="upload-placeholder" *ngIf="this.status == 1">{{field.placeholder}}</div>
+  <div *ngIf="this.status == 2 || this.status == 4">{{this.fileName}}</div>
+  <div class="field-buttons">
+    <button *ngIf="this.status > 1" type="button" mat-icon-button class="upload-field-button" (click)="onClearFile(file)">
+      <mat-icon>cancel</mat-icon>
     </button>
-    <button mat-icon-button matSuffix *ngIf="uploadInput">
-      <mat-icon>folder</mat-icon>
-    </button> 
-    <mat-hint *ngIf="field.hint" align="start"><strong>{{field.hint}}</strong> </mat-hint>
-    <mat-error *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
-      <ng-container *ngFor="let item of field.validations;">
-        <div *ngIf="group.get(field.name)?.hasError(item.name)">
-          {{item.message}}
-        </div>
-      </ng-container>
-    </mat-error>
-  </mat-form-field>
+    <button *ngIf="this.status == 1" type="button" mat-icon-button class="upload-field-button" (click)="file.click()">
+      <mat-icon>attachment</mat-icon>
+    </button>
+    <button *ngIf="this.status > 1" type="button" mat-icon-button class="upload-field-button" (click)="onUploadFile(file.files)">
+      <mat-icon>check_circle</mat-icon>
+    </button>
+  </div>
+</div>
+<div class="upload-message" *ngIf="this.status == 3" align="start"><strong>{{uploadMessage}}</strong></div>
 </ng-container>

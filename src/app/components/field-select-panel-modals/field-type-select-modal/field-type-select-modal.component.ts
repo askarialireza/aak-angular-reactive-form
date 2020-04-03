@@ -1,8 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { FieldCreateModalComponent } from '../field-create-modal/field-create-modal.component';
 import { FieldTypeSelect } from 'src/app/models/field-type-select';
 import { InputGroupFields } from 'src/app/mocks/field-type-select-group.mock';
+
+export enum GroupType {
+  Text = 'text',
+  Select = 'select',
+  Date = 'date',
+  File = 'file',
+}
 
 @Component({
   selector: 'app-field-type-select-modal',
@@ -13,11 +20,23 @@ export class FieldTypeSelectModalComponent implements OnInit {
 
   public fieldSelects: FieldTypeSelect[];
 
+  private group: GroupType;
+
   constructor(
     private textModal: MatBottomSheet,
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: string,
     private _bottomSheetRef: MatBottomSheetRef<FieldTypeSelectModalComponent>) {
+    
+    switch (data) {
+      case GroupType.Text:
+        this.fieldSelects = InputGroupFields;
+        break;
+    
+      default:
+        break;
+    }
 
-    this.fieldSelects = InputGroupFields;
+    
 
   }
 

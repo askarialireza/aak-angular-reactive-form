@@ -6,6 +6,7 @@ import { Form } from 'src/app/models/form';
 import { FieldItem } from 'src/app/models/field-item';
 import { StepOneForm } from '../../mocks/form-create-step1';
 import { FieldItemService } from 'src/app/services/field-item.service';
+import { BASE_URL } from 'src/app/mocks/backend.mock';
 
 @Component({
   selector: 'app-reactive-form',
@@ -21,6 +22,7 @@ export class ReactiveFormComponent implements OnInit {
   public formGroupOne: FormGroup;
   public formItem: Form;
   public formTitle: string;
+  public logo: string;
 
   constructor(public formService: FormService, public fieldItemService: FieldItemService) {
 
@@ -36,10 +38,13 @@ export class ReactiveFormComponent implements OnInit {
 
   onSumbitStep1(e) {
     this.fieldItemService.formItem.name = this.formGroupOne.get('name').value;
+
+    this.logo = (this.formGroupOne.get('logo').value)
+      ? this.formGroupOne.get('logo').value.path.replace(/\\/g, '/')
+      : null;
   }
 
   onSumbitStep2(e) {
-
   }
 
 }

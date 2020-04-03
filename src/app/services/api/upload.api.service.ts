@@ -12,8 +12,12 @@ export class UploadApiService {
 
   constructor(private http: HttpClient) {
 
-    this.apiUrl = `${BASE_URL}/api/forms`;
+    this.apiUrl = `${BASE_URL}/api/upload`;
 
+  }
+
+  uploadFile(formData: FormData) {
+   return  this.http.post(this.apiUrl, formData, { reportProgress: true, observe: 'events' });
   }
 
 }

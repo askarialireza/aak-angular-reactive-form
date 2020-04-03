@@ -1,3 +1,55 @@
 ::ng-deep .mat-form-field-suffix {
     display: flex !important;
 }
+
+.upload-field {
+    margin-top: .1em;
+    line-height: 1.125;
+    padding: 0 .75em 0 .75em;
+    position: relative;
+    display: inline-flex;
+    align-items: baseline;
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 5px;
+    height: 47.5px;
+}
+
+.button-upload {
+    color: inherit !important;
+}
+
+.upload-field:hover {
+    transition: all .2s;
+    border: 2px solid  rgba(0,0,0,1);
+
+}
+
+.field-buttons {
+    margin-left: 0px;
+    margin-right: auto;
+    display: flex;
+}
+
+.upload-field-button {
+    padding: 0 2px;
+    height: 46px;
+    color: rgba(0,0,0,.54);
+}
+
+.upload-field-button:focus {
+        outline: 0;
+}
+
+.upload-message {
+    color: rgba(0,0,0,.6);
+    font-size: 75%;
+    margin-top: .6666666667em;
+    position: inherit;
+    padding: 0 1em;
+}
+
+.upload-placeholder {
+    color: rgba(0,0,0,.54);
+}

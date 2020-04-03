@@ -38,6 +38,7 @@ import { MatNativeDateModule } from '@angular/material/core/';
 import { MaterialPersianDateAdapter, PERSIAN_DATE_FORMATS } from './infrastructure/material.persian-date.adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, SatDatepickerModule } from 'saturn-datepicker';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatFileUploadModule} from 'mat-file-upload';
 
 @NgModule({
   imports: [
@@ -64,6 +65,8 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
     MatBottomSheetModule,
     MatSlideToggleModule,
     DragDropModule,
+    MatProgressBarModule,
+    MatFileUploadModule,
   ],
   exports: [
     MatButtonModule,
@@ -89,6 +92,8 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
     MatBottomSheetModule,
     MatSlideToggleModule,
     DragDropModule,
+    MatProgressBarModule,
+    MatFileUploadModule,
   ],
   providers: [
     { provide: DateAdapter, useClass: MaterialPersianDateAdapter, deps: [MAT_DATE_LOCALE] },
