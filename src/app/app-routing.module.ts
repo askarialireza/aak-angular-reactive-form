@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormViewComponent } from './components/form-view/form-view.component';
-import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { HomeComponent } from './components/home/home.component';
+import { FormViewComponent } from './components/pages/form-view/form-view.component';
+import { ReactiveFormComponent } from './components/reactive-form-maker/reactive-form/reactive-form.component';
+import { NotFoundComponent } from './components/pages/not-found/not-found.component';
+import { HomeComponent } from './components/pages/home/home.component';
 
 const routes: Routes = [
   { path: '', component:HomeComponent },
@@ -12,8 +12,6 @@ const routes: Routes = [
   { path: "forms/view/:id", component: FormViewComponent },
   { path: "**", component: NotFoundComponent }
 ];
-
-// const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

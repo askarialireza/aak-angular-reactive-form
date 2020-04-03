@@ -1,18 +1,18 @@
-import { ComponentFactoryResolver, ComponentRef, Directive, Input, OnInit, ViewContainerRef } from "@angular/core";
-import { InputComponent } from "../components/controls/input/input.component";
+import { ComponentFactoryResolver, Directive, ViewContainerRef } from "@angular/core";
+import { InputComponent } from "../components/reactive-form-maker/controls/input/input.component";
 import { BaseComponent } from '../infrastructure/base-component';
-import { CheckboxComponent } from '../components/controls/checkbox/checkbox.component';
-import { DatePickerComponent } from '../components/controls/date-picker/date-picker.component';
-import { DateRangeComponent } from '../components/controls/date-range/date-range.component';
-import { MultiCheckboxComponent } from '../components/controls/multi-checkbox/multi-checkbox.component';
-import { RadioComponent } from '../components/controls/radio/radio.component';
-import { ButtonToggleComponent } from '../components/controls/button-toggle/button-toggle.component';
-import { RangeComponent } from '../components/controls/range/range.component';
-import { SelectComponent } from '../components/controls/select/select.component';
-import { SummernoteTextareaComponent } from '../components/controls/summernote-textarea/summernote-textarea.component';
-import { TextareaComponent } from '../components/controls/textarea/textarea.component';
-import { UploadComponent } from '../components/controls/upload/upload.component';
-import { ToggleComponent } from '../components/controls/toggle/toggle.component';
+import { CheckboxComponent } from '../components/reactive-form-maker/controls/checkbox/checkbox.component';
+import { DatePickerComponent } from '../components/reactive-form-maker/controls/date-picker/date-picker.component';
+import { DateRangeComponent } from '../components/reactive-form-maker/controls/date-range/date-range.component';
+import { MultiCheckboxComponent } from '../components/reactive-form-maker/controls/multi-checkbox/multi-checkbox.component';
+import { RadioComponent } from '../components/reactive-form-maker/controls/radio/radio.component';
+import { ButtonToggleComponent } from '../components/reactive-form-maker/controls/button-toggle/button-toggle.component';
+import { RangeComponent } from '../components/reactive-form-maker/controls/range/range.component';
+import { SelectComponent } from '../components/reactive-form-maker/controls/select/select.component';
+import { SummernoteTextareaComponent } from '../components/reactive-form-maker/controls/summernote-textarea/summernote-textarea.component';
+import { TextareaComponent } from '../components/reactive-form-maker/controls/textarea/textarea.component';
+import { UploadComponent } from '../components/reactive-form-maker/controls/upload/upload.component';
+import { ToggleComponent } from '../components/reactive-form-maker/controls/toggle/toggle.component';
 
 const componentMapper = {
     input: InputComponent,

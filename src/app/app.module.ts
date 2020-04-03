@@ -10,43 +10,42 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
 import { AppComponent } from './components/app/app.component';
-import { InputComponent } from './components/controls/input/input.component';
-import { SelectComponent } from './components/controls/select/select.component';
-import { RadioComponent } from './components/controls/radio/radio.component';
-import { DatePickerComponent } from './components/controls/date-picker/date-picker.component';
-import { RangeComponent } from './components/controls/range/range.component';
-import { CheckboxComponent } from './components/controls/checkbox/checkbox.component';
-import { TextareaComponent } from './components/controls/textarea/textarea.component';
-import { SummernoteTextareaComponent } from './components/controls/summernote-textarea/summernote-textarea.component';
-import { ButtonToggleComponent } from './components/controls/button-toggle/button-toggle.component';
+import { InputComponent } from './components/reactive-form-maker/controls/input/input.component';
+import { SelectComponent } from './components/reactive-form-maker/controls/select/select.component';
+import { RadioComponent } from './components/reactive-form-maker/controls/radio/radio.component';
+import { DatePickerComponent } from './components/reactive-form-maker/controls/date-picker/date-picker.component';
+import { RangeComponent } from './components/reactive-form-maker/controls/range/range.component';
+import { CheckboxComponent } from './components/reactive-form-maker/controls/checkbox/checkbox.component';
+import { TextareaComponent } from './components/reactive-form-maker/controls/textarea/textarea.component';
+import { SummernoteTextareaComponent } from './components/reactive-form-maker/controls/summernote-textarea/summernote-textarea.component';
+import { ButtonToggleComponent } from './components/reactive-form-maker/controls/button-toggle/button-toggle.component';
 import { FormService } from './services/form.service';
-import { ManageControlComponent } from './components/controls/manage-control/manage-control.component';
+import { ManageControlComponent } from './components/reactive-form-maker/controls/manage-control/manage-control.component';
 import { NgxSummernoteModule } from 'ngx-summernote';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
-import { FieldCreateComponent } from './components/field-create/field-create.component';
-import { MainPanelManageFormComponent } from './components/main-panel-manage-form/main-panel-manage-form.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { MultiCheckboxComponent } from './components/controls/multi-checkbox/multi-checkbox.component';
-import { DateRangeComponent } from './components/controls/date-range/date-range.component';
-import { BasicReactiveFieldsComponent } from './components/basic-reactive-fields/basic-reactive-fields.component';
+import { ReactiveFormComponent } from './components/reactive-form-maker/reactive-form/reactive-form.component';
+import { MainPanelManageFormComponent } from './components/reactive-form-maker/main-panel-manage-form/main-panel-manage-form.component';
+import { NavbarComponent } from './components/user-interface/navbar/navbar.component';
+import { MultiCheckboxComponent } from './components/reactive-form-maker/controls/multi-checkbox/multi-checkbox.component';
+import { DateRangeComponent } from './components/reactive-form-maker/controls/date-range/date-range.component';
+import { BasicReactiveFieldsComponent } from './components/reactive-form-maker/basic-reactive-fields/basic-reactive-fields.component';
 import { FontAwesomeService } from './services/fontawesome.service';
 import { FormApiService } from './services/api/form.api.service';
 import { FielditemApiService } from './services/api/fielditem.api.service';
-import { LoadingComponent } from './components/loading/loading.component';
-import { NotificationComponent } from './components/notification/notification.component';
-import { FormViewComponent } from './components/form-view/form-view.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './components/home/home.component';
+import { LoadingComponent } from './components/user-interface/loading/loading.component';
+import { NotificationComponent } from './components/user-interface/notification/notification.component';
+import { FormViewComponent } from './components/pages/form-view/form-view.component';
+import { NotFoundComponent } from './components/pages/not-found/not-found.component';
+import { FooterComponent } from './components/user-interface/footer/footer.component';
+import { HomeComponent } from './components/pages/home/home.component';
 import { FieldDirective } from './directives/field.directive';
-import { UploadComponent } from './components/controls/upload/upload.component';
-import { FieldSelectPanelComponent } from './components/field-select-panel/field-select-panel.component';
-import { FieldTypeSelectModalComponent } from './components/field-select-panel-modals/field-type-select-modal/field-type-select-modal.component';
-import { FieldCreateModalComponent } from './components/field-select-panel-modals/field-create-modal/field-create-modal.component';
-import { ToggleComponent } from './components/controls/toggle/toggle.component';
-import { FieldEditModalComponent } from './components/field-select-panel-modals/field-edit-modal/field-edit-modal.component';
-import { ImageComponent } from './components/image/image.component';
+import { UploadComponent } from './components/reactive-form-maker/controls/upload/upload.component';
+import { FieldSelectPanelComponent } from './components/reactive-form-maker/field-select-panel/field-select-panel.component';
+import { FieldTypeSelectModalComponent } from './components/reactive-form-maker/field-select-panel-modals/field-type-select-modal/field-type-select-modal.component';
+import { FieldCreateModalComponent } from './components/reactive-form-maker/field-select-panel-modals/field-create-modal/field-create-modal.component';
+import { ToggleComponent } from './components/reactive-form-maker/controls/toggle/toggle.component';
+import { FieldEditModalComponent } from './components/reactive-form-maker/field-select-panel-modals/field-edit-modal/field-edit-modal.component';
+import { ImageComponent } from './components/user-interface/image/image.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +65,6 @@ import { ImageComponent } from './components/image/image.component';
     UploadComponent,
     DateRangeComponent,
     ReactiveFormComponent,
-    FieldCreateComponent,
     NavbarComponent,
     LoadingComponent,
     NotificationComponent,
@@ -120,11 +118,6 @@ import { ImageComponent } from './components/image/image.component';
     SummernoteTextareaComponent,
     UploadComponent,
     ToggleComponent,
-    // MainPanelManageFormComponent,
-    // BasicReactiveFieldsComponent,
-    // FieldSelectPanelComponent,
-    // FieldTypeSelectModalComponent,
-    // FieldSettingModalComponent,
   ]
 })
 export class AppModule {
