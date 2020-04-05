@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BaseComponent } from '../../../../infrastructure/base-component';
+import * as Models from '../../../../exports/model.namespace';
 
 @Component({
   selector: 'app-range',
@@ -11,12 +12,10 @@ export class RangeComponent extends BaseComponent {
   constructor() {
     super();
    }
+   
+   @Input() field: Models.RangeFieldItem;
 
   ngOnInit() {
-  }
-
-  formatLabel(value: number) {
-      return Math.round((value/12)*100) + '%';
   }
 
 }

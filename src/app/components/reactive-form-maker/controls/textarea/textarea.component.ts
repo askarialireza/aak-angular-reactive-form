@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BaseComponent } from '../../../../infrastructure/base-component';
+import * as Models from '../../../../exports/model.namespace';
 
 @Component({
   selector: 'app-textarea',
@@ -11,6 +12,8 @@ export class TextareaComponent extends BaseComponent {
   constructor() {
     super();
   }
+
+  @Input() field: Models.TextareaFieldItem;
 
   ngOnInit() {
   }

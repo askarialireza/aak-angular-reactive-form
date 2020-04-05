@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BaseComponent } from '../../../../infrastructure/base-component';
+import * as Models from '../../../../exports/model.namespace';
 
 @Component({
   selector: 'app-checkbox',
@@ -7,6 +8,8 @@ import { BaseComponent } from '../../../../infrastructure/base-component';
   styleUrls: ['./checkbox.component.css']
 })
 export class CheckboxComponent extends BaseComponent {
+
+  @Input() field: Models.CheckboxFieldItem;
 
   constructor() {
     super();

@@ -1,8 +1,8 @@
-import { Component,EventEmitter, Output } from '@angular/core';
+import { Component,EventEmitter, Output, Input } from '@angular/core';
 import { BaseComponent } from '../../../../infrastructure/base-component';
 import { FormArray, FormControl, Validators } from '@angular/forms';
-import { Option } from '../../../../models/option';
-
+import * as Models from '../../../../exports/model.namespace';
+import * as Interfaces from '../../../../exports/interface.namespace';
 @Component({
   selector: 'app-multi-checkbox',
   templateUrl: './multi-checkbox.component.html',
@@ -12,9 +12,12 @@ export class MultiCheckboxComponent extends BaseComponent {
 
   constructor() {
     super();
+    
   }
 
   public values;
+
+  @Input() field: Models.MultiCheckboxFieldItem;
 
   @Output() SelectedValues: EventEmitter<any> = new EventEmitter<any>();
 
@@ -29,7 +32,7 @@ export class MultiCheckboxComponent extends BaseComponent {
   }
 
   get fieldOptions() {
-    return <Option[]>this.field.options;
+    return <Interfaces.Option[]>this.field.options;
   }
 
   get errorMessage() {

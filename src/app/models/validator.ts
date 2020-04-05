@@ -1,7 +1,14 @@
-export class Validator {
+import * as Interfaces from '../exports/interface.namespace';
+import { Validators } from '@angular/forms';
 
-    public name: string;    
-    public validator: any;
-    public message: string;
+export class Validator implements Interfaces.Validator {
+
+    constructor(init?: Partial<Validator>) {
+        Object.assign(this, init);
+    }
+    
+    name: string;
+    validator: Validators;
+    message: string;
 
 }

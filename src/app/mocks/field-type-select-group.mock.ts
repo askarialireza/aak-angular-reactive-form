@@ -1,52 +1,113 @@
-import { InputFieldItem, TextareaFieldItem, NumericInputFieldItem, SummernoteFieldItem } from '../mocks/field-items.mock';
-import { FieldTypeSelect } from '../models/field-type-select';
-export const InputGroupFields: FieldTypeSelect[] = [
-    {
-        type: 'text',
-        group:'text',
-        fieldType: InputFieldItem,
+import * as Interfaces from '../exports/interface.namespace';
+import * as Models from '../exports/model.namespace';
+
+export const groupTypesList: Interfaces.BaseTypeSelect[] = [
+    new Models.GroupTypeSelect({
+        groupName: 'text',
+        title: 'نوشتار',
+        hint: 'برای درج انواع متون نوشتاری',
+        icon: 'text_format'
+    }),
+    new Models.GroupTypeSelect({
+        groupName: 'select',
+        title: 'گزینش',
+        hint: 'برای درج انواع فیلد‌های انتخابی و ...',
+        icon: 'assignment_turned_in'
+    }),
+    new Models.GroupTypeSelect({
+        groupName: 'date',
+        title: 'تاریخ و زمان',
+        hint: 'برای درج انواع مقادیر تاریخ و زمان ...',
+        icon: 'today'
+    }),
+    new Models.GroupTypeSelect({
+        groupName: 'file',
+        title: 'فایل',
+        hint: 'برای بارگزاری انواع فایل',
+        icon: 'description'
+    }),
+];
+
+
+export const textGroupFields: Interfaces.BaseTypeSelect[] = [
+    new Models.FieldTypeSelect({
+        groupName: 'text',
+        fieldItems: [new Models.InputFieldItem()],
         title: 'متن کوتاه',
         hint: 'مناسب برای درج انواع عبارت‌های نوشتاری کوتاه مانند مشخصات فردی و ...',
         icon: 'text_format'
-    },
-    {
-        type: 'textarea',
-        group:'text',
-        fieldType: TextareaFieldItem,
+    }),
+    new Models.FieldTypeSelect({
+        groupName: 'text',
+        fieldItems: [new Models.TextareaFieldItem(), new Models.SummernoteFieldItem()],
         title: 'متن بلند',
         hint: 'مناسب برای درج انواع متون طولانی مانند توضیحات و ...',
         icon: 'format_align_right'
-    },
-    {
-        type: 'summernote',
-        group:'text',
-        fieldType: SummernoteFieldItem,
-        title: 'متن بلند (بلاگ)',
-        hint: 'مناسب برای وبلاگ نویسی به همراه امکانات پیشرفته',
-        icon: 'format_align_right'
-    },
-    {
-        type: 'number',
-        group:'text',
-        fieldType: NumericInputFieldItem,
+    }),
+    new Models.FieldTypeSelect({
+        groupName: 'text',
+        fieldItems: [new Models.NumberFieldItem()],
         title: 'اعداد',
         hint: 'مناسب برای درج انواع عبارات عددی مانند کد ملی ، کد پستی و ...',
         icon: 'looks_one'
-    },
-    {
-        type: 'email',
-        group:'text',
-        fieldType: InputFieldItem,
+    }),
+    new Models.FieldTypeSelect({
+        groupName: 'text',
+        fieldItems: [new Models.EmailFieldItem()],
         title: 'پست الکترونیکی',
         hint: 'مناسب برای درج پست الکترونیکی به همراه اعتبار سنجی ...',
         icon: 'email'
-    },
-    {
-        type: 'call',
-        group:'text',
-        fieldType: InputFieldItem,
+    }),
+    new Models.FieldTypeSelect({
+        groupName: 'text',
+        fieldItems: [new Models.InputFieldItem()],
         title: 'شماره تماس',
         hint: 'مناسب برای درج انواع شماره تماس مانند شماره تلفن ثابت یا تلفن همراه ...',
         icon: 'call'
-    },
+    }),
 ];
+
+export const SelectGroupFields: Interfaces.BaseTypeSelect[] = [
+    new Models.FieldTypeSelect({
+        groupName: 'select',
+        fieldItems: [new Models.SelectFieldItem(), new Models.RadioFieldItem(), new Models.TextareaFieldItem()],
+        title: 'تک انتخابی',
+        hint: 'مناسب برای انتخاب یک گزینه از بین انتخاب‌ها',
+        icon: 'text_format'
+    }),
+    new Models.FieldTypeSelect({
+        groupName: 'select',
+        fieldItems: [new Models.MultiCheckboxFieldItem()],
+        title: 'چند انتخابی',
+        hint: 'مناسب برای انتخاب چند گزینه از بین انتخاب‌ها',
+        icon: 'text_format'
+    }),
+    new Models.FieldTypeSelect({
+        groupName: 'select',
+        fieldItems: [new Models.CheckboxFieldItem(), new Models.ToggleFieldItem()],
+        title: 'فعال / غیرفعال',
+        hint: 'مناسب برای فیلد‌های دو گزینه ای مانند بله / خیر و ...',
+        icon: 'text_format'
+    }),
+];
+
+export const ChooseFieldType: Interfaces.FieldType =
+    new Models.FieldType({
+        title: 'افزودن فیلد',
+        group: 'create',
+        items: groupTypesList,
+    });
+
+export const TextFieldType: Interfaces.FieldType =
+    new Models.FieldType({
+        title: 'نوشتار',
+        group: 'text',
+        items: textGroupFields,
+    });
+
+export const SelectFieldType: Interfaces.FieldType =
+    new Models.FieldType({
+        title: 'انتخاب',
+        group: 'select',
+        items: SelectGroupFields,
+    });

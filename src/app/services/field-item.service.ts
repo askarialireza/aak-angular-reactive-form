@@ -1,24 +1,33 @@
 import { Injectable } from '@angular/core';
-import { FieldItem } from '../models/field-item';
 import { FormGroup } from '@angular/forms';
-import { Form } from '../models/form';
 import { Guid } from 'guid-typescript';
+import * as Interfaces from '../exports/interface.namespace';
+import * as Models from '../exports/model.namespace';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FieldItemService {
   public formGroup: FormGroup;
-  public formItem: Form;
-  public fieldItems: FieldItem[];
+  public formItem: Interfaces.Form;
+  public fieldItems: Interfaces.BaseFieldItem[];
 
   constructor() {
-    this.formItem = new Form({ id: Guid.create().toString(), isActive: true, isHorizontal: false, editMode:true });
+
+    this.formItem = new Models.Form({
+      id: Guid.create().toString(),
+      uiSetting: new Models.FormUISetting({
+        isEditModeEnabled: true,
+        isHorizontalModeEnabled: false
+      }),
+    });
+
     this.formGroup = new FormGroup({});
+
     this.fieldItems = [];
   }
 
-  getIndexOfFieldItem(field: FieldItem): number {
+  getIndexOfFieldItem(field: Interfaces.BaseFieldItem): number {
     return this.formItem?.fieldItems?.indexOf(field);
   }
 
@@ -26,7 +35,7 @@ export class FieldItemService {
     return this.formItem.fieldItems.length;
   }
 
-  sortFieldItemsByOrder(fieldItems: FieldItem[]) {
+  sortFieldItemsByOrder(fieldItems: Interfaces.BaseFieldItem[]) {
     fieldItems.sort((a, b) => (a.order > b.order) ? 1 : -1)
   }
 

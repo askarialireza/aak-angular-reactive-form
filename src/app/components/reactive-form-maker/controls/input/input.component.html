@@ -1,8 +1,8 @@
 <ng-container [formGroup]="group">
   <mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
     <input matInput [formControlName]="field.name" [type]="field.inputType" [autocomplete]="field.autocomplete"
-      [placeholder]="field.placeholder" [pattern]="field.pattern" [min]="field.minValue"
-      [max]="field.maxValue">
+      [placeholder]="field.placeholder" [pattern]="field.pattern" [min]="field.minlength"
+      [max]="field.maxlength">
     <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
     <mat-hint *ngIf="field.hint" align="start"><strong>{{field.hint}}</strong> </mat-hint>
     <!-- <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint> -->

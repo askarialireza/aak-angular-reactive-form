@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { FormApiService } from '../../../services/api/form.api.service';
-import { Form } from '../../../models/form';
 import { FormGroup } from '@angular/forms';
-import { FormService } from '../../../services/form.service';
+import * as Services from '../../../exports/service.namespace';
+import * as Interfaces from '../../../exports/interface.namespace';
 
 @Component({
   selector: 'app-form-view',
@@ -13,13 +12,13 @@ import { FormService } from '../../../services/form.service';
 export class FormViewComponent implements OnInit {
 
   public id: string;
-  public form: Form;
+  public form: Interfaces.Form;
   public notFound: boolean;
   public isLoading: boolean;
   public isHorizontal: boolean;
   public formGroup: FormGroup;
 
-  constructor(private route: ActivatedRoute, private formApiService: FormApiService, public formService: FormService) {
+  constructor(private route: ActivatedRoute, private formApiService: Services.FormApiService, public formService: Services.FormService) {
 
     this.formGroup = new FormGroup({});
 

@@ -1,6 +1,7 @@
-import { Component,EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Output, Input } from "@angular/core";
 import { BaseComponent } from '../../../../infrastructure/base-component';
 import * as fas from '@fortawesome/free-solid-svg-icons';
+import * as Models from '../../../../exports/model.namespace';
 
 @Component({
   selector: 'app-date-picker',
@@ -11,10 +12,8 @@ import * as fas from '@fortawesome/free-solid-svg-icons';
 
 export class DatePickerComponent extends BaseComponent {
 
-  faCalendarAlt = fas.faCalendarAlt;
-  faCalendarDay = fas.faCalendarDay;
-  faTimes = fas.faTimes;
-
+  @Input() field: Models.DateFieldItem;
+  
   @Output() dateSelected: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {

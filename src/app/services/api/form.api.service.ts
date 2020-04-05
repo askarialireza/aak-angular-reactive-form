@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
-import { Form } from '../../models/form';
 import { Injectable } from '@angular/core';
 import { BASE_URL } from '../../mocks/backend.mock';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import * as Interfaces from '../../exports/interface.namespace';
 
 @Injectable({
   providedIn: 'root'
@@ -17,31 +17,31 @@ export class FormApiService {
 
   }
 
-  getDefaultForm(): Observable<Form> {
+  getDefaultForm(): Observable<Interfaces.Form> {
 
-    return this.http.get<Form>(this.apiUrl);
+    return this.http.get<Interfaces.Form>(this.apiUrl);
 
   }
 
   getForm(id: string) {
 
-    return this.http.get<Form>(`${this.apiUrl}/${id}`);
+    return this.http.get<Interfaces.Form>(`${this.apiUrl}/${id}`);
 
   }
 
-  submitForm(data: Form) {
+  submitForm(data: Interfaces.Form) {
 
     const headers = new HttpHeaders().set('content-type', 'application/json');
 
-    return this.http.put<Form>(this.apiUrl, data, { headers });
+    return this.http.put<Interfaces.Form>(this.apiUrl, data, { headers });
 
   }
 
-  postForm(form: Form) {
+  postForm(form: Interfaces.Form) {
 
     const headers = new HttpHeaders().set('content-type', 'application/json');
 
-    return this.http.post<Form>(this.apiUrl, form, { headers });
+    return this.http.post<Interfaces.Form>(this.apiUrl, form, { headers });
 
   }
 

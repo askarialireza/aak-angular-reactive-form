@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Form } from '../../../models/form';
-import { FormService } from '../../../services/form.service';
+import * as Services from '../../../exports/service.namespace';
+import * as Interfaces from '../../../exports/interface.namespace';
 
 @Component({
   selector: 'app-basic-reactive-fields',
@@ -14,13 +14,13 @@ export class BasicReactiveFieldsComponent implements OnInit {
 
   @Input() isHorizontalForm: boolean;
 
-  @Input() formItem: Form;
+  @Input() formItem: Interfaces.Form;
 
   @Input() formGroup: FormGroup;
 
   @Output() formValueChanged: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(public formService: FormService) {}
+  constructor(public formService: Services.FormService) {}
 
   ngOnInit() {
 

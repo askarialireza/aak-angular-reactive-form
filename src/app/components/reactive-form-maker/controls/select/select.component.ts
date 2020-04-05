@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { BaseComponent } from '../../../../infrastructure/base-component';
+import * as Models from '../../../../exports/model.namespace';
 
 @Component({
   selector: 'app-select',
@@ -10,7 +11,7 @@ import { BaseComponent } from '../../../../infrastructure/base-component';
 export class SelectComponent extends BaseComponent {
 
   public selectedValue = null;
-
+  @Input() field: Models.SelectFieldItem;
   @Output() public valueChanged = new EventEmitter<string>();
 
   constructor() {

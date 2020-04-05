@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BaseComponent } from '../../../../infrastructure/base-component';
+import * as Models from '../../../../exports/model.namespace';
 
 @Component({
   selector: 'app-toggle',
@@ -9,7 +10,7 @@ import { BaseComponent } from '../../../../infrastructure/base-component';
 export class ToggleComponent extends BaseComponent {
 
   public checked: boolean;
-
+  @Input() field: Models.ToggleFieldItem;
   constructor() {
     super();
 

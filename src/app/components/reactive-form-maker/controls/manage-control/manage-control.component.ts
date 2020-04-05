@@ -1,12 +1,11 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
-import { FieldItem } from '../../../../models/field-item';
 import * as fas from '@fortawesome/free-solid-svg-icons';
-import { FielditemApiService } from '../../../../services/api/fielditem.api.service';
-import { FieldItemService } from '../../../../services/field-item.service';
-import { FormService } from '../../../../services/form.service';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { BasicReactiveFieldsComponent } from '../../../reactive-form-maker/basic-reactive-fields/basic-reactive-fields.component';
 import { FieldEditModalComponent } from '../../field-select-panel-modals/field-edit-modal/field-edit-modal.component';
+import { BasicReactiveFieldsComponent } from '../../../reactive-form-maker/basic-reactive-fields/basic-reactive-fields.component';
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import * as Interfaces from '../../../../exports/interface.namespace';
+import * as Services from '../../../../exports/service.namespace';
+
 @Inject(BasicReactiveFieldsComponent)
 @Component({
   selector: 'app-manage-control',
@@ -16,7 +15,7 @@ import { FieldEditModalComponent } from '../../field-select-panel-modals/field-e
 
 export class ManageControlComponent implements OnInit {
 
-  @Input() field: FieldItem;
+  @Input() field: Interfaces.MultiViewFieldItem;
 
   changeViewListEnabled: boolean;
 
@@ -33,9 +32,9 @@ export class ManageControlComponent implements OnInit {
   faMinus = fas.faMinus;
 
   constructor(
-    public formService: FormService,
-    private fieldItemApiService: FielditemApiService,
-    private fieldItemService: FieldItemService,
+    public formService: Services.FormService,
+    private fieldItemApiService: Services.FieldItemApiService,
+    private fieldItemService: Services.FieldItemService,
     private modal: MatBottomSheet) {
 
     this.changeViewListEnabled = false;
@@ -50,7 +49,7 @@ export class ManageControlComponent implements OnInit {
   }
 
   EditField(e) {
-    if(e){
+    if (e) {
       this.modal.open(FieldEditModalComponent, { data: this.field, panelClass: 'mat-bottom-sheet-custom-container-xlarge' });
     }
   }
@@ -169,7 +168,7 @@ export class ManageControlComponent implements OnInit {
 
   }
 
-  checkControl(field: FieldItem) {
+  checkControl(field: Interfaces.BaseFieldItem) {
 
     switch (field.type) {
       case "checkbox":
@@ -186,7 +185,7 @@ export class ManageControlComponent implements OnInit {
 
   }
 
-  moveItemNext(fieldItem: FieldItem) {
+  moveItemNext(fieldItem: Interfaces.BaseFieldItem) {
 
     let index = this.fieldItemService.formItem.fieldItems.indexOf(fieldItem);
     var temp =
@@ -197,7 +196,7 @@ export class ManageControlComponent implements OnInit {
 
   }
 
-  moveItemPrevious(fieldItem: FieldItem) {
+  moveItemPrevious(fieldItem: Interfaces.BaseFieldItem) {
 
     let index = this.fieldItemService.formItem.fieldItems.indexOf(fieldItem);
     var temp =
@@ -208,7 +207,7 @@ export class ManageControlComponent implements OnInit {
 
   }
 
-  increaseWidth(fieldItem: FieldItem) {
+  increaseWidth(fieldItem: Interfaces.BaseFieldItem) {
 
     if (fieldItem) {
       if (fieldItem.width) {
@@ -220,7 +219,7 @@ export class ManageControlComponent implements OnInit {
 
   }
 
-  decreaseWidth(fieldItem: FieldItem) {
+  decreaseWidth(fieldItem:Interfaces.BaseFieldItem) {
 
     if (fieldItem) {
       if (fieldItem.width) {

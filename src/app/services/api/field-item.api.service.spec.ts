@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { Fielditem.apiService } from './fielditem.api.service';
+import { FieldItemApiService } from './field-item.api.service';
 
 describe('Service: Fielditem.api', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [Fielditem.apiService]
+      providers: [FieldItemApiService]
     });
   });
 
-  it('should ...', inject([Fielditem.apiService], (service: Fielditem.apiService) => {
+  it('should ...', inject([FieldItemApiService], (service: FieldItemApiService) => {
     expect(service).toBeTruthy();
   }));
 });

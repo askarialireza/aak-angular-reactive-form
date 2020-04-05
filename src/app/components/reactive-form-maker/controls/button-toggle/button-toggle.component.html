@@ -1,8 +1,6 @@
 <ng-container [formGroup]="group">
   <mat-button-toggle-group [vertical]="!field.inlineView" (change)="onChanged($event)">
     <mat-button-toggle class="p-1" *ngFor="let item of field.options" [value]="item.id">
-      <fa-icon *ngIf="item.disabled" [icon]="['fas','check']" [classes]="['d-block','mx-auto']"></fa-icon>
-      <fa-icon *ngIf="!item.disabled" [icon]="iconArray" [classes]="['d-block','mx-auto']"></fa-icon>
       {{item.value}}
     </mat-button-toggle>
   </mat-button-toggle-group>

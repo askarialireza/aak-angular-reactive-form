@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormService } from '../../../services/form.service';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { FormGroup } from '@angular/forms';
-import { Form } from '../../../models/form';
-import { StepOneForm } from '../../../mocks/form-create-step1';
-import { FieldItemService } from '../../../services/field-item.service';
+import { stepOneForm } from '../../../mocks/form-create-step1';
+import * as Services from '../../../exports/service.namespace';
+import * as Interfaces from '../../../exports/interface.namespace';
 
 @Component({
   selector: 'app-reactive-form',
@@ -16,13 +15,13 @@ import { FieldItemService } from '../../../services/field-item.service';
 export class ReactiveFormComponent implements OnInit {
 
   public formGroupOne: FormGroup;
-  public formItem: Form;
+  public formItem: Interfaces.Form;
   public formTitle: string;
   public logo: string;
 
-  constructor(public formService: FormService, public fieldItemService: FieldItemService) {
+  constructor(public formService: Services.FormService, public fieldItemService: Services.FieldItemService) {
 
-    this.formItem = StepOneForm;
+    this.formItem = stepOneForm;
     this.formGroupOne = new FormGroup({});
 
   }

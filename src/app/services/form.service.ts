@@ -1,8 +1,8 @@
-import { Form } from '../models/form';
 import { Injectable } from '@angular/core';
-import { FieldItem } from '../models/field-item';
+import * as Services from '../exports/service.namespace';
+import * as Interfaces from '../exports/interface.namespace';
+import * as Models from '../exports/model.namespace';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray, ValidatorFn } from '@angular/forms';
-
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class FormService {
 
   public formGroup: FormGroup;
 
-  public formItem: Form;
+  public formItem: Interfaces.Form;
 
   public isHorizontalModeEnabled: boolean;
 
@@ -32,16 +32,16 @@ export class FormService {
     return this.formItem.name;
   }
 
-  getFormItemHorizontalMode(form: Form) {
-    return form.isHorizontal;
+  getFormItemHorizontalMode(form: Interfaces.Form) {
+    return form.uiSetting.isHorizontalModeEnabled;
   }
 
-  setFormItenHorizontalMode(form: Form, value: boolean) {
-    form.isHorizontal = value;
+  setFormItenHorizontalMode(form: Interfaces.Form, value: boolean) {
+    form.uiSetting.isHorizontalModeEnabled = value;
   }
 
   getFormItemEditMode() {
-    return this.formItem.editMode;
+    return this.formItem.uiSetting.isEditModeEnabled;
   }
 
   setFormItemName(value: string) {
@@ -50,34 +50,19 @@ export class FormService {
     }
   }
 
-  getFormItem(): Form {
+  getFormItem(): Interfaces.Form {
     return this.formItem;
   }
 
-  getFieldItems(): FieldItem[] {
+  getFieldItems(): Interfaces.BaseFieldItem[] {
     return this.formItem.fieldItems;
   }
 
-  sortFieldItemsByOrder(fieldItems: FieldItem[]) {
+  sortFieldItemsByOrder(fieldItems: Interfaces.BaseFieldItem[]) {
     fieldItems.sort((a, b) => (a.order > b.order) ? 1 : -1)
   }
 
-  // addFieldItem(field: FieldItem) {
-  //   if (field) {
-  //     this.formItem.fieldItems.push(field);
-  //   }
-
-  //   this.sortFieldItemsByOrder(this.formItem.fieldItems);
-
-  //   const control = this.formBuilder.control(
-  //     field.value,
-  //     this.bindValidations(field.validations || [])
-  //   );
-
-  //   this.formGroup.addControl(field.name, control);
-  // }
-
-  createControl(fieldItems: FieldItem[]) {
+  createControl(fieldItems: Interfaces.BaseFieldItem[]) {
 
     let group: FormGroup = new FormGroup({});
 
@@ -99,7 +84,7 @@ export class FormService {
           group.addControl(field.name, new FormArray([]));
         }
 
-        field.options.forEach((o, i) => {
+        (field as Interfaces.OptionFieldItem).options.forEach((o, i) => {
           const control = new FormControl(null);
           (group.controls[field.name] as FormArray).push(control);
         });
@@ -145,11 +130,11 @@ export class FormService {
     return null;
   }
 
-  getColumnClass(form: Form, item: FieldItem) {
+  getColumnClass(form: Interfaces.Form, item: Interfaces.BaseFieldItem) {
     let result = "col-12";
     if (item.width) {
 
-      if (form?.isHorizontal == false) {
+      if (form?.uiSetting.isHorizontalModeEnabled == false) {
 
         result += ` col-md-${item.width.toString()}`;
 

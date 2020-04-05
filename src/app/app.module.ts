@@ -31,7 +31,7 @@ import { DateRangeComponent } from './components/reactive-form-maker/controls/da
 import { BasicReactiveFieldsComponent } from './components/reactive-form-maker/basic-reactive-fields/basic-reactive-fields.component';
 import { FontAwesomeService } from './services/fontawesome.service';
 import { FormApiService } from './services/api/form.api.service';
-import { FielditemApiService } from './services/api/fielditem.api.service';
+import { FieldItemApiService } from './services/api/field-item.api.service';
 import { LoadingComponent } from './components/user-interface/loading/loading.component';
 import { NotificationComponent } from './components/user-interface/notification/notification.component';
 import { FormViewComponent } from './components/pages/form-view/form-view.component';
@@ -46,6 +46,8 @@ import { FieldCreateModalComponent } from './components/reactive-form-maker/fiel
 import { ToggleComponent } from './components/reactive-form-maker/controls/toggle/toggle.component';
 import { FieldEditModalComponent } from './components/reactive-form-maker/field-select-panel-modals/field-edit-modal/field-edit-modal.component';
 import { ImageComponent } from './components/user-interface/image/image.component';
+import { FileSizePipe } from './infrastructure/file-size.pipe';
+import { FieldSelectModalComponent } from './components/reactive-form-maker/field-select-panel-modals/field-select-modal/field-select-modal.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +82,8 @@ import { ImageComponent } from './components/user-interface/image/image.componen
     FieldTypeSelectModalComponent,
     FieldCreateModalComponent,
     FieldEditModalComponent,
+    FieldSelectModalComponent,
+    FileSizePipe,
   ],
 
   imports: [
@@ -94,11 +98,14 @@ import { ImageComponent } from './components/user-interface/image/image.componen
     MaterialModule,
     FontAwesomeModule,
   ],
+  exports: [
+  ],
   providers: [
+
     FormService,
     FontAwesomeService,
     FormApiService,
-    FielditemApiService,
+    FieldItemApiService,
   ],
   bootstrap: [AppComponent],
   entryComponents: [

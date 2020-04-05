@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BaseComponent } from '../../../../infrastructure/base-component';
+import * as Models from '../../../../exports/model.namespace';
 
 @Component({
   selector: 'app-summernote-textarea',
@@ -9,7 +10,7 @@ import { BaseComponent } from '../../../../infrastructure/base-component';
 export class SummernoteTextareaComponent extends BaseComponent {
 
   public config;
-
+  @Input() field: Models.SummernoteFieldItem;
   constructor() {
     super()
   }

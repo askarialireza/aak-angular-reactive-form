@@ -1,16 +1,15 @@
 import { Guid } from 'guid-typescript';
+import * as Interfaces from '../exports/interface.namespace';
 
-export class Option {
+export class Option implements Interfaces.Option {
 
-    constructor() {
-        let guid = Guid.create().toString();
-        this.id = guid;
-        this.disabled = false;
+    constructor(init?: Partial<Option>) {
+        this.id = Guid.create().toString();
+        Object.assign(this, init);
     }
 
-    public id: string;
-    public value: string;
-    public disabled?: boolean;
-    public icon?: string;
+    id: string;
+    value: string;
+    icon: string;
 
 }

@@ -1,14 +1,14 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
-import { FieldCreateModalComponent } from '../field-create-modal/field-create-modal.component';
 import { FieldTypeSelect } from '../../../../models/field-type-select';
-import { InputGroupFields } from '../../../../mocks/field-type-select-group.mock';
+import { FieldType } from '../../../../models/type-select/field-type';
 
 export enum GroupType {
   Text = 'text',
   Select = 'select',
   Date = 'date',
   File = 'file',
+  Create = 'create',
 }
 
 @Component({
@@ -18,31 +18,37 @@ export enum GroupType {
 })
 export class FieldTypeSelectModalComponent implements OnInit {
 
-  public fieldSelects: FieldTypeSelect[];
-
-  private group: GroupType;
-
   constructor(
     private textModal: MatBottomSheet,
-    @Inject(MAT_BOTTOM_SHEET_DATA) public data: string,
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: FieldType,
     private _bottomSheetRef: MatBottomSheetRef<FieldTypeSelectModalComponent>) {
-    
-    switch (data) {
-      case GroupType.Text:
-        this.fieldSelects = InputGroupFields;
-        break;
-    
-      default:
-        break;
-    }
-
-    
-
   }
 
   ngOnInit() {
   }
-  openLink(event: MouseEvent, field: FieldTypeSelect): void {
-    this.textModal.open(FieldCreateModalComponent, { data: field.fieldType, panelClass: 'mat-bottom-sheet-custom-container-xlarge' });
+
+  openItemModal(event: MouseEvent, field: FieldTypeSelect): void {
+    // if (!field.fieldItem) {
+    //   switch (field.group) {
+    //     case GroupType.Text:
+    //       this.textModal.open(FieldTypeSelectModalComponent, { data: TextFieldType });
+    //       this._bottomSheetRef.dismiss();
+    //       break;
+    //     case GroupType.Select:
+    //       this.textModal.open(FieldTypeSelectModalComponent, { data: SelectFieldType });
+    //       this._bottomSheetRef.dismiss();
+    //       break;
+    //     default:
+    //       break;
+    //   }
+    // }
+    
+    // else {
+    //   this.textModal.open(FieldCreateModalComponent, { data: { group: field.group, type: field.type, fieldItem: field.fieldItem }, panelClass: 'mat-bottom-sheet-custom-container-xlarge' });
+    //   this._bottomSheetRef.dismiss();
+    // }
+
+
   }
+
 }

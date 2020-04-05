@@ -17,15 +17,17 @@
       <app-image *ngIf="this.logo" [image]="this.logo"></app-image>
       <form [formGroup]="this.fieldItemService.formGroup">
         <app-basic-reactive-fields [formGroup]="this.fieldItemService.formGroup"
-          [isHorizontalForm]="this.fieldItemService.formItem.isHorizontal"
-          [editMode]="this.fieldItemService.formItem.editMode" [formItem]="this.fieldItemService.formItem">
+          [isHorizontalForm]="this.fieldItemService.formItem.uiSetting.isHorizontalModeEnabled"
+          [editMode]="this.fieldItemService.formItem.uiSetting.isEditModeEnabled"
+          [formItem]="this.fieldItemService.formItem">
         </app-basic-reactive-fields>
         <app-field-select-panel></app-field-select-panel>
         <div class="my-2 float-left">
           <button type="button" matStepperPrevious class="btn btn-secondary mr-2">
             مرحله قبل
           </button>
-          <button matStepperNext [disabled]="!this.fieldItemService.formItem.fieldItems" type="submit" class="btn btn-primary">
+          <button matStepperNext [disabled]="!this.fieldItemService.formItem.fieldItems" type="submit"
+            class="btn btn-primary">
             مرحله بعد
           </button>
         </div>
