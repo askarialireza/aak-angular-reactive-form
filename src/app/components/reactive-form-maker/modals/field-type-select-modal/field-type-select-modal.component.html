@@ -1,6 +1,6 @@
 <h5 class="p-2">{{this.data.title}}</h5>
 <mat-nav-list>
-  <a *ngFor="let item of this.data.items" mat-list-item class="list-item" (click)="openItemModal($event,item)">
+  <a *ngFor="let item of this.data.items" mat-list-item class="list-item" (click)="openItemModal(item)">
     <div class="list-item-icon">
       <i class="material-icons">{{item.icon}}</i>
     </div>

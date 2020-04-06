@@ -52,6 +52,10 @@ body {
   }
 
 @media (max-width: 992px) {
+
+    .d-max-md-none {
+        display: none; 
+     }
     .btn-block-max-md {
         display: flex;
         width: 100%;

@@ -1,6 +1,5 @@
 import * as fas from '@fortawesome/free-solid-svg-icons';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { FieldEditModalComponent } from '../../field-select-panel-modals/field-edit-modal/field-edit-modal.component';
 import { BasicReactiveFieldsComponent } from '../../../reactive-form-maker/basic-reactive-fields/basic-reactive-fields.component';
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import * as Interfaces from '../../../../exports/interface.namespace';
@@ -50,7 +49,7 @@ export class ManageControlComponent implements OnInit {
 
   EditField(e) {
     if (e) {
-      this.modal.open(FieldEditModalComponent, { data: this.field, panelClass: 'mat-bottom-sheet-custom-container-xlarge' });
+      //this.modal.open(FieldEditModalComponent, { data: this.field, panelClass: 'mat-bottom-sheet-custom-container-xlarge' });
     }
   }
 
@@ -92,7 +91,7 @@ export class ManageControlComponent implements OnInit {
 
   IsFirstItem() {
 
-    if (this.fieldItemService.getIndexOfFieldItem(this.field) == 0) {
+    if (this.fieldItemService.GetIndexOf(this.field) == 0) {
 
       return true;
 
@@ -108,7 +107,7 @@ export class ManageControlComponent implements OnInit {
 
   IsLastItem() {
 
-    if (this.fieldItemService.getIndexOfFieldItem(this.field) == this.fieldItemService.getFieldItemsCount() - 1) {
+    if (this.fieldItemService.GetIndexOf(this.field) == this.fieldItemService.GetFieldItemsLength() - 1) {
 
       return true;
 

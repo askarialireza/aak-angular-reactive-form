@@ -8,14 +8,16 @@ import * as Models from '../../../../exports/model.namespace';
   styleUrls: ['./toggle.component.css']
 })
 export class ToggleComponent extends BaseComponent {
-
-  public checked: boolean;
-  @Input() field: Models.ToggleFieldItem;
+  
   constructor() {
     super();
-
+    
     this.checked = true;
-   }
+  }
+  
+  public checked: boolean;
+
+  @Input() field: Models.ToggleFieldItem;
 
   ngOnInit() {
   }

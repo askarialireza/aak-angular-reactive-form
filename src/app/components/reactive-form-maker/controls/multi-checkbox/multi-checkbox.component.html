@@ -1,7 +1,7 @@
 <ng-container [formGroup]="group">
   <mat-radio-group [formArrayName]="field.name" [ngClass]="{'d-flex flex-column' : !field.inlineView}"
   *ngFor="let option of fieldOptions; let i = index">
-  <mat-checkbox class="mr-2" id="{{option.id}}" [formControlName]="i" (change)="onCheckChange($event,i)">
+  <mat-checkbox class="mr-2" id="{{option.id}}" [color]="field.color" [formControlName]="i" (change)="onCheckChange($event,i)">
     {{option.value}}
   </mat-checkbox>
 </mat-radio-group>

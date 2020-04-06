@@ -1,6 +1,6 @@
 <ng-container [formGroup]="group">
   <mat-radio-group [ngClass]="{'d-flex flex-column' : !field.inlineView}" class="d-flex flex-column" [formControlName]="field.name">
-    <mat-radio-button class="mr-2" *ngFor="let item of field.options" value="{{item.id}}">{{item.value}}</mat-radio-button>
+    <mat-radio-button [color]="field.color" class="mr-2" *ngFor="let item of field.options" value="{{item.id}}">{{item.value}}</mat-radio-button>
   </mat-radio-group>
   <div class="mat-form-field-appearance-outline">
     <div class="mat-form-field-subscript-wrapper">

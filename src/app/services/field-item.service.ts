@@ -27,16 +27,35 @@ export class FieldItemService {
     this.fieldItems = [];
   }
 
-  getIndexOfFieldItem(field: Interfaces.BaseFieldItem): number {
+  GetIndexOf(field: Interfaces.BaseFieldItem): number {
     return this.formItem?.fieldItems?.indexOf(field);
   }
 
-  getFieldItemsCount() {
-    return this.formItem.fieldItems.length;
+  GetFieldItemsLength() {
+    if (this.fieldItems) {
+      return this.fieldItems.length;
+    }
+    else {
+      return 0;
+    }
   }
 
-  sortFieldItemsByOrder(fieldItems: Interfaces.BaseFieldItem[]) {
-    fieldItems.sort((a, b) => (a.order > b.order) ? 1 : -1)
+  GetLastOrder() {
+    return this.GetFieldItemsLength() + 1;
+  }
+
+  Sort(fieldItems: Interfaces.BaseFieldItem[]) {
+    fieldItems?.sort((a, b) => (a.order > b.order) ? 1 : -1)
+  }
+
+  PushFieldItem(field: Interfaces.BaseFieldItem) {
+
+    this.fieldItems.push(field);
+
+    this.formItem.fieldItems = this.fieldItems;
+    
+    this.Sort(this.fieldItems);
+
   }
 
 }

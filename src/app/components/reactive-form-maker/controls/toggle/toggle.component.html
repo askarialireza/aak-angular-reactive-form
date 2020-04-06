@@ -1,8 +1,8 @@
 <ng-container [formGroup]="group">
-  <mat-slide-toggle class="example-margin" [checked]="field.value" [formControlName]="field.name">
+  <mat-slide-toggle [color]="field.color" [checked]="field.value" [formControlName]="field.name">
     {{field.placeholder}}
   </mat-slide-toggle>
-  <div *ngIf="field.hint" class="mat-form-field-subscript-wrapper">
+  <div *ngIf="field.hint"  class="mat-form-field-subscript-wrapper">
     <div class="mat-hint">
       <strong>{{field.hint}}</strong>
     </div>

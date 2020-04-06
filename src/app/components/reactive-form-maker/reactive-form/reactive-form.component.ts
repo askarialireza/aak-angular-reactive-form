@@ -4,13 +4,16 @@ import { FormGroup } from '@angular/forms';
 import { stepOneForm } from '../../../mocks/form-create-step1';
 import * as Services from '../../../exports/service.namespace';
 import * as Interfaces from '../../../exports/interface.namespace';
+import * as Modals from '../../../exports/modal.namespace';
+import * as Mocks from '../../../mocks/field-type-select-group.mock';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-reactive-form',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './reactive-form.component.html',
   styleUrls: ['./reactive-form.component.css'],
-  providers: [{provide: STEPPER_GLOBAL_OPTIONS, useValue: { showError: true }}]
+  providers: [{ provide: STEPPER_GLOBAL_OPTIONS, useValue: { showError: true } }]
 })
 export class ReactiveFormComponent implements OnInit {
 
@@ -19,7 +22,11 @@ export class ReactiveFormComponent implements OnInit {
   public formTitle: string;
   public logo: string;
 
-  constructor(public formService: Services.FormService, public fieldItemService: Services.FieldItemService) {
+  constructor(
+    public formService: Services.FormService,
+    public fieldItemService: Services.FieldItemService,
+    private modal: MatBottomSheet
+  ) {
 
     this.formItem = stepOneForm;
     this.formGroupOne = new FormGroup({});
@@ -41,5 +48,8 @@ export class ReactiveFormComponent implements OnInit {
 
   onSumbitStep2(e) {
   }
-
+  
+  openSelectFieldTypeModal() {
+    this.modal.open(Modals.GroupTypeSelectModalComponent, { data: Mocks.ChooseFieldType });
+  }
 }

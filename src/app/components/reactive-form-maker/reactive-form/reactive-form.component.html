@@ -21,7 +21,7 @@
           [editMode]="this.fieldItemService.formItem.uiSetting.isEditModeEnabled"
           [formItem]="this.fieldItemService.formItem">
         </app-basic-reactive-fields>
-        <app-field-select-panel></app-field-select-panel>
+        <button type="button" class="btn btn-light" (click)="openSelectFieldTypeModal()">افزودن فیلد</button>
         <div class="my-2 float-left">
           <button type="button" matStepperPrevious class="btn btn-secondary mr-2">
             مرحله قبل

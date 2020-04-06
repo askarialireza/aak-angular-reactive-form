@@ -6,6 +6,6 @@ export class FieldTypeSelect extends Models.BaseTypeSelect implements Interfaces
         super(init);
         Object.assign(this, init);
     }
-
+    type: string;
     fieldItems: Interfaces.BaseFieldItem[];
 }

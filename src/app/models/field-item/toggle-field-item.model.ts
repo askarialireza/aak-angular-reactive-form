@@ -1,13 +1,11 @@
-import * as Interfaces from '../../interfaces/field-item/colorable-field-item.interface';
-import { BaseFieldItem } from './base-field-item.model';
+import { ColorableFieldItem } from './colorable-field-item.model';
+import { BaseFieldItem } from '../../exports/interface.namespace';
 
-export class ToggleFieldItem extends BaseFieldItem implements Interfaces.ColorableFieldItem {
+export class ToggleFieldItem extends ColorableFieldItem implements BaseFieldItem {
 
     constructor(init?: Partial<ToggleFieldItem>) {
         super(init);
         this.type = 'toggle';
         Object.assign(this, init);
     }
-
-    color: string;
 }

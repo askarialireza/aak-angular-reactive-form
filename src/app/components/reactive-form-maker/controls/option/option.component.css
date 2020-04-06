@@ -1,0 +1,17 @@
+.option-mat-form-field-wrapper {
+    width: 100%;
+}
+
+::ng-deep .option-mat-form-field-wrapper .mat-form-field-wrapper {
+    padding-bottom: 0;
+}
+
+.add-option-button {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+}
+
+.option-item {
+    height: 51px;
+}

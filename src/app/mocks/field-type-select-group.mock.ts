@@ -29,38 +29,42 @@ export const groupTypesList: Interfaces.BaseTypeSelect[] = [
 ];
 
 
-export const textGroupFields: Interfaces.BaseTypeSelect[] = [
+export const TextGroupFields: Interfaces.BaseTypeSelect[] = [
     new Models.FieldTypeSelect({
         groupName: 'text',
-        fieldItems: [new Models.InputFieldItem()],
+        type: 'input',
+        fieldItems: [new Models.InputFieldItem({})],
         title: 'متن کوتاه',
         hint: 'مناسب برای درج انواع عبارت‌های نوشتاری کوتاه مانند مشخصات فردی و ...',
         icon: 'text_format'
     }),
     new Models.FieldTypeSelect({
         groupName: 'text',
-        fieldItems: [new Models.TextareaFieldItem(), new Models.SummernoteFieldItem()],
+        type: 'textarea',
+        fieldItems: [new Models.TextareaFieldItem({}), new Models.SummernoteFieldItem({})],
         title: 'متن بلند',
         hint: 'مناسب برای درج انواع متون طولانی مانند توضیحات و ...',
         icon: 'format_align_right'
     }),
     new Models.FieldTypeSelect({
         groupName: 'text',
-        fieldItems: [new Models.NumberFieldItem()],
+        type: 'number',
+        fieldItems: [new Models.NumberFieldItem({})],
         title: 'اعداد',
         hint: 'مناسب برای درج انواع عبارات عددی مانند کد ملی ، کد پستی و ...',
         icon: 'looks_one'
     }),
     new Models.FieldTypeSelect({
         groupName: 'text',
-        fieldItems: [new Models.EmailFieldItem()],
+        type: 'email',
+        fieldItems: [new Models.EmailFieldItem({})],
         title: 'پست الکترونیکی',
         hint: 'مناسب برای درج پست الکترونیکی به همراه اعتبار سنجی ...',
         icon: 'email'
     }),
     new Models.FieldTypeSelect({
         groupName: 'text',
-        fieldItems: [new Models.InputFieldItem()],
+        fieldItems: [new Models.InputFieldItem({})],
         title: 'شماره تماس',
         hint: 'مناسب برای درج انواع شماره تماس مانند شماره تلفن ثابت یا تلفن همراه ...',
         icon: 'call'
@@ -70,23 +74,43 @@ export const textGroupFields: Interfaces.BaseTypeSelect[] = [
 export const SelectGroupFields: Interfaces.BaseTypeSelect[] = [
     new Models.FieldTypeSelect({
         groupName: 'select',
-        fieldItems: [new Models.SelectFieldItem(), new Models.RadioFieldItem(), new Models.TextareaFieldItem()],
+        type:'select',
+        fieldItems: [new Models.SelectFieldItem({}), new Models.RadioFieldItem({}), new Models.TextareaFieldItem({})],
         title: 'تک انتخابی',
         hint: 'مناسب برای انتخاب یک گزینه از بین انتخاب‌ها',
         icon: 'text_format'
     }),
     new Models.FieldTypeSelect({
         groupName: 'select',
-        fieldItems: [new Models.MultiCheckboxFieldItem()],
+        type:'select',
+        fieldItems: [new Models.MultiCheckboxFieldItem({})],
         title: 'چند انتخابی',
         hint: 'مناسب برای انتخاب چند گزینه از بین انتخاب‌ها',
         icon: 'text_format'
     }),
     new Models.FieldTypeSelect({
         groupName: 'select',
-        fieldItems: [new Models.CheckboxFieldItem(), new Models.ToggleFieldItem()],
+        type:'toggle',
+        fieldItems: [new Models.CheckboxFieldItem({}), new Models.ToggleFieldItem({})],
         title: 'فعال / غیرفعال',
         hint: 'مناسب برای فیلد‌های دو گزینه ای مانند بله / خیر و ...',
+        icon: 'text_format'
+    }),
+];
+
+export const DateGroupFields: Interfaces.BaseTypeSelect[] = [
+    new Models.FieldTypeSelect({
+        groupName: 'date',
+        fieldItems: [new Models.DateFieldItem({}), new Models.DateRangeFieldItem({})],
+        title: 'تاریخ',
+        hint: 'مناسب برای انتخاب یک گزینه از بین انتخاب‌ها',
+        icon: 'text_format'
+    }),
+    new Models.FieldTypeSelect({
+        groupName: 'date',
+        fieldItems: [new Models.DateFieldItem({})],
+        title: 'زمان',
+        hint: 'مناسب برای انتخاب چند گزینه از بین انتخاب‌ها',
         icon: 'text_format'
     }),
 ];
@@ -102,7 +126,7 @@ export const TextFieldType: Interfaces.FieldType =
     new Models.FieldType({
         title: 'نوشتار',
         group: 'text',
-        items: textGroupFields,
+        items: TextGroupFields,
     });
 
 export const SelectFieldType: Interfaces.FieldType =
@@ -110,4 +134,11 @@ export const SelectFieldType: Interfaces.FieldType =
         title: 'انتخاب',
         group: 'select',
         items: SelectGroupFields,
+    });
+
+export const DateFieldType: Interfaces.FieldType =
+    new Models.FieldType({
+        title: 'انتخاب',
+        group: 'select',
+        items: DateGroupFields,
     });

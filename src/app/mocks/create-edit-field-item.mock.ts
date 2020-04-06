@@ -10,10 +10,18 @@ export const createOrUpdateFieldItems: Interfaces.BaseFieldItem[] = [
         required: true,
     }),
     new Models.InputFieldItem({
+        id: 'placeholder',
+        name: 'placeholder',
+        label: 'عبارت پیش‌نمایش',
+        hint: 'متنی به عنوان پیش‌نمایش درون فیلد‌های نوشتاری یا جلو‌ فیلد انتخابی داده می‌شود',
+        order: 2,
+    }),
+    new Models.InputFieldItem({
         id: 'hint',
         name: 'hint',
         label: 'عبارت راهنما',
         hint: 'متنی به عنوان راهنما در پایین فیلد نمایش داده می‌شود',
+        order: 2,
     }),
     new Models.ToggleFieldItem({
         id: 'required',
@@ -21,6 +29,7 @@ export const createOrUpdateFieldItems: Interfaces.BaseFieldItem[] = [
         value: false,
         hint: 'با فعالسازی، کاربر موظف به تکمیل فیلد مورد نظر می‌باشد',
         placeholder: 'فیلد اجباری',
+        order: 3,
     }),
     new Models.RangeFieldItem({
         id: 'width',
@@ -31,6 +40,7 @@ export const createOrUpdateFieldItems: Interfaces.BaseFieldItem[] = [
         minValue: 1,
         maxValue: 12,
         displayFormat: formatLabel,
+        order: 4,
     }),
 ];
 
@@ -41,12 +51,36 @@ export const textAreaTypeSelectFieldItem: Interfaces.BaseFieldItem =
         label: 'نوع ویرایشگر متن',
         inlineView: true,
         required: true,
+        order: 5,
         width: 12,
         options: [
-            { id: 'textarea', value: 'ویرایشگر متن ساده' },
-            { id: 'summernote', value: 'ویرایشگر متن پیشرفته' },
+            new Models.Option({ id: 'textarea', value: 'ویرایشگر متن ساده' }),
+            new Models.Option({ id: 'summernote', value: 'ویرایشگر متن پیشرفته' }),
         ],
     });
+
+export const optionTypeSelectFieldItem: Interfaces.BaseFieldItem[] = [
+    new Models.RadioFieldItem({
+        id: 'select-type',
+        name: 'select-type',
+        label: 'نوع انتخاب‌گر',
+        inlineView: true,
+        required: true,
+        order: 5,
+        width: 12,
+        options: [
+            new Models.Option({ id: 'select', value: 'انتخاب‌گر کشویی' }),
+            new Models.Option({ id: 'radio', value: 'انتخاب‌گر گزینه‌ای' }),
+        ],
+    }),
+    new Models.OptionFieldItem({
+        id: 'options',
+        name: 'options',
+        required: true,
+        order: 6,
+    })
+]
+
 
 
 function formatLabel(value: number) {

@@ -29,5 +29,5 @@ export const stepOneForm: Interfaces.Form =
   new Models.Form({
     name: "createform",
     fieldItems: stepOneFieldItems,
-    
+
   });

@@ -7,14 +7,34 @@ import * as Interfaces from '../../exports/interface.namespace';
 @Injectable({
   providedIn: 'root'
 })
-export class FormApiService {
+export class FormApiService implements Interfaces.DataManager {
 
-  private apiUrl: string;
+  public apiUrl: string;
 
   constructor(private http: HttpClient) {
 
     this.apiUrl = `${BASE_URL}/api/forms`;
 
+  }
+
+  Get(id: string): Observable<Interfaces.Form> {
+    return this.http.get<Interfaces.Form>(`${this.apiUrl}/${id}`);
+  }
+
+  Add(data: Interfaces.Form): Observable<Interfaces.Form> {
+
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+
+    return this.http.post<Interfaces.Form>(this.apiUrl, data, { headers });
+
+  }
+
+  Update(data: Interfaces.Form): Observable<Interfaces.Form> {
+    throw new Error("Method not implemented.");
+  }
+
+  Delete(id: string): Observable<Interfaces.Form> {
+    throw new Error("Method not implemented.");
   }
 
   getDefaultForm(): Observable<Interfaces.Form> {
@@ -24,9 +44,6 @@ export class FormApiService {
   }
 
   getForm(id: string) {
-
-    return this.http.get<Interfaces.Form>(`${this.apiUrl}/${id}`);
-
   }
 
   submitForm(data: Interfaces.Form) {
@@ -38,10 +55,6 @@ export class FormApiService {
   }
 
   postForm(form: Interfaces.Form) {
-
-    const headers = new HttpHeaders().set('content-type', 'application/json');
-
-    return this.http.post<Interfaces.Form>(this.apiUrl, form, { headers });
 
   }
 

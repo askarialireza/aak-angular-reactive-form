@@ -38,7 +38,6 @@ import { MaterialPersianDateAdapter, PERSIAN_DATE_FORMATS } from './infrastructu
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, SatDatepickerModule } from 'saturn-datepicker';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 
-
 @NgModule({
   imports: [
     MatButtonModule,

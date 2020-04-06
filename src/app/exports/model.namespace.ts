@@ -6,6 +6,9 @@ export { FormUISetting } from '../models/form/form-ui-setting.model';
 
 // ****************************************************************
 
+export { BaseFieldItem } from '../models/field-item/base-field-item.model';
+export { OptionableFieldItem } from '../models/field-item/optionable-field-item.model';
+export { OptionFieldItem } from '../models/field-item/option-field-item.model';
 export { ButtonToggleFieldItem } from '../models/field-item/button-toggle.item.model';
 export { CheckboxFieldItem } from '../models/field-item/checkbox-field-item.model';
 export { DateFieldItem } from '../models/field-item/date-field-item.model';
@@ -31,3 +34,6 @@ export { FieldTypeSelect } from '../models/type-select/field-type-select.model';
 export { FieldType } from '../models/type-select/field-type';
 
 // ****************************************************************
+
+export { Option } from '../models/option';
+export { Validator } from '../models/validator';

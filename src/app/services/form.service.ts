@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as Services from '../exports/service.namespace';
 import * as Interfaces from '../exports/interface.namespace';
 import * as Models from '../exports/model.namespace';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray, ValidatorFn } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, FormArray, Validators, } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -19,14 +19,14 @@ export class FormService {
 
   public showJsonCode: boolean;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private fieldValidationService: Services.FieldValidationService) {
     this.formGroup = new FormGroup({});
     this.showJsonCode = false;
   }
 
-  getFormGroup(): FormGroup {
-    return this.formGroup;
-  }
+  // getFormGroup(): FormGroup {
+  //   return this.formGroup;
+  // }
 
   getFormItemName() {
     return this.formItem.name;
@@ -59,10 +59,12 @@ export class FormService {
   }
 
   sortFieldItemsByOrder(fieldItems: Interfaces.BaseFieldItem[]) {
-    fieldItems.sort((a, b) => (a.order > b.order) ? 1 : -1)
+    return fieldItems.sort((a, b) => (a.order > b.order) ? 1 : -1)
   }
 
   createControl(fieldItems: Interfaces.BaseFieldItem[]) {
+
+    fieldItems = this.sortFieldItemsByOrder(fieldItems);
 
     let group: FormGroup = new FormGroup({});
 
@@ -78,7 +80,7 @@ export class FormService {
       if (field.type === "multicheckbox") {
 
         if (field.required) {
-          group.addControl(field.name, new FormArray([], this.minSelectedCheckboxes(1)));
+          group.addControl(field.name, new FormArray([], this.fieldValidationService.minSelectedCheckboxes(1)));
         }
         else {
           group.addControl(field.name, new FormArray([]));
@@ -92,42 +94,24 @@ export class FormService {
         return;
       }
 
-      const control = this.formBuilder.control(field.value, this.bindValidations(field.validations || []));
+      if (field.type === 'option') {
+        group.addControl(field.name, new FormArray([]));
+
+        (field as Interfaces.OptionFieldItem).options.forEach((o, i) => {
+          const control = new FormControl(null, Validators.required);
+          (group.controls[field.name] as FormArray).push(control);
+        });
+
+        return;
+      }
+
+      const control = this.formBuilder.control(field.value, this.fieldValidationService.bindValidations(field.validations || []));
 
       group.addControl(field.name, control);
 
     });
 
     return group;
-  }
-
-  minSelectedCheckboxes(min = 1) {
-    let selected = 0;
-    const validator: ValidatorFn = (formArray: FormArray) => {
-      selected = formArray.controls.filter((x, i) => {
-        if (x.value != null) {
-          return x.value
-        }
-      }).length;
-      return selected >= min ? null : { required: true };
-    };
-
-    return validator;
-  }
-
-  bindValidations(validations: any) {
-
-    if (validations.length > 0) {
-
-      const validList = [];
-
-      validations.forEach(valid => {
-        validList.push(valid.validator);
-      });
-
-      return Validators.compose(validList);
-    }
-    return null;
   }
 
   getColumnClass(form: Interfaces.Form, item: Interfaces.BaseFieldItem) {
@@ -164,7 +148,7 @@ export class FormService {
     else {
 
       return null;
-      
+
     }
   }
 

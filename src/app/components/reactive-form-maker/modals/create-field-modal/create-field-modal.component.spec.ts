@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { FieldSelectModalComponent } from './field-select-modal.component';
+import { CreateFieldModalComponent } from './create-field-modal.component';
 
-describe('FieldSelectModalComponent', () => {
-  let component: FieldSelectModalComponent;
-  let fixture: ComponentFixture<FieldSelectModalComponent>;
+describe('CreateFieldModalComponent', () => {
+  let component: CreateFieldModalComponent;
+  let fixture: ComponentFixture<CreateFieldModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FieldSelectModalComponent ]
+      declarations: [ CreateFieldModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FieldSelectModalComponent);
+    fixture = TestBed.createComponent(CreateFieldModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
