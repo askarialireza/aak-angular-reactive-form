@@ -1,4 +1,4 @@
-import * as Interfaces from '../exports/interface.namespace';
+import * as Interfaces from '../interfaces/index';
 import { Validators } from '@angular/forms';
 
 export class Validator implements Interfaces.Validator {

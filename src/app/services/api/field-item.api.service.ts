@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { BASE_URL } from '../../mocks/backend.mock';
-import * as Interfaces from '../../exports/interface.namespace';
+import * as Interfaces from '../../interfaces/index';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'

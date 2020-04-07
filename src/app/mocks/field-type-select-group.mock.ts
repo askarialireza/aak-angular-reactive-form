@@ -1,5 +1,5 @@
-import * as Interfaces from '../exports/interface.namespace';
-import * as Models from '../exports/model.namespace';
+import * as Interfaces from '../interfaces/index';
+import * as Models from '../models/index';
 
 export const groupTypesList: Interfaces.BaseTypeSelect[] = [
     new Models.GroupTypeSelect({
@@ -78,7 +78,7 @@ export const SelectGroupFields: Interfaces.BaseTypeSelect[] = [
         fieldItems: [new Models.SelectFieldItem({}), new Models.RadioFieldItem({}), new Models.TextareaFieldItem({})],
         title: 'تک انتخابی',
         hint: 'مناسب برای انتخاب یک گزینه از بین انتخاب‌ها',
-        icon: 'text_format'
+        icon: 'radio_button_checked'
     }),
     new Models.FieldTypeSelect({
         groupName: 'select',
@@ -86,7 +86,7 @@ export const SelectGroupFields: Interfaces.BaseTypeSelect[] = [
         fieldItems: [new Models.MultiCheckboxFieldItem({})],
         title: 'چند انتخابی',
         hint: 'مناسب برای انتخاب چند گزینه از بین انتخاب‌ها',
-        icon: 'text_format'
+        icon: 'check_box'
     }),
     new Models.FieldTypeSelect({
         groupName: 'select',
@@ -94,7 +94,7 @@ export const SelectGroupFields: Interfaces.BaseTypeSelect[] = [
         fieldItems: [new Models.CheckboxFieldItem({}), new Models.ToggleFieldItem({})],
         title: 'فعال / غیرفعال',
         hint: 'مناسب برای فیلد‌های دو گزینه ای مانند بله / خیر و ...',
-        icon: 'text_format'
+        icon: 'toggle_off'
     }),
 ];
 

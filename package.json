@@ -32,6 +32,7 @@
     "jalali-moment": "^3.3.3",
     "jquery": "^3.4.1",
     "material-design-icons": "^3.0.1",
+    "material-design-icons-iconfont": "^5.0.1",
     "moment": "^2.24.0",
     "ngx-summernote": "^0.7.7",
     "npm-check-updates": "^4.1.1",

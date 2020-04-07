@@ -1,3 +1,20 @@
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3f51b5;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3f51b5;
+}
+
 [dir=rtl] .mat-form-field {
     text-align: right;
  }
@@ -6,6 +23,10 @@
     font-family: IRANYekan !important;
     /* font-size: small; */
 }
+
+.mat-icon{
+    font-family: 'Material Icons' !important;
+  }
 
 .mat-form-field-appearance-outline .mat-form-field-infix {
     padding: 0.5em 0 0.75em 0 !important;
@@ -28,6 +49,7 @@ body {
 }
 
 .mat-bottom-sheet-custom-container-medium {
+    padding: 0px !important;
     min-width: 384px !important;
     max-width: 384px !important;
     overflow: inherit !important;
@@ -36,6 +58,7 @@ body {
   }
   
   .mat-bottom-sheet-custom-container-large {
+    padding: 0px !important;
     min-width: 512px !important;
     max-width: 512px !important;
     overflow: inherit !important;
@@ -44,6 +67,7 @@ body {
   }
   
   .mat-bottom-sheet-custom-container-xlarge {
+    padding: 0px !important;
     min-width: 576px !important;
     max-width: 576px !important;
     overflow: inherit !important;

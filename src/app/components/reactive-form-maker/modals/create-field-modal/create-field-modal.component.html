@@ -1,7 +1,0 @@
-<form [formGroup]="formGroup" (submit)="CreateField()">
-  <app-basic-reactive-fields [formGroup]="formGroup" [formItem]="formItem"></app-basic-reactive-fields>
-  <div class="my-1 float-left">
-    <button type="button" class="btn btn-secondary mr-2" (click)="BackToPreviousList()">بازگشت به عقب</button>
-    <button type="submit" class="btn btn-primary mr-2" [disabled]="formGroup.invalid">تایید</button>
-  </div>
-</form>

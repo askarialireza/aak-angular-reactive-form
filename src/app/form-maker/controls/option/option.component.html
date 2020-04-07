@@ -1,0 +1,29 @@
+<ng-container [formGroup]="group">
+  <div class="row mt-1" [formArrayName]="field.name">
+    <div *ngFor="let item of field.options;let i = index" class="col-12 no-gutters option-item">
+      <mat-form-field class="option-mat-form-field-wrapper" appearance="outline" [floatLabel]="'always'">
+        <mat-icon class="mr-2" matPrefix>check_box</mat-icon>
+        <input matInput #input [formControlName]="i" [required]="true"
+          [placeholder]="(field.placeholder)+' '+(field.options.indexOf(item)+1)">
+        <div class="d-inline-flex" *ngIf="field.options.length > 1" matSuffix>
+          <!-- <button *ngIf="field.options.indexOf(item) != 0" mat-icon-button>
+            <mat-icon>expand_less</mat-icon>
+          </button>
+          <button *ngIf="field.options.indexOf(item) != field.options.length-1" mat-icon-button>
+            <mat-icon>expand_more</mat-icon>
+          </button> -->
+          <button mat-icon-button (click)="RemoveOption(item)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+
+      </mat-form-field>
+
+    </div>
+  </div>
+
+</ng-container>
+<button type="button" mat-flat-button color="primary" class="add-option-button" (click)="AddOption()">
+  <mat-icon class="mr-2">add</mat-icon>
+  <span class="d-max-md-none p-1">افزودن انتخاب جدید</span>
+</button>

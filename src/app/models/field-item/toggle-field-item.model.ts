@@ -1,5 +1,5 @@
 import { ColorableFieldItem } from './colorable-field-item.model';
-import { BaseFieldItem } from '../../exports/interface.namespace';
+import { BaseFieldItem } from '../../interfaces/index';
 
 export class ToggleFieldItem extends ColorableFieldItem implements BaseFieldItem {
 

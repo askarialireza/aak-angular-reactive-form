@@ -1,0 +1,6 @@
+.reactive-form {
+    max-height: 600px;
+    padding: 8px 16px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}

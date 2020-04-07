@@ -1,5 +1,5 @@
 import { ComponentFactoryResolver, Directive, ViewContainerRef } from "@angular/core";
-import * as Controls from '../exports/control-component.namespace';
+import * as Controls from '../form-maker/controls/index';
 import { BaseComponent } from '../infrastructure/base-component';
 
 
@@ -18,9 +18,10 @@ const componentMapper = {
     upload: Controls.UploadComponent,
     toggle: Controls.ToggleComponent,
     option: Controls.OptionComponent,
+    divider:Controls.DividerComponent,
 };
 
-@Directive({ selector: "[reactive-field]" })
+@Directive({ selector: "[form-generator-field]" })
 export class FieldDirective extends BaseComponent {
 
     componentRef: any;

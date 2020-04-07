@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { FormGroup } from '@angular/forms';
-import * as Services from '../../../exports/service.namespace';
-import * as Interfaces from '../../../exports/interface.namespace';
+import * as Services from '../../../services/index';
+import * as Interfaces from '../../../interfaces/index';
 
 @Component({
   selector: 'app-form-view',

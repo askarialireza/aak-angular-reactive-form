@@ -1,4 +1,4 @@
-import * as Interfaces from '../../exports/interface.namespace';
+import * as Interfaces from '../../interfaces/index';
 
 export class FormResultSetting implements Interfaces.FormResultSetting {
 

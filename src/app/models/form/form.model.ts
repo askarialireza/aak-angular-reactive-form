@@ -1,5 +1,5 @@
-import * as Interfaces from '../../exports/interface.namespace';
-import * as Models from '../../exports/model.namespace';
+import * as Interfaces from '../../interfaces/index';
+import * as Models from '../../models/index';
 import { Guid } from 'guid-typescript';
 
 export class Form implements Interfaces.Form {

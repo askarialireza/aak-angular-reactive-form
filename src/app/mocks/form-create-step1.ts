@@ -1,5 +1,5 @@
-import * as Interfaces from '../exports/interface.namespace';
-import * as Models from '../exports/model.namespace';
+import * as Interfaces from '../interfaces/index';
+import * as Models from '../models/index';
 
 export const stepOneFieldItems: Interfaces.BaseFieldItem[] = [
   new Models.InputFieldItem({
@@ -16,11 +16,12 @@ export const stepOneFieldItems: Interfaces.BaseFieldItem[] = [
     hint: 'در صورت نیاز، لوگوی مورد نظر در ابتدای فرم نمایش داده خواهد شد',
     order: 2,
   }),
+  new Models.DividerFieldItem({order:3}),
   new Models.DateRangeFieldItem({
     name: "date",
     label: "بازه زمانی",
     placeholder: 'بازه زمانی فعالیت فرم را مشخص نمایید',
-    order: 3,
+    order: 4,
     hint: 'در صورت عدم تعیین، بازه زمانی فرم نامحدود خواهد بود',
   }),
 ];

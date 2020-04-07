@@ -1,5 +1,5 @@
 import { Guid } from 'guid-typescript';
-import * as Interfaces from '../exports/interface.namespace';
+import * as Interfaces from '../interfaces/index';
 
 export class Option implements Interfaces.Option {
 

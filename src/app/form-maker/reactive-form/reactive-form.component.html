@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-horizontal-stepper linear #stepper>
+    <mat-step label="مشخصات" [stepControl]="this.formGroupOne">
+      <div class="m-0 mx-md-5">
+        <form [formGroup]="this.formGroupOne" (submit)="onSumbitStep1($event)">
+          <app-form-generator [formGroup]="this.formGroupOne" [isHorizontalForm]="false" [editMode]="false"
+            [formItem]="this.formItem"></app-form-generator>
+          <div class="my-1 float-left">
+            <button matStepperNext type="submit" class="btn btn-primary" [disabled]="this.formGroupOne.invalid">مرحله
+              بعد</button>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+    <mat-step label="فیلد‌ها">
+      <h2 class="p-2 text-center">{{this.fieldItemService.formItem.name}}</h2>
+      <app-image *ngIf="this.logo" [image]="this.logo"></app-image>
+      <form [formGroup]="this.fieldItemService.formGroup">
+        <app-form-generator [formGroup]="this.fieldItemService.formGroup"
+          [isHorizontalForm]="this.fieldItemService.formItem.uiSetting.isHorizontalModeEnabled"
+          [editMode]="this.fieldItemService.formItem.uiSetting.isEditModeEnabled"
+          [formItem]="this.fieldItemService.formItem">
+        </app-form-generator>
+        <button type="button" class="btn btn-light" (click)="openSelectFieldTypeModal()">افزودن فیلد</button>
+        <div class="my-2 float-left">
+          <button type="button" matStepperPrevious class="btn btn-secondary mr-2">
+            مرحله قبل
+          </button>
+          <button matStepperNext [disabled]="!this.fieldItemService.formItem.fieldItems" type="submit"
+            class="btn btn-primary">
+            مرحله بعد
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step label="تنظیمات">
+      STEP 3
+    </mat-step>
+  </mat-horizontal-stepper>
+</mat-card>

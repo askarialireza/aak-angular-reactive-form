@@ -1,5 +1,5 @@
-import * as Interfaces from '../exports/interface.namespace';
-import * as Models from '../exports/model.namespace';
+import * as Interfaces from '../interfaces/index';
+import * as Models from '../models/index';
 
 export const createOrUpdateFieldItems: Interfaces.BaseFieldItem[] = [
     new Models.InputFieldItem({
@@ -12,15 +12,15 @@ export const createOrUpdateFieldItems: Interfaces.BaseFieldItem[] = [
     new Models.InputFieldItem({
         id: 'placeholder',
         name: 'placeholder',
-        label: 'عبارت پیش‌نمایش',
+        label: 'متن نمایشی',
         hint: 'متنی به عنوان پیش‌نمایش درون فیلد‌های نوشتاری یا جلو‌ فیلد انتخابی داده می‌شود',
         order: 2,
     }),
     new Models.InputFieldItem({
         id: 'hint',
         name: 'hint',
-        label: 'عبارت راهنما',
-        hint: 'متنی به عنوان راهنما در پایین فیلد نمایش داده می‌شود',
+        label: 'توضیحات',
+        hint: 'متنی به عنوان توضیحات فیلد در پایین فیلد نمایش داده می‌شود',
         order: 2,
     }),
     new Models.ToggleFieldItem({
