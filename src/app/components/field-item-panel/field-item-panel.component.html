@@ -1,0 +1,17 @@
+<div>
+  <mat-nav-list >
+    <div *ngFor="let item of this.data.items" mat-list-item class="list-item" 
+    cdkDropList cdkDropListConnectedTo="form-builder"  (cdkDropListDropped)="drop($event)"
+    [cdkDropListData]="item">
+      <div class="list-item" cdkDrag>
+        <div class="list-item-icon">
+          <i class="material-icons">{{item.icon}}</i>
+        </div>
+        <div class="list-item-label">
+          <span class="label-title">{{item.title}}</span>
+          <span class="label-hint">{{item.hint}}</span>
+        </div>
+      </div>
+    </div>
+  </mat-nav-list>
+</div>

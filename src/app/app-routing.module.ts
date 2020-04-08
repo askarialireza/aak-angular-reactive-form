@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormViewComponent } from './components/pages/form-view/form-view.component';
+import * as Pages from './components/pages/index';
 import { ReactiveFormComponent } from './form-maker/reactive-form/reactive-form.component';
-import { NotFoundComponent } from './components/pages/not-found/not-found.component';
-import { HomeComponent } from './components/pages/home/home.component';
+
 
 const routes: Routes = [
-  { path: '', component:HomeComponent },
-  { path: 'home', redirectTo:'/', pathMatch: 'full' },
+  { path: '', component: Pages.HomeComponent },
+  { path: 'home', redirectTo: '/', pathMatch: 'full' },
+  { path: "dashboard", component: Pages.DashboardComponent },
   { path: "forms/create", component: ReactiveFormComponent },
-  { path: "forms/view/:id", component: FormViewComponent },
-  { path: "**", component: NotFoundComponent }
+  { path: "forms/view/:id", component: Pages.FormViewComponent },
+  { path: "**", component: Pages.NotFoundComponent }
 ];
 
 @NgModule({

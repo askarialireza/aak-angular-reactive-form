@@ -13,26 +13,30 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { FormMakerModule } from './form-maker/form-maker.module';
 
 import * as Services from './services/index';
+import * as Pages from './components/pages/index';
 
-import { AppComponent } from './components/app/app.component';
+
+import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/user-interface/navbar/navbar.component';
 import { LoadingComponent } from './components/user-interface/loading/loading.component';
 import { NotificationComponent } from './components/user-interface/notification/notification.component';
-import { FormViewComponent } from './components/pages/form-view/form-view.component';
-import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { FooterComponent } from './components/user-interface/footer/footer.component';
-import { HomeComponent } from './components/pages/home/home.component';
+import { FieldItemPanelComponent } from './components/field-item-panel/field-item-panel.component';
+import { DashboardFormBuilderComponent } from './components/dashboard-form-builder/dashboard-form-builder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    FooterComponent,
     NavbarComponent,
     LoadingComponent,
     NotificationComponent,
-    FormViewComponent,
-    NotFoundComponent,
-    FooterComponent,
-    HomeComponent,
+    FieldItemPanelComponent,
+    DashboardFormBuilderComponent,
+    Pages.HomeComponent,
+    Pages.DashboardComponent,
+    Pages.FormViewComponent,
+    Pages.NotFoundComponent,
   ],
 
   imports: [
