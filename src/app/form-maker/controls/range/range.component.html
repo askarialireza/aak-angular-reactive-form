@@ -1,7 +1,7 @@
 <ng-container [formGroup]="group">
   <div class="w-100">
     <mat-slider class="d-block w-100" thumbLabel [color]="field.color" [displayWith]="field.displayFormat" min="{{field.minValue}}" max="{{field.maxValue}}"
-    [formControlName]="field.name"></mat-slider>
+    [formControlName]="field.name" (valueChange)="onSliderValueChanged($event)"></mat-slider>
   </div>
   <div *ngIf="field.hint" class="mat-form-field-subscript-wrapper">
     <div class="mat-hint">

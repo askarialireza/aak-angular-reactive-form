@@ -1,6 +1,6 @@
 import * as Interfaces from '../../interfaces/field-item/colorable-option-field-item.interface';
-import { Option } from '../option';
 import { ColorableFieldItem } from './colorable-field-item.model';
+import { Option } from '../option';
 
 export class ColorableOptionFieldItem extends ColorableFieldItem implements Interfaces.ColorableOptionFieldItem {
 

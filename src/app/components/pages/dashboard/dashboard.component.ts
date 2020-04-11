@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    this.isNewItemAdded = false;
+   }
+
+  public isNewItemAdded: boolean;
 
   ngOnInit() {
   }
 
+
+  onFieldItemAdded(event: boolean) {
+    this.isNewItemAdded = event;
+  }
+
+  onPanelClosed(event:boolean){
+    this.isNewItemAdded = event;
+    $('.form-row').find('.field-item').removeClass('field-item');
+  }
 }

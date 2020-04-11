@@ -19,6 +19,8 @@ const componentMapper = {
     toggle: Controls.ToggleComponent,
     option: Controls.OptionComponent,
     divider:Controls.DividerComponent,
+    width: Controls.WidthComponent,
+    multitoggle: Controls.MultiToggleComponent,
 };
 
 @Directive({ selector: "[form-generator-field]" })

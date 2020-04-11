@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { BaseComponent } from '../../../infrastructure/base-component';
 import * as Models from '../../../models/index';
 
@@ -13,6 +13,8 @@ export class ButtonToggleComponent extends BaseComponent {
 
   @Input() field: Models.ButtonToggleFieldItem;
 
+  @Output() selectedOptionChanged: EventEmitter<any> = new EventEmitter<any>();
+
   constructor() {
     super();
   }
@@ -24,6 +26,7 @@ export class ButtonToggleComponent extends BaseComponent {
   onChanged(e) {
     this.group.get(this.field.name).setValue(e.value);
     let item = this.field.options.find(current => current.id == e.value);
+    this.selectedOptionChanged.emit(item);
   }
 
 }

@@ -1,0 +1,6 @@
+<ng-container [formGroup]="group">
+  <input type="hidden" [formControlName]="field.name">
+  <app-button-toggle [group]="group" [field]="field" (selectedOptionChanged)="onOptionChanged($event)">
+  </app-button-toggle>
+  <app-range *ngIf="isRangeOptionSelected" [group]="group" [field]="field" (rangeValueChanged)="onRangeValueChanged($event)"></app-range>
+</ng-container>

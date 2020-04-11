@@ -20,9 +20,22 @@ export class FormGeneratorComponent implements OnInit {
 
   @Output() formValueChanged: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(public formService: Services.FormService) { }
+  @Output() fieldItemSelected: EventEmitter<any> = new EventEmitter<any>();
+
+  constructor(public formService: Services.FormService) {
+  }
 
   ngOnInit() {
 
   }
+
+  onSelectedItem(event: Event,element) {
+    if(this.editMode) {
+      var formRow = $(element).parent();
+      $(formRow).find('.field-item').removeClass('field-item');
+      $(element).addClass('field-item');
+      this.fieldItemSelected.emit(event);
+    }
+  }
+
 }

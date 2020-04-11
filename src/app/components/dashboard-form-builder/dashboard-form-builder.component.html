@@ -1,9 +1,9 @@
 <div class="form-builder-container p-2" id="form-builder" cdkDropList (cdkDropListDropped)="onDropItem($event)">
   <form [formGroup]="this.fieldItemService.formGroup">
     <app-form-generator [formGroup]="this.fieldItemService.formGroup"
-      [isHorizontalForm]="this.fieldItemService.formItem.uiSetting.isHorizontalModeEnabled"
-      [editMode]="this.fieldItemService.formItem.uiSetting.isEditModeEnabled"
-      [formItem]="this.fieldItemService.formItem">
+      [isHorizontalForm]="this.fieldItemService.formItem.formUiSetting.isHorizontalModeEnabled"
+      [editMode]="this.fieldItemService.formItem.formUiSetting.isEditModeEnabled"
+      [formItem]="this.fieldItemService.formItem" (fieldItemSelected)="onFieldItemSelected($event)">
     </app-form-generator>
   </form>
 </div>

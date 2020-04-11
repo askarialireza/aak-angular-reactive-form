@@ -32,15 +32,15 @@ export class FormService {
   }
 
   getFormItemHorizontalMode(form: Interfaces.Form) {
-    return form.uiSetting.isHorizontalModeEnabled;
+    return form.formUiSetting.isHorizontalModeEnabled;
   }
 
   setFormItenHorizontalMode(form: Interfaces.Form, value: boolean) {
-    form.uiSetting.isHorizontalModeEnabled = value;
+    form.formUiSetting.isHorizontalModeEnabled = value;
   }
 
   getFormItemEditMode() {
-    return this.formItem.uiSetting.isEditModeEnabled;
+    return this.formItem.formUiSetting.isEditModeEnabled;
   }
 
   setFormItemName(value: string) {
@@ -76,7 +76,7 @@ export class FormService {
 
       }
 
-      if (field.type === "multicheckbox") {
+      if (field.type === "multicheckbox" || field.type === "multitoggle" ) {
 
         if (field.required) {
           group.addControl(field.name, new FormArray([], this.fieldValidationService.minSelectedCheckboxes(1)));
@@ -117,7 +117,7 @@ export class FormService {
     let result = "col-12";
     if (item.width) {
 
-      if (form?.uiSetting.isHorizontalModeEnabled == false) {
+      if (form?.formUiSetting.isHorizontalModeEnabled == false) {
 
         result += ` col-md-${item.width.toString()}`;
 

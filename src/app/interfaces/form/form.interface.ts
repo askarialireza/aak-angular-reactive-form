@@ -1,5 +1,5 @@
 import * as Interfaces from '../../interfaces/index';
-
+import * as Models from '../../models/index';
 export interface Form {
     id: string;
     name: string;
@@ -7,7 +7,7 @@ export interface Form {
     isActive: string;
     beginDate: string;
     endDate: string;
-    fieldItems: Interfaces.BaseFieldItem[];
-    uiSetting: Interfaces.FormUISetting;
-    resultSetting: Interfaces.FormResultSetting;
+    fieldItems: Models.BaseFieldItem[];
+    formUiSetting: Interfaces.FormUISetting;
+    formResultSetting: Interfaces.FormResultSetting;
 }

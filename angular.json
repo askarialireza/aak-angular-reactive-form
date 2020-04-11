@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "aak-reactive-form": {
+    "aak-from-builder-client": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/aak-reactive-form",
+            "outputPath": "dist/aak-from-builder-client",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -74,18 +74,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "aak-reactive-form:build"
+            "browserTarget": "aak-from-builder-client:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "aak-reactive-form:build:production"
+              "browserTarget": "aak-from-builder-client:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "aak-reactive-form:build"
+            "browserTarget": "aak-from-builder-client:build"
           }
         },
         "test": {
@@ -105,6 +105,7 @@
               "node_modules/material-design-icons-iconfont/dist/material-design-icons.css",
               "node_modules/bootstrap-v4-rtl/dist/css/bootstrap-rtl.min.css",
               "src/assets/css/bootstrap-theme.css",
+              "node_modules/angular2-draggable/css/resizable.css",
               "node_modules/summernote/dist/summernote-lite.css",
               "src/assets/css/sat-datepicker-bundle.css",
               "src/assets/WebFonts/css/fontiran.css",
@@ -134,18 +135,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "aak-reactive-form:serve"
+            "devServerTarget": "aak-from-builder-client:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "aak-reactive-form:serve:production"
+              "devServerTarget": "aak-from-builder-client:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "aak-reactive-form",
+  "defaultProject": "aak-from-builder-client",
   "cli": {
     "analytics": "a6bb1725-9a12-43dd-849a-4a199fbc7bca"
   }

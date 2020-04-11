@@ -8,7 +8,7 @@ export class Form implements Interfaces.Form {
 
         this.id = init.id || Guid.create().toString();
         this.name = init.name || Guid.create().toString();
-        this.uiSetting = init.uiSetting || new Models.FormUISetting();
+        this.formUiSetting = init.formUiSetting || new Models.FormUISetting();
         Object.assign(this, init);
 
     }
@@ -20,6 +20,6 @@ export class Form implements Interfaces.Form {
     beginDate: string;
     endDate: string;
     fieldItems: Interfaces.BaseFieldItem[];
-    uiSetting: Interfaces.FormUISetting;
-    resultSetting: Interfaces.FormResultSetting;
+    formUiSetting: Interfaces.FormUISetting;
+    formResultSetting: Interfaces.FormResultSetting;
 }

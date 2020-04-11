@@ -31,17 +31,42 @@ export const createOrUpdateFieldItems: Interfaces.BaseFieldItem[] = [
         placeholder: 'فیلد اجباری',
         order: 3,
     }),
-    new Models.RangeFieldItem({
-        id: 'width',
-        name: 'width',
-        label: 'عرض فیلد',
-        hint: 'فیلد مورد نظر چه اندازه از عرض ردیف خود را پوشش دهد',
-        value: 12,
-        minValue: 1,
-        maxValue: 12,
-        displayFormat: formatLabel,
-        order: 4,
-    }),
+    new Models.WidthFieldItem({
+        id:'width',
+        name:'width',
+        label:'اندازه فیلد',
+        required:true,
+        order:5,
+      }),
+      new Models.MultiToggleFieldItem({
+          id:'test',
+          name:'test',
+          label:'test',
+          inlineView:false,
+          columns:3,
+          options:[
+              new Models.Option({value:'آیتم 1'}),
+              new Models.Option({value:'آیتم 2'}),
+              new Models.Option({value:'آیتم 3'}),
+              new Models.Option({value:'آیتم 4'}),
+              new Models.Option({value:'آیتم 5'}),
+              new Models.Option({value:'آیتم 6'}),
+              new Models.Option({value:'آیتم 7'}),
+              new Models.Option({value:'آیتم 8'}),
+              new Models.Option({value:'آیتم 9'}),
+          ]
+      })
+    // new Models.RangeFieldItem({
+    //     id: 'width',
+    //     name: 'width',
+    //     label: 'عرض فیلد',
+    //     hint: 'فیلد مورد نظر چه اندازه از عرض ردیف خود را پوشش دهد',
+    //     value: 12,
+    //     minValue: 1,
+    //     maxValue: 12,
+    //     displayFormat: formatLabel,
+    //     order: 4,
+    // }),
 ];
 
 export const textAreaTypeSelectFieldItem: Interfaces.BaseFieldItem =

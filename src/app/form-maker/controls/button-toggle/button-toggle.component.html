@@ -1,6 +1,6 @@
 <ng-container [formGroup]="group">
-  <mat-button-toggle-group [vertical]="!field.inlineView" (change)="onChanged($event)">
-    <mat-button-toggle class="p-1" *ngFor="let item of field.options" [value]="item.id">
+  <mat-button-toggle-group [ngClass]="{'row no-gutters w-100': field.isMaximumWidth }" [vertical]="!field.inlineView" (change)="onChanged($event)">
+    <mat-button-toggle class="p-1" *ngFor="let item of field.options" [ngClass]="{'col': field.isMaximumWidth }"  [value]="item.id">
       {{item.value}}
     </mat-button-toggle>
   </mat-button-toggle-group>

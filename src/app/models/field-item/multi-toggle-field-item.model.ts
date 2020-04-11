@@ -1,16 +1,14 @@
 import { ColorableOptionFieldItem } from './colorable-option-field-item.model';
 import * as Interfaces from '../../interfaces/field-item/multi-view-field-item.interface';
 
-export class MultiCheckboxFieldItem extends ColorableOptionFieldItem implements Interfaces.MultiViewFieldItem {
+export class MultiToggleFieldItem extends ColorableOptionFieldItem implements Interfaces.MultiViewFieldItem {
 
-    constructor(init?: Partial<MultiCheckboxFieldItem>) {
+    constructor(init?: Partial<MultiToggleFieldItem>) {
         super(init);
         this.inlineView = true;
-        this.type = 'multicheckbox';
-
+        this.type = 'multitoggle';
         Object.assign(this, init);
     }
-
-    inlineView: boolean;
     columns: number;
+    inlineView: boolean;
 }

@@ -1,12 +1,13 @@
-<div class="row h-100" cdkDropListGroup>
+<div class="row dashboard">
   <div class="col-md-3">
-    <mat-card class="h-100">
-      <app-field-item-panel></app-field-item-panel>
+    <mat-card class="field-item-panel">
+      <app-field-item-panel [isItemDropped]="isNewItemAdded" (createPanelClosed)="onPanelClosed($event)"></app-field-item-panel>
     </mat-card>
   </div>
   <div class="col-md-9">
-    <mat-card class="h-100">
-      <app-dashboard-form-builder></app-dashboard-form-builder>
+    <mat-card class="dashboard-form-builder">
+      <app-dashboard-form-builder (fieldItemAdded)="onFieldItemAdded($event)">
+      </app-dashboard-form-builder>
     </mat-card>
   </div>
 </div>

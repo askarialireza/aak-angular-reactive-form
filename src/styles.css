@@ -17,31 +17,40 @@
 
 [dir=rtl] .mat-form-field {
     text-align: right;
- }
+}
 
 * :not(.material-icons) {
     font-family: IRANYekan !important;
     /* font-size: small; */
 }
 
-.mat-icon{
+.mat-icon {
     font-family: 'Material Icons' !important;
-  }
+}
 
 .mat-form-field-appearance-outline .mat-form-field-infix {
     padding: 0.5em 0 0.75em 0 !important;
 }
 
-html, body {
-    height: 100%;
+* {
+    box-sizing: border-box;
 }
 
-body {
-    margin: 0;
+*:before, *:after {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    position: relative;
+}
+
+app-root {
+    height: 100vh;
 }
 
 .form-group {
-    margin-bottom: 0; 
+    margin-bottom: 0;
 }
 
 .custom-input {
@@ -55,31 +64,30 @@ body {
     overflow: inherit !important;
     overflow-x: hidden !important;
     overflow-y: auto !important;
-  }
-  
-  .mat-bottom-sheet-custom-container-large {
+}
+
+.mat-bottom-sheet-custom-container-large {
     padding: 0px !important;
     min-width: 512px !important;
     max-width: 512px !important;
     overflow: inherit !important;
     overflow-x: hidden !important;
     overflow-y: auto !important;
-  }
-  
-  .mat-bottom-sheet-custom-container-xlarge {
+}
+
+.mat-bottom-sheet-custom-container-xlarge {
     padding: 0px !important;
     min-width: 576px !important;
     max-width: 576px !important;
     overflow: inherit !important;
     overflow-x: hidden !important;
     overflow-y: auto !important;
-  }
+}
 
 @media (max-width: 992px) {
-
     .d-max-md-none {
-        display: none; 
-     }
+        display: none;
+    }
     .btn-block-max-md {
         display: flex;
         width: 100%;
@@ -91,4 +99,3 @@ body {
         margin-top: 0.5rem;
     }
 }
-

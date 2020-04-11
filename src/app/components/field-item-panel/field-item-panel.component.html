@@ -1,17 +1,24 @@
-<div>
-  <mat-nav-list >
-    <div *ngFor="let item of this.data.items" mat-list-item class="list-item" 
-    cdkDropList cdkDropListConnectedTo="form-builder"  (cdkDropListDropped)="drop($event)"
-    [cdkDropListData]="item">
-      <div class="list-item" cdkDrag>
-        <div class="list-item-icon">
-          <i class="material-icons">{{item.icon}}</i>
-        </div>
-        <div class="list-item-label">
-          <span class="label-title">{{item.title}}</span>
-          <span class="label-hint">{{item.hint}}</span>
-        </div>
+<div *ngIf="!isItemDropped" class="row no-gutters">
+  <div *ngFor="let item of this.data.items" class="list-item col-md-3" cdkDropList cdkDropListConnectedTo="form-builder"
+    (cdkDropListDropped)="drop($event)" [cdkDropListData]="item">
+    <div cdkDrag>
+      <div class="list-item-icon shadow-sm text-center">
+        <i class="material-icons">{{item.icon}}</i>
+        <span class="label-title">{{item.title}}</span>
       </div>
     </div>
-  </mat-nav-list>
+  </div>
 </div>
+
+<div *ngIf="isItemDropped" class="field-item-create-form">
+  <form [formGroup]="formGroup">
+    <div class="reactive-form">
+      <app-form-generator [formGroup]="formGroup" [formItem]="formItem"></app-form-generator>
+    </div>
+    <div class="my-1 float-left">
+      <button type="button" class="btn btn-secondary mr-2" (click)="onCreateFieldPanelClosed($event)">لغو</button>
+      <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid">تایید</button>
+    </div>
+  </form>
+</div>
+

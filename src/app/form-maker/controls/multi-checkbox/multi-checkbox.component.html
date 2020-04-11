@@ -1,16 +1,17 @@
 <ng-container [formGroup]="group">
-  <mat-radio-group [formArrayName]="field.name" [ngClass]="{'d-flex flex-column' : !field.inlineView}"
-  *ngFor="let option of fieldOptions; let i = index">
-  <mat-checkbox class="mr-2" id="{{option.id}}" [color]="field.color" [formControlName]="i" (change)="onCheckChange($event,i)">
-    {{option.value}}
-  </mat-checkbox>
-</mat-radio-group>
-<div class="mat-form-field-appearance-outline">
-  <div class="mat-form-field-subscript-wrapper">
-    <mat-error
-      *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
-      {{errorMessage}}
-    </mat-error>
+  <mat-radio-group [formArrayName]="field.name"
+    [ngClass]="getMatRadioGroupClass()">
+    <mat-checkbox [ngClass]="getColumnClass(field.columns)" *ngFor="let option of fieldOptions; let i = index"
+      id="{{option.id}}" [color]="field.color" [formControlName]="i" (change)="onCheckChange($event,i)">
+      {{option.value}}
+    </mat-checkbox>
+  </mat-radio-group>
+  <div class="mat-form-field-appearance-outline">
+    <div class="mat-form-field-subscript-wrapper">
+      <mat-error
+        *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+        {{errorMessage}}
+      </mat-error>
+    </div>
   </div>
-</div>
 </ng-container>

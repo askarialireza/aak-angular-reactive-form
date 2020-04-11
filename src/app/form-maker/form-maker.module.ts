@@ -8,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { ResizableModule } from 'angular-resizable-element';
 
 import * as Controls from '../form-maker/controls/index';
 import * as Modals from '../form-maker/modals/index';
@@ -34,6 +35,9 @@ import { ImageComponent } from '../components/user-interface/image/image.compone
     Controls.DateRangeComponent,
     Controls.ToggleComponent,
     Controls.OptionComponent,
+    Controls.DividerComponent,
+    Controls.WidthComponent,
+    Controls.MultiToggleComponent,
     Modals.GroupTypeSelectModalComponent,
     Modals.FieldTypeSelectModalComponent,
     Modals.CreateFieldModalComponent,
@@ -54,6 +58,7 @@ import { ImageComponent } from '../components/user-interface/image/image.compone
     FontAwesomeModule,
     NgxSummernoteModule,
     ReactiveFormsModule,
+    ResizableModule,
     BrowserAnimationsModule,
   ],
   exports: [
@@ -72,6 +77,9 @@ import { ImageComponent } from '../components/user-interface/image/image.compone
     Controls.DateRangeComponent,
     Controls.ToggleComponent,
     Controls.OptionComponent,
+    Controls.DividerComponent,
+    Controls.WidthComponent,
+    Controls.MultiToggleComponent,
     Modals.GroupTypeSelectModalComponent,
     Modals.FieldTypeSelectModalComponent,
     Modals.CreateFieldModalComponent,

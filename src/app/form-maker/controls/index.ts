@@ -13,4 +13,6 @@ export { UploadComponent } from './upload/upload.component';
 export { ToggleComponent } from './toggle/toggle.component';
 export { ManageControlComponent } from './manage-control/manage-control.component';
 export { OptionComponent } from './option/option.component';
-export {DividerComponent} from './divider/divider.component';
+export { DividerComponent } from './divider/divider.component';
+export { WidthComponent } from './width/width.component';
+export { MultiToggleComponent } from './multi-toggle/multi-toggle.component';

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import * as Interfaces from '../../interfaces/index';
 import * as Services from '../../services/index';
@@ -15,6 +15,9 @@ export class DashboardFormBuilderComponent implements OnInit {
     this.items = [];
     this.formGroupOne = new FormGroup({});
   }
+
+  @Output() fieldItemAdded: EventEmitter<any> = new EventEmitter<any>();
+
   public formGroupOne: FormGroup;
   public formItem: Interfaces.Form;
   public items: [];
@@ -22,6 +25,7 @@ export class DashboardFormBuilderComponent implements OnInit {
   ngOnInit() {
   }
   onDropItem(event: CdkDragDrop<Interfaces.FieldType[]>) {
+    this.fieldItemAdded.emit(true);
     let fieldItem: Interfaces.BaseFieldItem =
       new Models.InputFieldItem({
         label: 'فیلد 1',
@@ -29,9 +33,11 @@ export class DashboardFormBuilderComponent implements OnInit {
       });
 
     this.fieldItemService.PushFieldItem(fieldItem);
-
     this.fieldItemService.formGroup =
       this.formService.createControl(this.fieldItemService.fieldItems);
-   // console.log(event.previousContainer.data);
+  }
+
+  onFieldItemSelected(event) {
+    this.fieldItemAdded.emit(true);
   }
 }

@@ -11,6 +11,7 @@ import { NgxSummernoteModule } from 'ngx-summernote';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { FormMakerModule } from './form-maker/form-maker.module';
+import { ResizableModule } from 'angular-resizable-element';
 
 import * as Services from './services/index';
 import * as Pages from './components/pages/index';
@@ -23,6 +24,7 @@ import { NotificationComponent } from './components/user-interface/notification/
 import { FooterComponent } from './components/user-interface/footer/footer.component';
 import { FieldItemPanelComponent } from './components/field-item-panel/field-item-panel.component';
 import { DashboardFormBuilderComponent } from './components/dashboard-form-builder/dashboard-form-builder.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { DashboardFormBuilderComponent } from './components/dashboard-form-build
     Pages.DashboardComponent,
     Pages.FormViewComponent,
     Pages.NotFoundComponent,
+    HighlightDirective,
   ],
 
   imports: [
@@ -50,6 +53,7 @@ import { DashboardFormBuilderComponent } from './components/dashboard-form-build
     FontAwesomeModule,
     NgxSummernoteModule,
     ReactiveFormsModule,
+    ResizableModule,
     BrowserAnimationsModule,
   ],
   exports: [

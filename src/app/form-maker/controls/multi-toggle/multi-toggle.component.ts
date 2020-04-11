@@ -1,32 +1,29 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
-import { FormArray, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BaseComponent } from '../../../infrastructure/base-component';
 import * as Models from '../../../models/index';
 import * as Interfaces from '../../../interfaces/index';
+import { FormArray, FormControl } from '@angular/forms';
+
 @Component({
-  selector: 'app-multi-checkbox',
-  templateUrl: './multi-checkbox.component.html',
-  styleUrls: ['./multi-checkbox.component.css']
+  selector: 'app-multi-toggle',
+  templateUrl: './multi-toggle.component.html',
+  styleUrls: ['./multi-toggle.component.css']
 })
-export class MultiCheckboxComponent extends BaseComponent {
+export class MultiToggleComponent extends BaseComponent {
 
   constructor() {
     super();
-
-  }
-
-  public values;
-
-  @Input() field: Models.MultiCheckboxFieldItem;
-
-  @Output() SelectedValues: EventEmitter<any> = new EventEmitter<any>();
-
-  ngOnInit() {
     this.values = [];
   }
+  
+  @Input() field: Models.MultiToggleFieldItem;
+  
+  @Output() SelectedValues: EventEmitter<any> = new EventEmitter<any>();
+  
+  public values;
 
-
-
+  ngOnInit() {
+  }
   get options() {
     return <FormControl>this.group.controls[this.field.name];
   }
@@ -35,18 +32,6 @@ export class MultiCheckboxComponent extends BaseComponent {
     return <Interfaces.Option[]>this.field.options;
   }
 
-  get errorMessage() {
-    let error = '';
-    if (this.field.required) {
-      let validation =
-        this.field.validations.find(current => current.validator == Validators.required)
-
-      if (validation) {
-        error = validation.message;
-      }
-    }
-    return <string>error;
-  }
 
   onCheckChange(event, index: number) {
 
@@ -66,7 +51,7 @@ export class MultiCheckboxComponent extends BaseComponent {
     this.values = this.values.filter(function (el) {
       return el != null;
     });
-
+    console.log(JSON.stringify(this.group.get(this.field.name).value))
     this.SelectedValues.emit(this.values);
   }
 
@@ -84,11 +69,10 @@ export class MultiCheckboxComponent extends BaseComponent {
   getMatRadioGroupClass() {
     if (this.field.inlineView == true) {
       return ``;
-    } 
+    }
     else {
       return `row no-gutters`;
     }
   }
 
 }
-

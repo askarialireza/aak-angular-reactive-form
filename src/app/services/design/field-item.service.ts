@@ -16,7 +16,7 @@ export class FieldItemService {
 
     this.formItem = new Models.Form({
       id: Guid.create().toString(),
-      uiSetting: new Models.FormUISetting({
+      formUiSetting: new Models.FormUISetting({
         isEditModeEnabled: true,
         isHorizontalModeEnabled: false
       }),

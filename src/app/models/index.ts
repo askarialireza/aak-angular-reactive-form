@@ -26,6 +26,8 @@ export { UrlFieldItem } from './field-item/url-field-item.model';
 export { ToggleFieldItem } from './field-item/toggle-field-item.model';
 export { TextareaFieldItem } from './field-item/textarea-field-item.model';
 export { DividerFieldItem } from './field-item/divider-field-item.model';
+export { WidthFieldItem } from './field-item/width-field-item.model';
+export { MultiToggleFieldItem } from './field-item/multi-toggle-field-item.model';
 
 // ****************************************************************
 

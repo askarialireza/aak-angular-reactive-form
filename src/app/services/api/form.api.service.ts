@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BASE_URL } from '../../mocks/backend.mock';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as Interfaces from '../../interfaces/index';
-
+import * as Models from '../../models/index';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +18,11 @@ export class FormApiService implements Interfaces.DataManager {
   }
 
   Get(id: string): Observable<Interfaces.Form> {
-    return this.http.get<Interfaces.Form>(`${this.apiUrl}/${id}`);
+    return this.http.get<Models.Form>(`${this.apiUrl}/id/${id}`);
+  }
+
+  GetByName(name: string): Observable<Interfaces.Form> {
+    return this.http.get<Models.Form>(`${this.apiUrl}/name/${name}`);
   }
 
   Add(data: Interfaces.Form): Observable<Interfaces.Form> {

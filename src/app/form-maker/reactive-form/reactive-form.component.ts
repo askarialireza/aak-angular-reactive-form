@@ -5,8 +5,10 @@ import { stepOneForm } from '../../mocks/form-create-step1';
 import * as Services from '../../services/index';
 import * as Interfaces from '../../interfaces/index';
 import * as Modals from '../../form-maker/modals/index';
+import * as Models from '../../models/index';
 import * as Mocks from '../../mocks/field-type-select-group.mock';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { ObjectMapper } from 'src/app/infrastructure/object-mapper';
 
 @Component({
   selector: 'app-reactive-form',
@@ -24,18 +26,26 @@ export class ReactiveFormComponent implements OnInit {
 
   constructor(
     public formService: Services.FormService,
+    public formApiService: Services.FormApiService,
     public fieldItemService: Services.FieldItemService,
     private modal: MatBottomSheet
   ) {
-
-    this.formItem = stepOneForm;
     this.formGroupOne = new FormGroup({});
-
+    this.formItem = new Models.Form({});
   }
 
   ngOnInit() {
-    this.formService.sortFieldItemsByOrder(this.formItem.fieldItems);
-    this.formGroupOne = this.formService.createControl(this.formItem.fieldItems);
+    this.formApiService.GetByName("createform1")
+      .subscribe(result => {
+        this.formItem = ObjectMapper.MapForm(result);
+      },
+        error => {
+          this.formItem = stepOneForm;
+        }, () => {
+          this.formService.sortFieldItemsByOrder(this.formItem.fieldItems);
+          this.formGroupOne = this.formService.createControl(this.formItem.fieldItems);
+        }
+      );
   }
 
   onSumbitStep1(e) {
@@ -48,7 +58,7 @@ export class ReactiveFormComponent implements OnInit {
 
   onSumbitStep2(e) {
   }
-  
+
   openSelectFieldTypeModal() {
     this.modal.open(Modals.GroupTypeSelectModalComponent, { data: Mocks.ChooseFieldType });
   }

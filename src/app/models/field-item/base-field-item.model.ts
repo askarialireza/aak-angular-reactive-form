@@ -18,11 +18,13 @@ export class BaseFieldItem implements Interfaces.BaseFieldItem {
                 this.validations = [];
             }
 
-            this.validations.push({
-                name: "required",
-                validator: Validators.required,
-                message: `فیلد ${(this.label) ? `${this.label} ` : ''}اجباری است.`,
-            });
+            this.validations.push(
+                new Validator({
+                    name: "required",
+                    message: `فیلد ${(this.label) ? `${this.label} ` : ''}اجباری است.`,
+                    validator: Validators.required,
+                })
+            );
         }
     }
 
