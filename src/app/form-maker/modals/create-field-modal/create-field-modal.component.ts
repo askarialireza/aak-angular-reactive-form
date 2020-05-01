@@ -57,7 +57,7 @@ export class CreateFieldModalComponent implements OnInit {
 
     }
 
-    this.formGroup = this.formService.createControl(this.fieldItems);
+    this.formGroup = this.formService.CreateControls(this.fieldItems);
 
     this.formItem = new Models.Form({ fieldItems: this.fieldItems });
   }
@@ -137,7 +137,7 @@ export class CreateFieldModalComponent implements OnInit {
     this.fieldItemService.AddFieldItem(fieldItem);
 
     this.fieldItemService.formGroup =
-      this.formService.createControl(this.fieldItemService.GetFieldItems());
+      this.formService.CreateControls(this.fieldItemService.GetFieldItems());
 
     this._modalRef.dismiss();
   }

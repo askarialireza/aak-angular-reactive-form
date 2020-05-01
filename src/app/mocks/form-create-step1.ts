@@ -38,7 +38,7 @@ export const stepOneFieldItems: Interfaces.BaseFieldItem[] = [
     label: 'چند انتخابی',
     inlineView: false,
     required: true,
-    minSelected:1,
+    minSelected:2,
     columns: 3,
     order:6,
     options: [

@@ -38,7 +38,7 @@ export class FormViewComponent implements OnInit {
           this.form = result;
           this.isHorizontal = result["isHorizontal"];
           this.formService.formItem = result;
-          this.formService.formGroup = this.formService.createControl(this.formService.formItem.fieldItems);
+          this.formService.formGroup = this.formService.CreateControls(this.formService.formItem.fieldItems);
         },
         error => {
           this.isLoading = false;

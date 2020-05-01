@@ -39,13 +39,13 @@ export class ReactiveFormComponent implements OnInit {
       .subscribe(result => {
         this.formItem = ObjectMapper.MapForm(result);
         this.formService.sortFieldItemsByOrder(this.formItem.fieldItems);
-        this.formGroupOne = this.formService.createControl(this.formItem.fieldItems);
+        this.formGroupOne = this.formService.CreateControls(this.formItem.fieldItems);
         console.log(this.formItem);
       },
         error => {
           this.formItem = stepOneForm;
           this.formService.sortFieldItemsByOrder(this.formItem.fieldItems);
-          this.formGroupOne = this.formService.createControl(this.formItem.fieldItems);
+          this.formGroupOne = this.formService.CreateControls(this.formItem.fieldItems);
           console.log(this.formGroupOne.value);
           console.log(this.formItem);
         }

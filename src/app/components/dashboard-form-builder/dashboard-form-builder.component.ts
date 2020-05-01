@@ -34,7 +34,7 @@ export class DashboardFormBuilderComponent implements OnInit {
 
     this.fieldItemService.AddFieldItem(fieldItem);
     this.fieldItemService.formGroup =
-      this.formService.createControl(this.fieldItemService.GetFieldItems());
+      this.formService.CreateControls(this.fieldItemService.GetFieldItems());
   }
 
   onFieldItemSelected(event) {

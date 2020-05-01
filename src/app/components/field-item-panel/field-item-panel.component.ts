@@ -27,7 +27,7 @@ export class FieldItemPanelComponent implements OnInit {
       this.fieldItems.push(item);
     });
 
-    this.formGroup = this.formService.createControl(this.fieldItems);
+    this.formGroup = this.formService.CreateControls(this.fieldItems);
 
     this.formItem = new Models.Form({ fieldItems: this.fieldItems });
   }

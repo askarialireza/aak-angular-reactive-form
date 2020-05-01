@@ -1,19 +1,15 @@
-import * as Models from '../index';
+import { OptionableFieldItem } from './optionable-field-item.model';
+import { ColorableFieldItem } from './../../interfaces/field-item/colorable-field-item.interface';
 
-export class MultiViewFieldItem extends Models.ColorableOptionFieldItem {
+export class MultiViewFieldItem extends OptionableFieldItem implements ColorableFieldItem {
 
     constructor(init?: Partial<MultiViewFieldItem>) {
         super(init);
         this.inlineView = true;
         Object.assign(this, init);
-
-        if (this.required === true) {
-            this.validations.find(current=>current.name == 'required')
-            .message = `انتخاب حداقل ${this.minSelected} گزینه الزامی است.`
-        }
     }
     
+    color: string;   
     columns: number;
-    minSelected: number;
     inlineView: boolean;
 }

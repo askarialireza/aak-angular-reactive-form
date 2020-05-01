@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as Services from '../../services/index';
 import * as Interfaces from '../../interfaces/index';
 import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
-import { MultiViewFieldItem } from './../../models/field-item/multi-view-field-item.model';
+import { MultiChoiceFieldItem } from './../../models/field-item/multi-choice-field-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -58,23 +58,20 @@ export class FormService {
     return fieldItems.sort((a, b) => (a.order > b.order) ? 1 : -1)
   }
 
-  createControl(fieldItems: Interfaces.BaseFieldItem[]) {
-
+  CreateControls(fieldItems: Interfaces.BaseFieldItem[]) {
     fieldItems = this.sortFieldItemsByOrder(fieldItems);
-
     const group: FormGroup = new FormGroup({});
-
+    
     fieldItems.forEach(field => {
       if (field.type === 'button') { return; }
       if (field.type === 'multicheckbox' || field.type === 'multitoggle') {
         (field.required) ?
-          group.addControl(field.name, new FormArray([], this.fieldValidationService.minSelectedCheckboxes((field as MultiViewFieldItem).minSelected))) :
+          group.addControl(field.name, new FormArray([], this.fieldValidationService.minSelectedCheckboxes((field as MultiChoiceFieldItem).minSelected))) :
           group.addControl(field.name, new FormArray([]));
         (field as Interfaces.OptionFieldItem).options.forEach((o, i) => {
           const formControl = new FormControl(null);
           (group.controls[field.name] as FormArray).push(formControl);
         });      
-
         return;
       }
 
@@ -89,9 +86,7 @@ export class FormService {
 
       const control = this.formBuilder.control(field.value, this.fieldValidationService.bindValidations(field.validations || []));
       group.addControl(field.name, control);
-
     });
-
     return group;
   }
 
