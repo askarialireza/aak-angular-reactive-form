@@ -31,9 +31,9 @@ bindValidations(validations: any) {
     validations.forEach(valid => {
       validList.push(valid.validator);
     });
-
     return Validators.compose(validList);
   }
+
   return null;
 }
 

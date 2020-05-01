@@ -26,15 +26,15 @@ export class DashboardFormBuilderComponent implements OnInit {
   }
   onDropItem(event: CdkDragDrop<Interfaces.FieldType[]>) {
     this.fieldItemAdded.emit(true);
-    let fieldItem: Interfaces.BaseFieldItem =
+    const fieldItem: Interfaces.BaseFieldItem =
       new Models.InputFieldItem({
         label: 'فیلد 1',
         order: this.fieldItemService.GetLastOrder(),
       });
 
-    this.fieldItemService.PushFieldItem(fieldItem);
+    this.fieldItemService.AddFieldItem(fieldItem);
     this.fieldItemService.formGroup =
-      this.formService.createControl(this.fieldItemService.fieldItems);
+      this.formService.createControl(this.fieldItemService.GetFieldItems());
   }
 
   onFieldItemSelected(event) {

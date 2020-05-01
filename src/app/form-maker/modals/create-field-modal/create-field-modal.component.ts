@@ -45,11 +45,11 @@ export class CreateFieldModalComponent implements OnInit {
       this.fieldItems.push(item);
     });
 
-    if (data.type == 'textarea') {
+    if (data.type === 'textarea') {
       this.fieldItems.push(textAreaTypeSelectFieldItem);
     }
 
-    if (data.type == 'select') {
+    if (data.type === 'select') {
 
       optionTypeSelectFieldItem.map(item => {
         this.fieldItems.push(item);
@@ -97,7 +97,7 @@ export class CreateFieldModalComponent implements OnInit {
         order: this.fieldItemService.GetLastOrder(),
       });
 
-    if (this.data.type == 'textarea') {
+    if (this.data.type === 'textarea') {
       switch (this.formGroup.get('textarea-type').value) {
         case 'textarea':
           fieldItem = new Models.TextareaFieldItem(fieldItem);
@@ -108,22 +108,22 @@ export class CreateFieldModalComponent implements OnInit {
       }
     }
 
-    if (this.data.type == 'input') {
+    if (this.data.type === 'input') {
       fieldItem = new Models.InputFieldItem(fieldItem);
     }
 
-    if (this.data.type == 'select') {
+    if (this.data.type === 'select') {
       fieldItem = new Models.OptionableFieldItem(fieldItem);
-      let array: string[] = this.formGroup.get('options').value;
-      let options: Models.Option[] = [];
+      const array: string[] = this.formGroup.get('options').value;
+      const options: Models.Option[] = [];
 
       array.map(item => {
-        let option = new Models.Option({ value: item });
+        const option = new Models.Option({ value: item });
         options.push(option);
-      });   
+      });
 
       (fieldItem as Models.OptionableFieldItem).options = options;
-      
+
       switch (this.formGroup.get('select-type').value) {
         case 'select':
           fieldItem = new Models.SelectFieldItem(fieldItem);
@@ -134,10 +134,10 @@ export class CreateFieldModalComponent implements OnInit {
       }
     }
 
-    this.fieldItemService.PushFieldItem(fieldItem);
+    this.fieldItemService.AddFieldItem(fieldItem);
 
     this.fieldItemService.formGroup =
-      this.formService.createControl(this.fieldItemService.fieldItems);
+      this.formService.createControl(this.fieldItemService.GetFieldItems());
 
     this._modalRef.dismiss();
   }

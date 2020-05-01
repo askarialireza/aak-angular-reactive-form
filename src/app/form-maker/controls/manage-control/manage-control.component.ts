@@ -49,17 +49,13 @@ export class ManageControlComponent implements OnInit {
 
   EditField(e) {
     if (e) {
-      //this.modal.open(FieldEditModalComponent, { data: this.field, panelClass: 'mat-bottom-sheet-custom-container-xlarge' });
+      // this.modal.open(FieldEditModalComponent, { data: this.field, panelClass: 'mat-bottom-sheet-custom-container-xlarge' });
     }
   }
 
   DeleteField() {
 
-    let id = this.field.id;
-
-    this.fieldItemService.formItem.fieldItems.splice(this.fieldItemService.formItem.fieldItems.indexOf(this.field), 1);
-
-    this.fieldItemService.formGroup.removeControl(this.field.name);
+    this.fieldItemService.RemoveFieldItem(this.field);
 
     // this.fieldItemApiService.deleteFieldItem(id).subscribe(
 
@@ -78,7 +74,6 @@ export class ManageControlComponent implements OnInit {
   ChangeListView() {
 
     this.field.inlineView = !this.field.inlineView;
-
     this.isInline = this.field.inlineView;
 
   }
@@ -91,15 +86,10 @@ export class ManageControlComponent implements OnInit {
 
   IsFirstItem() {
 
-    if (this.fieldItemService.GetIndexOf(this.field) == 0) {
-
+    if (this.fieldItemService.GetIndexOf(this.field) === 0) {
       return true;
-
     }
-
     else {
-
-
       return false;
     }
 
@@ -107,15 +97,11 @@ export class ManageControlComponent implements OnInit {
 
   IsLastItem() {
 
-    if (this.fieldItemService.GetIndexOf(this.field) == this.fieldItemService.GetFieldItemsLength() - 1) {
-
+    if (this.fieldItemService.GetIndexOf(this.field) === this.fieldItemService.GetFieldItemsCount() - 1) {
       return true;
-
     }
     else {
-
       return false;
-
     }
 
   }
@@ -150,7 +136,7 @@ export class ManageControlComponent implements OnInit {
   isMaximumWidth() {
 
     if (this.field.width) {
-      if (this.field.width == 12) {
+      if (this.field.width === 12) {
         return true;
       }
     }
@@ -160,7 +146,7 @@ export class ManageControlComponent implements OnInit {
   isMinimumWidth() {
 
     if (this.field.width) {
-      if (this.field.width == 1) {
+      if (this.field.width === 1) {
         return true;
       }
     }
@@ -170,39 +156,37 @@ export class ManageControlComponent implements OnInit {
   checkControl(field: Interfaces.BaseFieldItem) {
 
     switch (field.type) {
-      case "checkbox":
-      case "radio":
-      case "radiobutton":
-      case "multicheckbox":
+      case 'checkbox':
+      case 'radio':
+      case 'radiobutton':
+      case 'multicheckbox':
         return true;
-        break;
 
       default:
         return false;
-        break;
     }
 
   }
 
   moveItemNext(fieldItem: Interfaces.BaseFieldItem) {
 
-    let index = this.fieldItemService.formItem.fieldItems.indexOf(fieldItem);
-    var temp =
-      this.fieldItemService.formItem.fieldItems.splice(index, 1, this.fieldItemService.formItem.fieldItems[index + 1])[0];
+    const index = this.fieldItemService.formItem.fieldItems.indexOf(fieldItem);
+    const temp =
+      this.fieldItemService.formItem.fieldItems.splice(index, 1, this.fieldItemService.GetByIndex(index + 1))[0];
     temp.order++;
     this.fieldItemService.formItem.fieldItems.splice(index + 1, 1, temp);
-    this.fieldItemService.formItem.fieldItems[index].order--;
+    this.fieldItemService.GetByIndex(index).order--;
 
   }
 
   moveItemPrevious(fieldItem: Interfaces.BaseFieldItem) {
 
-    let index = this.fieldItemService.formItem.fieldItems.indexOf(fieldItem);
-    var temp =
-      this.fieldItemService.formItem.fieldItems.splice(index, 1, this.fieldItemService.formItem.fieldItems[index - 1])[0];
+    const index = this.fieldItemService.formItem.fieldItems.indexOf(fieldItem);
+    const temp =
+      this.fieldItemService.formItem.fieldItems.splice(index, 1, this.fieldItemService.GetByIndex(index - 1))[0];
     temp.order--;
     this.fieldItemService.formItem.fieldItems.splice(index - 1, 1, temp);
-    this.fieldItemService.formItem.fieldItems[index].order++;
+    this.fieldItemService.GetByIndex(index).order++;
 
   }
 
@@ -211,19 +195,19 @@ export class ManageControlComponent implements OnInit {
     if (fieldItem) {
       if (fieldItem.width) {
         if (fieldItem.width < 12) {
-          this.fieldItemService.formItem.fieldItems.find(current => current.id == fieldItem.id).width++;
+          this.fieldItemService.GetById(fieldItem.id).width++;
         }
       }
     }
 
   }
 
-  decreaseWidth(fieldItem:Interfaces.BaseFieldItem) {
+  decreaseWidth(fieldItem: Interfaces.BaseFieldItem) {
 
     if (fieldItem) {
       if (fieldItem.width) {
         if (fieldItem.width > 1) {
-          this.fieldItemService.formItem.fieldItems.find(current => current.id == fieldItem.id).width--;
+          this.fieldItemService.GetById(fieldItem.id).width--;
         }
       }
     }

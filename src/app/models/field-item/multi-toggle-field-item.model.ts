@@ -1,7 +1,6 @@
-import { ColorableOptionFieldItem } from './colorable-option-field-item.model';
-import * as Interfaces from '../../interfaces/field-item/multi-view-field-item.interface';
+import * as Models from '../index';
 
-export class MultiToggleFieldItem extends ColorableOptionFieldItem implements Interfaces.MultiViewFieldItem {
+export class MultiToggleFieldItem extends Models.MultiViewFieldItem {
 
     constructor(init?: Partial<MultiToggleFieldItem>) {
         super(init);
@@ -9,6 +8,4 @@ export class MultiToggleFieldItem extends ColorableOptionFieldItem implements In
         this.type = 'multitoggle';
         Object.assign(this, init);
     }
-    columns: number;
-    inlineView: boolean;
 }

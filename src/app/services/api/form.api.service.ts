@@ -21,8 +21,8 @@ export class FormApiService implements Interfaces.DataManager {
     return this.http.get<Models.Form>(`${this.apiUrl}/id/${id}`);
   }
 
-  GetByName(name: string): Observable<Interfaces.Form> {
-    return this.http.get<Models.Form>(`${this.apiUrl}/name/${name}`);
+  GetByName(name: string, includeSettings: boolean, includeFields: boolean): Observable<Interfaces.Form> {
+    return this.http.get<Models.Form>(`${this.apiUrl}/name=${name}&includeSettings=${includeSettings}&includeFields=${includeFields}`);
   }
 
   Add(data: Interfaces.Form): Observable<Interfaces.Form> {
@@ -34,11 +34,11 @@ export class FormApiService implements Interfaces.DataManager {
   }
 
   Update(data: Interfaces.Form): Observable<Interfaces.Form> {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   }
 
   Delete(id: string): Observable<Interfaces.Form> {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   }
 
   getDefaultForm(): Observable<Interfaces.Form> {

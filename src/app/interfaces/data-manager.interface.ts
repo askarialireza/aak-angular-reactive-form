@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 
 export interface DataManager {
-    
+
     apiUrl: string;
 
     Get(id: string): Observable<any>;

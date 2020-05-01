@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import * as Services from '../../services/index';
 import * as Interfaces from '../../interfaces/index';
-import { FormBuilder, FormGroup, FormControl, FormArray, Validators, } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { MultiViewFieldItem } from './../../models/field-item/multi-view-field-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +10,9 @@ import { FormBuilder, FormGroup, FormControl, FormArray, Validators, } from '@an
 export class FormService {
 
   public formGroup: FormGroup;
-
   public formItem: Interfaces.Form;
-
   public isHorizontalModeEnabled: boolean;
-
   public isEditModeEnabled: boolean;
-
   public showJsonCode: boolean;
 
   constructor(private formBuilder: FormBuilder, private fieldValidationService: Services.FieldValidationService) {
@@ -65,47 +62,32 @@ export class FormService {
 
     fieldItems = this.sortFieldItemsByOrder(fieldItems);
 
-    let group: FormGroup = new FormGroup({});
+    const group: FormGroup = new FormGroup({});
 
     fieldItems.forEach(field => {
-
-
-      if (field.type === "button") {
-
-        return;
-
-      }
-
-      if (field.type === "multicheckbox" || field.type === "multitoggle" ) {
-
-        if (field.required) {
-          group.addControl(field.name, new FormArray([], this.fieldValidationService.minSelectedCheckboxes(1)));
-        }
-        else {
+      if (field.type === 'button') { return; }
+      if (field.type === 'multicheckbox' || field.type === 'multitoggle') {
+        (field.required) ?
+          group.addControl(field.name, new FormArray([], this.fieldValidationService.minSelectedCheckboxes((field as MultiViewFieldItem).minSelected))) :
           group.addControl(field.name, new FormArray([]));
-        }
-
         (field as Interfaces.OptionFieldItem).options.forEach((o, i) => {
-          const control = new FormControl(null);
-          (group.controls[field.name] as FormArray).push(control);
-        });
+          const formControl = new FormControl(null);
+          (group.controls[field.name] as FormArray).push(formControl);
+        });      
 
         return;
       }
 
       if (field.type === 'option') {
         group.addControl(field.name, new FormArray([]));
-
         (field as Interfaces.OptionFieldItem).options.forEach((o, i) => {
-          const control = new FormControl(null, Validators.required);
-          (group.controls[field.name] as FormArray).push(control);
+          const formControl = new FormControl(null, Validators.required);
+          (group.controls[field.name] as FormArray).push(formControl);
         });
-
         return;
       }
 
       const control = this.formBuilder.control(field.value, this.fieldValidationService.bindValidations(field.validations || []));
-
       group.addControl(field.name, control);
 
     });
@@ -114,43 +96,18 @@ export class FormService {
   }
 
   getColumnClass(form: Interfaces.Form, item: Interfaces.BaseFieldItem) {
-    let result = "col-12";
+    let result = 'col-12';
     if (item.width) {
-
-      if (form?.formUiSetting.isHorizontalModeEnabled == false) {
-
-        result += ` col-md-${item.width.toString()}`;
-
-      }
-
-      let order = form.fieldItems.indexOf(item) + 1;
-
-      form.fieldItems.find(current => current.id == item.id).order = order;
-
-      let classOrder = "order-";
-
-      if (order > 12) {
-
-        classOrder = "order-12";
-
-      }
-      else {
-
-        classOrder += order.toString();
-
-      }
-
+      if (form?.formUiSetting.isHorizontalModeEnabled === false) { result += ` col-md-${item.width.toString()}`; }
+      const order = form.fieldItems.indexOf(item) + 1;
+      form.fieldItems.find(current => current.id === item.id).order = order;
+      let classOrder = 'order-';
+      classOrder = (order > 12) ? 'order-12' : classOrder + order.toString();;
       result += ` ${classOrder}`;
-
       return result;
     }
     else {
-
       return null;
-
     }
   }
-
-
-
 }

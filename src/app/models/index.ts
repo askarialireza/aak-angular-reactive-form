@@ -28,7 +28,8 @@ export { TextareaFieldItem } from './field-item/textarea-field-item.model';
 export { DividerFieldItem } from './field-item/divider-field-item.model';
 export { WidthFieldItem } from './field-item/width-field-item.model';
 export { MultiToggleFieldItem } from './field-item/multi-toggle-field-item.model';
-
+export { ColorableOptionFieldItem } from './field-item/colorable-option-field-item.model';
+export { MultiViewFieldItem } from './field-item/multi-view-field-item.model';
 // ****************************************************************
 
 export { GroupTypeSelect } from './type-select/group-type-select.model';
@@ -40,3 +41,7 @@ export { FieldType } from './type-select/field-type';
 
 export { Option } from './option';
 export { Validator } from './validator';
+export { BaseValidator } from './validator/base-validator.model';
+export { RequiredValidator } from './validator/required-validator.model';
+export { EmailValidator } from './validator/email-validator.model';
+export { ChoiceValidator } from './validator/choice-validator.model';

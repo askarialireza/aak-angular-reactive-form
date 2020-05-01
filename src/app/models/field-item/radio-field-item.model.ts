@@ -1,7 +1,6 @@
-import { ColorableOptionFieldItem } from './colorable-option-field-item.model';
-import * as Interfaces from '../../interfaces/field-item/multi-view-field-item.interface';
+import * as Models from '../index';
 
-export class RadioFieldItem extends ColorableOptionFieldItem implements Interfaces.MultiViewFieldItem {
+export class RadioFieldItem extends Models.MultiViewFieldItem {
 
     constructor(init?: Partial<RadioFieldItem>) {
         super(init);
@@ -9,6 +8,4 @@ export class RadioFieldItem extends ColorableOptionFieldItem implements Interfac
         this.type = 'radio';
         Object.assign(this, init);
     }
-
-    inlineView: boolean;
 }

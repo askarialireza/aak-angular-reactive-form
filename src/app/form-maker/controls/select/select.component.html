@@ -2,7 +2,7 @@
   <mat-form-field class="w-100" appearance="outline" [floatLabel]="'always'">
     <mat-select [(value)]="selectedValue" [placeholder]="field.placeholder" [formControlName]="field.name" (ngModelChange)="selectedItemChanged($event)">
       <mat-option>{{field.placeholder}}</mat-option>
-      <mat-option *ngFor="let item of field.options" value="{{item.id}}">{{item.value}}</mat-option>
+      <mat-option *ngFor="let item of (field.options | aakSort:'index':true)" value="{{item.id}}">{{item.value}}</mat-option>
     </mat-select>
     <mat-error *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
       <ng-container *ngFor="let item of field.validations;">

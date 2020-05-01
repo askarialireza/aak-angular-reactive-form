@@ -38,24 +38,6 @@ export const createOrUpdateFieldItems: Interfaces.BaseFieldItem[] = [
         required:true,
         order:5,
       }),
-      new Models.MultiToggleFieldItem({
-          id:'test',
-          name:'test',
-          label:'test',
-          inlineView:false,
-          columns:3,
-          options:[
-              new Models.Option({value:'آیتم 1'}),
-              new Models.Option({value:'آیتم 2'}),
-              new Models.Option({value:'آیتم 3'}),
-              new Models.Option({value:'آیتم 4'}),
-              new Models.Option({value:'آیتم 5'}),
-              new Models.Option({value:'آیتم 6'}),
-              new Models.Option({value:'آیتم 7'}),
-              new Models.Option({value:'آیتم 8'}),
-              new Models.Option({value:'آیتم 9'}),
-          ]
-      })
     // new Models.RangeFieldItem({
     //     id: 'width',
     //     name: 'width',

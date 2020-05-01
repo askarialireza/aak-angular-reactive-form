@@ -26,6 +26,7 @@ export { FieldType } from './type-select/field-type.interface';
 
 export { Option } from './option.interface';
 export { Validator } from './validator.interface';
+export { BaseValidator } from './validator/base-validator.interface';
 
 // ****************************************************************
 

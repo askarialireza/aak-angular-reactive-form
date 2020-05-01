@@ -1,6 +1,6 @@
 <ng-container [formGroup]="group">
   <div [formArrayName]="field.name" [ngClass]="getMatRadioGroupClass()">
-    <mat-slide-toggle *ngFor="let option of fieldOptions; let i = index" id="{{option.id}}"
+    <mat-slide-toggle *ngFor="let option of (fieldOptions | aakSort:'index':true); let i = index" id="{{option.id}}"
       [ngClass]="getColumnClass(field.columns)" [formControlName]="i" (change)="onCheckChange($event,i)"
       [color]="field.color">
       {{option.value}}
@@ -8,8 +8,12 @@
   </div>
   <div class="mat-form-field-appearance-outline">
     <div class="mat-form-field-subscript-wrapper">
-      <mat-error
-        *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+      <mat-error *ngIf="group.get(field.name).invalid && (group.get(field.name).dirty || group.get(field.name).touched)">
+        <ng-container *ngFor="let item of field.validations;">
+          <div *ngIf="group.get(field.name)?.hasError(item.name)">
+            {{item.message}}
+          </div>
+        </ng-container>
       </mat-error>
     </div>
   </div>

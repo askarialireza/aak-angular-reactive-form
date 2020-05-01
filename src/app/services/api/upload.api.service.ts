@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { BASE_URL } from '../../mocks/backend.mock';
-import { HttpClient, HttpHeaders, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +17,10 @@ export class UploadApiService {
   }
 
 
-  UploadFile(formData: FormData): Observable<HttpEvent<Object>> {
+  UploadFile(formData: FormData): Observable<HttpEvent<object>> {
 
     return this.http.post(this.apiUrl, formData, { reportProgress: true, observe: 'events' });
-    
+
   }
 
 }

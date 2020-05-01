@@ -49,7 +49,6 @@ export class FieldItemPanelComponent implements OnInit {
 
   drop(event: CdkDragDrop<Interfaces.FieldType[]>) {
     console.log(event);
-    //this.isItemDropped = true;
   }
 
   onCreateFieldPanelClosed(event) {

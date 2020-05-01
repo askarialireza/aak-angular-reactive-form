@@ -15,29 +15,24 @@ export class MultiToggleComponent extends BaseComponent {
     super();
     this.values = [];
   }
-  
-  @Input() field: Models.MultiToggleFieldItem;
-  
-  @Output() SelectedValues: EventEmitter<any> = new EventEmitter<any>();
-  
-  public values;
 
-  ngOnInit() {
-  }
+  @Input() field: Models.MultiToggleFieldItem;
+
+  @Output() SelectedValues: EventEmitter<any> = new EventEmitter<any>();
+
+  public values: string[];
+
   get options() {
-    return <FormControl>this.group.controls[this.field.name];
+    return this.group.controls[this.field.name] as FormControl;
   }
 
   get fieldOptions() {
-    return <Interfaces.Option[]>this.field.options;
+    return this.field.options as Interfaces.Option[];
   }
 
-
   onCheckChange(event, index: number) {
-
     const formArray: FormArray = this.group.get(this.field.name) as FormArray;
-    let item = this.field.options.find(current => current.id == event.source.id);
-
+    const item = this.field.options.find(current => current.id === event.source.id);
     if (event.source.checked) {
       if (item) {
         formArray.controls[index].setValue(item.id);
@@ -47,27 +42,24 @@ export class MultiToggleComponent extends BaseComponent {
       formArray.controls[index].setValue(null);
       this.values[index] = null;
     }
-
-    this.values = this.values.filter(function (el) {
+    this.values = this.values.filter((el) => {
       return el != null;
     });
-    console.log(JSON.stringify(this.group.get(this.field.name).value))
     this.SelectedValues.emit(this.values);
+
   }
 
   getColumnClass(col: number) {
-    if (this.field.columns >= 1 && this.field.inlineView == false) {
+    if (this.field.columns >= 1 && this.field.inlineView === false) {
       if (this.field.columns > 4) {
         return;
       }
-
       return `px-1 col-md-${12 / this.field.columns}`;
-
     }
   }
 
   getMatRadioGroupClass() {
-    if (this.field.inlineView == true) {
+    if (this.field.inlineView === true) {
       return ``;
     }
     else {

@@ -1,7 +1,7 @@
 <ng-container [formGroup]="group">
   <mat-radio-group [formArrayName]="field.name"
     [ngClass]="getMatRadioGroupClass()">
-    <mat-checkbox [ngClass]="getColumnClass(field.columns)" *ngFor="let option of fieldOptions; let i = index"
+    <mat-checkbox [ngClass]="getColumnClass(field.columns)" *ngFor="let option of (fieldOptions | aakSort:'index':true); let i = index"
       id="{{option.id}}" [color]="field.color" [formControlName]="i" (change)="onCheckChange($event,i)">
       {{option.value}}
     </mat-checkbox>

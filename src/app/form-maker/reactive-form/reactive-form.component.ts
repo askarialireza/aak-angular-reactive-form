@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { FormGroup } from '@angular/forms';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { ObjectMapper } from 'src/app/infrastructure/object-mapper';
 import { stepOneForm } from '../../mocks/form-create-step1';
 import * as Services from '../../services/index';
 import * as Interfaces from '../../interfaces/index';
 import * as Modals from '../../form-maker/modals/index';
 import * as Models from '../../models/index';
 import * as Mocks from '../../mocks/field-type-select-group.mock';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { ObjectMapper } from 'src/app/infrastructure/object-mapper';
 
 @Component({
   selector: 'app-reactive-form',
@@ -35,15 +35,19 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formApiService.GetByName("createform1")
+    this.formApiService.GetByName('createform1',true,true)
       .subscribe(result => {
         this.formItem = ObjectMapper.MapForm(result);
+        this.formService.sortFieldItemsByOrder(this.formItem.fieldItems);
+        this.formGroupOne = this.formService.createControl(this.formItem.fieldItems);
+        console.log(this.formItem);
       },
         error => {
           this.formItem = stepOneForm;
-        }, () => {
           this.formService.sortFieldItemsByOrder(this.formItem.fieldItems);
           this.formGroupOne = this.formService.createControl(this.formItem.fieldItems);
+          console.log(this.formGroupOne.value);
+          console.log(this.formItem);
         }
       );
   }

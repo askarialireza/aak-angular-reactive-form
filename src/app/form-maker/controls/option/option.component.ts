@@ -9,9 +9,10 @@ import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
   templateUrl: './option.component.html',
   styleUrls: ['./option.component.css']
 })
-export class OptionComponent implements BaseComponent {
+export class OptionComponent extends BaseComponent {
 
   constructor() {
+    super();
   }
 
   field: Models.OptionFieldItem;

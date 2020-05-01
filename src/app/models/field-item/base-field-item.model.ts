@@ -1,5 +1,5 @@
 import * as Interfaces from '../../interfaces/field-item/base-field-item.interface';
-import { Validator } from '../validator';
+import * as Models from '../index';
 import { Guid } from 'guid-typescript';
 import { Validators } from '@angular/forms';
 
@@ -19,10 +19,8 @@ export class BaseFieldItem implements Interfaces.BaseFieldItem {
             }
 
             this.validations.push(
-                new Validator({
-                    name: "required",
-                    message: `فیلد ${(this.label) ? `${this.label} ` : ''}اجباری است.`,
-                    validator: Validators.required,
+                new Models.RequiredValidator({
+                    message: `درج فیلد ${(this.label) ? `${this.label} ` : ''}الزامی است.`,
                 })
             );
         }
@@ -39,6 +37,6 @@ export class BaseFieldItem implements Interfaces.BaseFieldItem {
     width: number;
     hint: string;
     disabled: boolean;
-    validations: Validator[];
+    validations: Models.BaseValidator[];
     formId: string;
 }

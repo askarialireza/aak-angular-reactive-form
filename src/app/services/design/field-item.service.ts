@@ -10,7 +10,6 @@ import * as Models from '../../models/index';
 export class FieldItemService {
   public formGroup: FormGroup;
   public formItem: Interfaces.Form;
-  public fieldItems: Interfaces.BaseFieldItem[];
 
   constructor() {
 
@@ -20,20 +19,31 @@ export class FieldItemService {
         isEditModeEnabled: true,
         isHorizontalModeEnabled: false
       }),
+      fieldItems: [],
     });
 
     this.formGroup = new FormGroup({});
+  }
 
-    this.fieldItems = [];
+  GetById(id: string): Interfaces.BaseFieldItem {
+    return this.formItem.fieldItems.find(current => current.id === id);
+  }
+
+  GetByIndex(index: number): Interfaces.BaseFieldItem {
+    return this.formItem.fieldItems[index];
+  }
+
+  GetFieldItems() {
+    return this.formItem.fieldItems;
   }
 
   GetIndexOf(field: Interfaces.BaseFieldItem): number {
     return this.formItem?.fieldItems?.indexOf(field);
   }
 
-  GetFieldItemsLength() {
-    if (this.fieldItems) {
-      return this.fieldItems.length;
+  GetFieldItemsCount() {
+    if (this.formItem.fieldItems) {
+      return this.formItem.fieldItems.length;
     }
     else {
       return 0;
@@ -41,21 +51,22 @@ export class FieldItemService {
   }
 
   GetLastOrder() {
-    return this.GetFieldItemsLength() + 1;
+    return this.GetFieldItemsCount() + 1;
   }
 
-  Sort(fieldItems: Interfaces.BaseFieldItem[]) {
+  SortFieldItemsByOrder(fieldItems: Interfaces.BaseFieldItem[]) {
     fieldItems?.sort((a, b) => (a.order > b.order) ? 1 : -1)
   }
 
-  PushFieldItem(field: Interfaces.BaseFieldItem) {
+  AddFieldItem(field: Interfaces.BaseFieldItem) {
+    this.formItem.fieldItems.push(field);
+    this.SortFieldItemsByOrder(this.formItem.fieldItems);
+  }
 
-    this.fieldItems.push(field);
-
-    this.formItem.fieldItems = this.fieldItems;
-    
-    this.Sort(this.fieldItems);
-
+  RemoveFieldItem(field: Interfaces.BaseFieldItem) {
+    this.formItem.fieldItems.splice(this.GetIndexOf(field), 1);
+    this.formGroup.removeControl(field.name);
+    this.SortFieldItemsByOrder(this.formItem.fieldItems);
   }
 
 }

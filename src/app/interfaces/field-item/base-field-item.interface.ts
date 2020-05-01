@@ -1,4 +1,4 @@
-import { Validator } from '../../models/validator';
+import { BaseValidator } from './../validator/base-validator.interface';
 
 export interface BaseFieldItem {
     id: string;
@@ -13,5 +13,5 @@ export interface BaseFieldItem {
     formId: string,
     hint: string;
     disabled: boolean;
-    validations: Validator[];
+    validations: BaseValidator[];
 }

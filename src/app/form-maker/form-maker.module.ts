@@ -8,15 +8,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { ResizableModule } from 'angular-resizable-element';
+
+import { FormGeneratorComponent } from '../form-maker/form-generator/form-generator.component';
+import { ReactiveFormComponent} from '../form-maker/reactive-form/reactive-form.component';
+import { ImageComponent } from '../components/user-interface/image/image.component';
+import { FieldDirective } from '../directives/field.directive';
 
 import * as Controls from '../form-maker/controls/index';
 import * as Modals from '../form-maker/modals/index';
-import { FormGeneratorComponent } from '../form-maker/form-generator/form-generator.component';
-import { ReactiveFormComponent} from '../form-maker/reactive-form/reactive-form.component';
-import { FileSizePipe } from '../infrastructure/file-size.pipe';
-import { FieldDirective } from '../directives/field.directive';
-import { ImageComponent } from '../components/user-interface/image/image.component';
+
+import { FileSizePipe } from '../pipes/file-size.pipe';
+import { AakSortPipe } from '../pipes/aak-sort.pipe';
+
 
 @NgModule({
   declarations: [
@@ -46,6 +49,7 @@ import { ImageComponent } from '../components/user-interface/image/image.compone
     FormGeneratorComponent,
     ImageComponent,
     FileSizePipe,
+    AakSortPipe,
     FieldDirective,
   ],
   imports: [
@@ -58,7 +62,6 @@ import { ImageComponent } from '../components/user-interface/image/image.compone
     FontAwesomeModule,
     NgxSummernoteModule,
     ReactiveFormsModule,
-    ResizableModule,
     BrowserAnimationsModule,
   ],
   exports: [

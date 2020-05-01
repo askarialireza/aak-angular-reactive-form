@@ -21,37 +21,36 @@ export class MultiCheckboxComponent extends BaseComponent {
 
   @Output() SelectedValues: EventEmitter<any> = new EventEmitter<any>();
 
+  // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
     this.values = [];
   }
 
-
-
   get options() {
-    return <FormControl>this.group.controls[this.field.name];
+    return this.group.controls[this.field.name] as FormControl;
   }
 
   get fieldOptions() {
-    return <Interfaces.Option[]>this.field.options;
+    return this.field.options as Interfaces.Option[];
   }
 
   get errorMessage() {
     let error = '';
     if (this.field.required) {
-      let validation =
-        this.field.validations.find(current => current.validator == Validators.required)
+      const validation =
+        this.field.validations.find(current => current.validator === Validators.required)
 
       if (validation) {
         error = validation.message;
       }
     }
-    return <string>error;
+    return error as string;
   }
 
   onCheckChange(event, index: number) {
 
     const formArray: FormArray = this.group.get(this.field.name) as FormArray;
-    let item = this.field.options.find(current => current.id == event.source.id);
+    const item = this.field.options.find(current => current.id === event.source.id);
 
     if (event.source.checked) {
       if (item) {
@@ -63,7 +62,7 @@ export class MultiCheckboxComponent extends BaseComponent {
       this.values[index] = null;
     }
 
-    this.values = this.values.filter(function (el) {
+    this.values = this.values.filter((el) => {
       return el != null;
     });
 
@@ -71,7 +70,7 @@ export class MultiCheckboxComponent extends BaseComponent {
   }
 
   getColumnClass(col: number) {
-    if (this.field.columns >= 1 && this.field.inlineView == false) {
+    if (this.field.columns >= 1 && this.field.inlineView === false) {
       if (this.field.columns > 4) {
         return;
       }
@@ -82,9 +81,9 @@ export class MultiCheckboxComponent extends BaseComponent {
   }
 
   getMatRadioGroupClass() {
-    if (this.field.inlineView == true) {
+    if (this.field.inlineView === true) {
       return ``;
-    } 
+    }
     else {
       return `row no-gutters`;
     }

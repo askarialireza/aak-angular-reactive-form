@@ -7,7 +7,8 @@ export class Option implements Interfaces.Option {
         this.id = Guid.create().toString();
         Object.assign(this, init);
     }
-
+    
+    index: number;
     id: string;
     value: string;
     icon: string;
