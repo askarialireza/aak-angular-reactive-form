@@ -31,7 +31,7 @@
     "bootstrap-v4-rtl": "^4.4.1-1",
     "guid-typescript": "^1.0.9",
     "jalali-moment": "^3.3.3",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "material-design-icons-iconfont": "^5.0.1",
     "moment": "^2.24.0",
     "ngx-summernote": "^0.7.7",
